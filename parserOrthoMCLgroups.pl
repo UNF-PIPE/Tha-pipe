@@ -2,11 +2,13 @@
 
 #reads OrthoMCL cluster/group file on STDIN, passes it to ParserOrthoMCLgroups
 
+use warnings;
 use strict;
 use Getopt::Long;
 
 my $speciesPerLine;
 my $proteinsPerSpecies;
+my %orthoHash; #change name, stupid
 GetOptions ("minSpeciesPerLine=s" => \$speciesPerLine, 'maxProteinsPerSpecies=s' => \$proteinsPerSpecies);
 
 chomp(my @input = <STDIN>);
@@ -15,7 +17,18 @@ chomp(my @input = <STDIN>);
 my @passedGroups = ParserOrthoMCLgroups(\@input,$speciesPerLine,$proteinsPerSpecies);
 
 foreach my $group (@passedGroups) {
-	print "$group\n";
+	#Stores positives in a 2d hasharray [X][Y] where Y=0-1 for a spec. X gives the organism-protein pair
+	$group =~ /my_prefix(\d+)\:/;
+ 	my $orthoID = $1;
+ 	my @group = split(/\||\s/,$group);
+	my $lineSize = @group;
+	my @clusterArray;
+    
+ 	for(my $i=1;$i <=($lineSize-2); $i += 2){
+		push(@clusterArray, ["$group[$i]" , "$group[$i+1]"]);	
+    	}
+
+    	$orthoHash{$orthoID} = \@clusterArray; #makes the hash an array ref.
 }
 
 exit;
