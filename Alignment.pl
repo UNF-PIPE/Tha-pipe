@@ -3,7 +3,8 @@ use strict;
 #use diagnostics;
 use warnings;
 use Bio::SeqIO;
-use Bio::DB::GenBank;
+use Bio::Perl;
+#use Bio::DB::GenBank;
 
 my %hash;
 open my $IN, "<", $ARGV[0] or die "Can't open the file";
@@ -14,9 +15,10 @@ while (<$IN>) {
 	$hash {$array[0]} = [@array1];	
 }
 
- 
-my $db_obj = Bio::DB::GenBank->new;
-
-my $seq_obj = $db_obj->get_Seq_by_acc("YP_988971.1"); 
-$seq_obj = Bio::SeqIO->new(-file => '>sequence.fasta', -format => 'fasta' ); 
-system('ls -l | grep seq');
+my $file = ("/home/bjorn/pipeprojekt/NCBI-proteoms/Bartonella_bacilliformis_NC_008783.faa");
+my $proteome = Bio::SeqIO->new(-file => $file, -format => 'fasta');
+while (my $accession = $proteome->next_seq) {
+	my $acc = $accession->accession_number();
+	my $seq = $accession->seq;
+	print "$acc \n";
+}
