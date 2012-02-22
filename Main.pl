@@ -9,13 +9,13 @@ use Getopt::Long;
 my $speciesPerLine;
 my $proteinsPerSpecies;
 my $orthomcl_groups_file;
-GetOptions ("minSpeciesPerLine=s" => \$speciesPerLine, 'maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "groupsfile=s" => \$orthomcl_groups_file);
+GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file);
 
 #Test. The "wrap around" code goes here
 open(my $IN, $orthomcl_groups_file); #Open filehandle to the groups file
 chomp(my @groups = <$IN>); #Read the file into an array
 my %orthoHash = ParserOrthoMCLgroups(\@groups,$speciesPerLine,$proteinsPerSpecies);
-print $orthoHash{1244}[1][1] . "\n";
+print $orthoHash{1244}[1][0] . "\n";
 
 #my %gbkhash = &make_gbk_hash("/home/data/NCBI-annotation/NC_008783.gbk");
 #print &get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", \%gbkhash, $ARGV[0]);
