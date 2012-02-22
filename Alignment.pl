@@ -1,9 +1,10 @@
-#!/usr/bin/perl
+# or die (""aj")!/usr/bin/perl
 use strict;
 #use diagnostics;
 use warnings;
 use Bio::SeqIO;
 use Bio::Perl;
+use File::Slurp;
 #use Bio::DB::GenBank;
 
 my %hash;
@@ -15,10 +16,19 @@ while (<$IN>) {
 	$hash {$array[0]} = [@array1];	
 }
 
-my $file = ("/home/bjorn/pipeprojekt/NCBI-proteoms/Bartonella_bacilliformis_NC_008783.faa");
-my $proteome = Bio::SeqIO->new(-file => $file, -format => 'fasta');
-while (my $accession = $proteome->next_seq) {
-	my $acc = $accession->accession_number();
-	my $seq = $accession->seq;
-	print "$acc \n";
+my %genomes;
+my $protDir = $ARGV[1]; 
+my @files = read_dir($protDir);
+for my $file2 ( @files ) {
+	my $file = "$protDir$file2";
+	my $proteome = Bio::SeqIO->new(-file => "<$file", -format => 'fasta');
+
+	while (my $accession1 = $proteome->next_seq) {
+		my $header = $accession1->id;
+		my $seq = $accession1->seq;
+		my @split = split(/\|/,$header);
+		$genomes {$split[3]} = $seq;
+	}
 }
+print $genomes{"YP_192887.1"};
+
