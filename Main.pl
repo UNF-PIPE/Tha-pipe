@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use Bio::SeqIO;
 use Getopt::Long;
+use File::Slurp;
+#use Bio::Tools::Run::Alignment::Clustalw;
 
 #Get the parameters for ParserOrthoMCLgroups
 my $speciesPerLine;
@@ -15,7 +17,8 @@ GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSp
 open(my $IN, $orthomcl_groups_file); #Open filehandle to the groups file
 chomp(my @groups = <$IN>); #Read the file into an array
 my %orthoHash = ParserOrthoMCLgroups(\@groups,$speciesPerLine,$proteinsPerSpecies);
-print $orthoHash{1244}[1][0] . "\n";
+&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
+#print $orthoHash{1244}[1][0] . "\n";
 
 #my %gbkhash = &make_gbk_hash("/home/data/NCBI-annotation/NC_008783.gbk");
 #print &get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", \%gbkhash, $ARGV[0]);
@@ -139,3 +142,60 @@ sub ParserOrthoMCLgroups {
 	}
 	return %orthoHash
 }
+
+sub multAlign {
+	my %proteoms;	
+	my $protDir = $_[0];
+	my @files = read_dir($protDir);
+	# Save all sequences from every species in a hash %proteoms
+	for my $file ( @files ) {
+        	my $filePath = "$protDir$file";
+        	my $proteome = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta');
+
+		# Go through every SeqIO object and store the sequence as value and gene id as key 
+        	while (my $accession1 = $proteome->next_seq) {
+               		my $header = $accession1->id;
+               		my $seq = $accession1->seq;
+			my @split = split(/\|/,$header);
+               		$proteoms {$split[3]} = $seq;
+       		}
+	}
+	my @ortalign;
+	#Goes through all orthologs stored in a hash
+	while ( my ($key,$value) = each %{$_[1]}) {
+		# print "my_prefix$key:\n";
+		my $ortseq = "";
+		# For each ortholog in a specific row it will concatenate each ortholog  
+		# into $ortseq
+		foreach my $ortrow  (@{$value}) {
+			$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; #The fasta header 
+			$ortseq = $ortseq .  " $proteoms{@{$ortrow}[1]} \n"; #The sequence
+		}
+		#Align the orthologs using clustalo
+		@ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=phy  );
+	}
+	foreach my $rows (@ortalign) {
+		print $rows;
+	}
+	print "\n";
+	
+
+	#my @s = qx( echo "herrow"  );
+	#print "yoyo \n";
+	#print $s[0] . "\n";
+	#my $string   = ">SEQ1\nacgt\n>revseq1\nacga\n>SEQ4\nnagga"; 
+	##print $string;
+	#my @bajs = qx(echo  '$string' \| clustalo -i - --outfmt=phy  );
+}
+
+
+# http://www.bioperl.org/wiki/HOWTO:SeqIO
+# ungefar 60% in. 
+
+
+
+
+
+
+
+
