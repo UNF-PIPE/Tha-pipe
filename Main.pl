@@ -5,7 +5,12 @@ use warnings;
 use Bio::SeqIO;
 use Getopt::Long;
 use File::Slurp;
-#use Bio::Tools::Run::Alignment::Clustalw;
+use Bio::TreeIO;
+use IO::String;
+use Bio::AlignIO;
+use Bio::Align::ProteinStatistics;
+use Bio::Tree::DistanceFactory;
+use Bio::Tree::TreeI;
 
 #Get the parameters for ParserOrthoMCLgroups
 my $speciesPerLine;
@@ -144,58 +149,44 @@ sub ParserOrthoMCLgroups {
 }
 
 sub multAlign {
-	my %proteoms;	
-	my $protDir = $_[0];
-	my @files = read_dir($protDir);
-	# Save all sequences from every species in a hash %proteoms
-	for my $file ( @files ) {
-        	my $filePath = "$protDir$file";
-        	my $proteome = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta');
-
-		# Go through every SeqIO object and store the sequence as value and gene id as key 
-        	while (my $accession1 = $proteome->next_seq) {
+	my %proteoms; 				#Predefine proteoms hash	
+	my $protDir = $_[0]; 			#Define proteome directory
+	my @files = read_dir($protDir); 	#Contains all files in prot directory 
+	for my $file ( @files ) { 		#Loop trough all proteome files 
+        	my $filePath = "$protDir$file"; #Current path to proteome file
+        	my $proteome = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta'); #Insert file into SeqIO object
+        	while (my $accession1 = $proteome->next_seq) { # Go through the SeqIO objects
                		my $header = $accession1->id;
                		my $seq = $accession1->seq;
 			my @split = split(/\|/,$header);
-               		$proteoms {$split[3]} = $seq;
+               		$proteoms {$split[3]} = $seq; #Save "my_prefixXXXX as key, sequence as value
        		}
 	}
-	my @ortalign;
-	#Goes through all orthologs stored in a hash
-	while ( my ($key,$value) = each %{$_[1]}) {
-		# print "my_prefix$key:\n";
-		my $ortseq = "";
-		# For each ortholog in a specific row it will concatenate each ortholog  
-		# into $ortseq
-		foreach my $ortrow  (@{$value}) {
-			$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; #The fasta header 
-			$ortseq = $ortseq .  " $proteoms{@{$ortrow}[1]} \n"; #The sequence
+	my $alignStr; 
+	my $ortseq; 				#Predefine strings
+	while ( my ($key,$value) = each %{$_[1]}) { 	#Loop though hash
+		$ortseq = "";			#Reset string
+		$alignStr = "";			#Reset string
+		foreach my $ortrow  (@{$value}) { #Loop array containing orthologs  
+			$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; 	#Append fasta header containing species name and gene-ID 
+			$ortseq = $ortseq .  " $proteoms{@{$ortrow}[1]} \n"; 		#Append sequence
 		}
-		#Align the orthologs using clustalo
-		@ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=phy  );
-	}
-	foreach my $rows (@ortalign) {
-		print $rows;
-	}
-	print "\n";
-	
+		my @ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=clu);	#Pipe ortholog fasta into clustalO
+		foreach my $rows (@ortalign) {
+			$alignStr =  $alignStr . $rows;	#Append all rows into a single string
+		}
 
-	#my @s = qx( echo "herrow"  );
-	#print "yoyo \n";
-	#print $s[0] . "\n";
-	#my $string   = ">SEQ1\nacgt\n>revseq1\nacga\n>SEQ4\nnagga"; 
-	##print $string;
-	#my @bajs = qx(echo  '$string' \| clustalo -i - --outfmt=phy  );
+		my $io = IO::String->new($alignStr);	#Convert string into io-object
+		my $alnio = Bio::AlignIO->new(-fh => $io, -format=>'clustalw'); #Make NJ tree
+		my $dfactory = Bio::Tree::DistanceFactory->new(-method => 'NJ');
+		my $stats = Bio::Align::ProteinStatistics->new;
+		my $treeout = Bio::TreeIO->new(-format => 'newick');
+		while( my $aln = $alnio->next_aln ) {
+			my $mat = $stats->distance(-method => 'Kimura', -align  => $aln);
+			my $tree = $dfactory->make_tree($mat);
+			my $treeOut;
+			Bio::TreeIO->new( -format => 'newick', -fh => IO::String->new(\$treeOut)  )->write_tree( $tree ); #Save tree to $treeOut
+			print $treeOut . "\n";
+		}
+	}
 }
-
-
-# http://www.bioperl.org/wiki/HOWTO:SeqIO
-# ungefar 60% in. 
-
-
-
-
-
-
-
-
