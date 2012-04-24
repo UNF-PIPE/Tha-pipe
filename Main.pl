@@ -24,11 +24,9 @@ chomp(my @groups = <$IN>); #Read the file into an array
 my %orthoHash = ParserOrthoMCLgroups(\@groups,$speciesPerLine,$proteinsPerSpecies);
 my %prot = proteoms("/home/data/NCBI-proteoms/");
 
-my $i = 0;
 while (my ($key,$value) = each %orthoHash) {
 	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
 	makeTree($alignSequence);
-	$i++;
 }
 
 #&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
@@ -180,7 +178,7 @@ sub multipleAlign {
 		$ortseq = $ortseq .  " $_[1]{@{$ortrow}[1]} \n"; 		#Append sequence
 	}
 	#print $ortseq . "\n";
-	my @ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=clu);	#Pipe ortholog fasta into clustalO
+	my @ortalign = qx(echo  '$ortseq' \| muscle -quiet);	#Pipe ortholog fasta into clustalO
 	foreach my $rows (@ortalign) {
 		$alignStr =  $alignStr . $rows;	#Append all rows into a single string
 	}
@@ -189,7 +187,7 @@ sub multipleAlign {
 
 sub makeTree {
 	my $io = IO::String->new($_[0]);	#Convert string into io-object
-	my $alnio = Bio::AlignIO->new(-fh => $io, -format=>'clustalw'); #Make NJ tree
+	my $alnio = Bio::AlignIO->new(-fh => $io, -format=>'fasta'); #Make NJ tree
 	my $dfactory = Bio::Tree::DistanceFactory->new(-method => 'NJ');
 	my $stats = Bio::Align::ProteinStatistics->new;
 	my $treeout = Bio::TreeIO->new(-format => 'newick');
