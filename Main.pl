@@ -22,13 +22,20 @@ GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSp
 open(my $IN, $orthomcl_groups_file); #Open filehandle to the groups file
 chomp(my @groups = <$IN>); #Read the file into an array
 my %orthoHash = ParserOrthoMCLgroups(\@groups,$speciesPerLine,$proteinsPerSpecies);
-&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
+my %prot = proteoms("/home/data/NCBI-proteoms/");
+
+my $i = 0;
+while (my ($key,$value) = each %orthoHash) {
+	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
+	makeTree($alignSequence);
+	$i++;
+}
+
+#&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
 #print $orthoHash{1244}[1][0] . "\n";
 
 #my %gbkhash = &make_gbk_hash("/home/data/NCBI-annotation/NC_008783.gbk");
 #print &get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", \%gbkhash, $ARGV[0]);
-
-#To here
 
 sub get_gene{ 
     #Arguments: 1 = path to genome, 2 = %gbkhash, 3 = protein_id
@@ -148,7 +155,7 @@ sub ParserOrthoMCLgroups {
 	return %orthoHash
 }
 
-sub multAlign {
+sub proteoms {
 	my %proteoms; 				#Predefine proteoms hash	
 	my $protDir = $_[0]; 			#Define proteome directory
 	my @files = read_dir($protDir); 	#Contains all files in prot directory 
@@ -162,31 +169,35 @@ sub multAlign {
                		$proteoms {$split[3]} = $seq; #Save "my_prefixXXXX as key, sequence as value
        		}
 	}
-	my $alignStr; 
-	my $ortseq; 				#Predefine strings
-	while ( my ($key,$value) = each %{$_[1]}) { 	#Loop though hash
-		$ortseq = "";			#Reset string
-		$alignStr = "";			#Reset string
-		foreach my $ortrow  (@{$value}) { #Loop array containing orthologs  
-			$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; 	#Append fasta header containing species name and gene-ID 
-			$ortseq = $ortseq .  " $proteoms{@{$ortrow}[1]} \n"; 		#Append sequence
-		}
-		my @ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=clu);	#Pipe ortholog fasta into clustalO
-		foreach my $rows (@ortalign) {
-			$alignStr =  $alignStr . $rows;	#Append all rows into a single string
-		}
+	return %proteoms;
+}
 
-		my $io = IO::String->new($alignStr);	#Convert string into io-object
-		my $alnio = Bio::AlignIO->new(-fh => $io, -format=>'clustalw'); #Make NJ tree
-		my $dfactory = Bio::Tree::DistanceFactory->new(-method => 'NJ');
-		my $stats = Bio::Align::ProteinStatistics->new;
-		my $treeout = Bio::TreeIO->new(-format => 'newick');
-		while( my $aln = $alnio->next_aln ) {
-			my $mat = $stats->distance(-method => 'Kimura', -align  => $aln);
-			my $tree = $dfactory->make_tree($mat);
-			my $treeOut;
-			Bio::TreeIO->new( -format => 'newick', -fh => IO::String->new(\$treeOut)  )->write_tree( $tree ); #Save tree to $treeOut
-			print $treeOut . "\n";
-		}
+sub multipleAlign {
+	my $ortseq = "";			#Reset string
+	my $alignStr = "";			#Reset string
+	foreach my $ortrow  (@{$_[0]}) { #Loop array containing orthologs  
+		$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; 	#Append fasta header containing species name and gene-ID 
+		$ortseq = $ortseq .  " $_[1]{@{$ortrow}[1]} \n"; 		#Append sequence
+	}
+	#print $ortseq . "\n";
+	my @ortalign = qx(echo  '$ortseq' \| clustalo -i - --outfmt=clu);	#Pipe ortholog fasta into clustalO
+	foreach my $rows (@ortalign) {
+		$alignStr =  $alignStr . $rows;	#Append all rows into a single string
+	}
+	return $alignStr;
+}
+
+sub makeTree {
+	my $io = IO::String->new($_[0]);	#Convert string into io-object
+	my $alnio = Bio::AlignIO->new(-fh => $io, -format=>'clustalw'); #Make NJ tree
+	my $dfactory = Bio::Tree::DistanceFactory->new(-method => 'NJ');
+	my $stats = Bio::Align::ProteinStatistics->new;
+	my $treeout = Bio::TreeIO->new(-format => 'newick');
+	while( my $aln = $alnio->next_aln ) {
+		my $mat = $stats->distance(-method => 'Kimura', -align  => $aln);
+		my $tree = $dfactory->make_tree($mat);
+		my $treeOut;
+		Bio::TreeIO->new( -format => 'newick', -fh => IO::String->new(\$treeOut)  )->write_tree( $tree ); #Save tree to $treeOut
+		print $treeOut . "\n";
 	}
 }
