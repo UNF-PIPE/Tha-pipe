@@ -199,3 +199,17 @@ sub makeTree {
 		print $treeOut . "\n";
 	}
 }
+
+sub findGaps {
+	my $limit = $_[1];
+	my $io = IO::String->new($_[0]);
+	my $alignment = Bio::SeqIO->new(-fh => $io, -format => 'fasta');
+	
+	while(my $sequence = $alignment->next_seq()){
+		my $seq_string = $sequence->seq;
+		if (($seq_string =~ tr/-/-/) <= $limit) {
+			print ">" . $sequence->id . "\n";
+			print $seq_string . "\n\n";
+		}
+	}
+}
