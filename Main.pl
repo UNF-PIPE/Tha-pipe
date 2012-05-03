@@ -26,7 +26,8 @@ my %prot = proteoms("/home/data/NCBI-proteoms/");
 
 while (my ($key,$value) = each %orthoHash) {
 	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
-	makeTree($alignSequence);
+	findGaps($alignSequence,10);
+	#makeTree($alignSequence);
 }
 
 #&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
@@ -207,7 +208,7 @@ sub findGaps {
 	
 	while(my $sequence = $alignment->next_seq()){
 		my $seq_string = $sequence->seq;
-		if (($seq_string =~ tr/-/-/) <= $limit) {
+		if ($seq_string =~ m/^-{$limit}/) {
 			print ">" . $sequence->id . "\n";
 			print $seq_string . "\n\n";
 		}
