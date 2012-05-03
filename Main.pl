@@ -26,7 +26,9 @@ my %prot = proteoms("/home/data/NCBI-proteoms/");
 
 while (my ($key,$value) = each %orthoHash) {
 	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
-	findGaps($alignSequence,10);
+	if(my @gap_ids = findGaps($alignSequence,10)){
+		
+	}
 	#makeTree($alignSequence);
 }
 
@@ -205,12 +207,17 @@ sub findGaps {
 	my $limit = $_[1];
 	my $io = IO::String->new($_[0]);
 	my $alignment = Bio::SeqIO->new(-fh => $io, -format => 'fasta');
+	my @gap_ids;
 	
 	while(my $sequence = $alignment->next_seq()){
 		my $seq_string = $sequence->seq;
 		if ($seq_string =~ m/^-{$limit}/) {
-			print ">" . $sequence->id . "\n";
-			print $seq_string . "\n\n";
+			#print ">" . $sequence->id . "\n";
+			#print $seq_string . "\n\n";
+			$sequence->id =~ m/^gi\|(.*)\|/;
+			my $id = $1;
+			push(@gap_ids, $id);
 		}
 	}
+	return @gap_ids;
 }
