@@ -25,12 +25,11 @@ sub parse_orthomcl_file {
 
 sub parse_groups {
     my ($groups, $speciesPerLine, $proteinsPerSpecies) = @_;
-
-    my @passedGroups = ();
+    my %orthoHash;
 
     # loop over groups, for each one check if it passes filters
     GROUP: foreach my $group (@$groups) {
-        my ($prefix, @members) = split /\s/, $group;
+        my ($prefix, @members) = split /\s+/, $group;
         # collect the species we've seen in this group: value is number of
         # proteins we've seen
         my %speciesCount = ();
@@ -41,7 +40,7 @@ sub parse_groups {
             $speciesCount{$species}++;
             # if we've already reached the max number of proteins for this
             # species; fail group
-            if ( $speciesCount{$species} >= $proteinsPerSpecies ) {
+            if ( $speciesCount{$species} > $proteinsPerSpecies ) {
                 next GROUP;
             }
         }
@@ -52,26 +51,16 @@ sub parse_groups {
         } 
 
         # if we reach this point, we have passed the filters - add this group
-        # to the passed group array
-        push @passedGroups, $group;
+        # to the orthoHash
+        my ($orthoID) = $prefix =~ /(\d+):/;
+
+        my @clusterArray;
+        for my $protein ( @members ) {
+            push @clusterArray, [ split /\|/, $protein ];
+        }
+        $orthoHash{$orthoID} = \@clusterArray; # makes the hash an array ref.
     }
 
-    #return @passedGroups;
-    my %orthoHash;
-    foreach my $group (@passedGroups) {
-        # Stores positives in a 2d hasharray [X][Y] where Y=0-1 for a spec. X
-        # gives the organism-protein pair
-        $group =~ /my_prefix(\d+)\:/;
-        my $orthoID = $1;
-        my @group = split /\||\s/, $group;
-        my $lineSize = @group;
-        my @clusterArray;
-        
-        for(my $i=1;$i <=($lineSize-2); $i += 2){
-                push @clusterArray, ["$group[$i]" , "$group[$i+1]"];
-        }
-        $orthoHash{$orthoID} = \@clusterArray; #makes the hash an array ref.
-    }
     return %orthoHash
 }
 
