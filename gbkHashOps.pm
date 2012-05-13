@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 use File::Slurp;
+use Bio::SeqIO;
+use Getopt::Long;
 
 use Exporter;
 use base qw( Exporter );
