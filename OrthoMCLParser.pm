@@ -61,15 +61,14 @@ sub parse_groups {
     foreach my $group (@passedGroups) {
         # Stores positives in a 2d hasharray [X][Y] where Y=0-1 for a spec. X
         # gives the organism-protein pair
-        $group =~ /my_prefix(\d+)\:/;
-        my $orthoID = $1;
-        my @group = split /\||\s/, $group;
-        my $lineSize = @group;
+        my ($orthoID, $proteinStr) = $group =~ /my_prefix(\d+):\s+(.*)$/;
+        my @proteins = split /\s+/, $proteinStr;
         my @clusterArray;
-        
-        for(my $i=1;$i <=($lineSize-2); $i += 2){
-                push @clusterArray, ["$group[$i]" , "$group[$i+1]"];
+
+        for my $protein ( @proteins ) {
+            push @clusterArray, [ split /\|/, $protein ];
         }
+
         $orthoHash{$orthoID} = \@clusterArray; #makes the hash an array ref.
     }
     return %orthoHash

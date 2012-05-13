@@ -3,7 +3,6 @@ use strict;
 use warnings;
 
 use Test::More;
-use Data::Printer;
 
 use OrthoMCLParser qw( parse_groups );
 
