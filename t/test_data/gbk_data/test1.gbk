@@ -1,0 +1,1000 @@
+LOCUS       NC_006677            2702173 bp    DNA     circular BCT 23-JAN-2012
+DEFINITION  Gluconobacter oxydans 621H chromosome, complete genome.
+ACCESSION   NC_006677
+VERSION     NC_006677.1  GI:58038491
+DBLINK      Project: 58239
+KEYWORDS    .
+SOURCE      Gluconobacter oxydans 621H
+  ORGANISM  Gluconobacter oxydans 621H
+            Bacteria; Proteobacteria; Alphaproteobacteria; Rhodospirillales;
+            Acetobacteraceae; Gluconobacter.
+REFERENCE   1  (bases 1 to 2702173)
+  AUTHORS   Prust,C., Hoffmeister,M., Liesegang,H., Wiezer,A., Fricke,W.F.,
+            Ehrenreich,A., Gottschalk,G. and Deppenmeier,U.
+  TITLE     Complete genome sequence of the acetic acid bacterium Gluconobacter
+            oxydans
+  JOURNAL   Nat. Biotechnol. 23 (2), 195-200 (2005)
+   PUBMED   15665824
+REFERENCE   2  (bases 1 to 2702173)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-JAN-2005) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 2702173)
+  AUTHORS   Prust,C., Hoffmeister,M., Liesegang,H., Wiezer,A., Fricke,W.F.,
+            Gottschalk,G. and Deppenmeier,U.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-JUL-2004) Goettingen Genomics Laboratory,
+            Georg-August-University Goettingen, Grisebachstr. 8, Goettingen
+            D-37077, Germany
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence was derived from CP000009.
+            Name: GOX_621H.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..2702173
+                     /organism="Gluconobacter oxydans 621H"
+                     /mol_type="genomic DNA"
+                     /strain="621H"
+                     /db_xref="taxon:290633"
+     gene            155..1594
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /db_xref="GeneID:3249149"
+     CDS             155..1594
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="binds to the dnaA-box as an ATP-bound complex at
+                     the origin of replication during the initiation of
+                     chromosomal replication; can also affect transcription of
+                     multiple genes including itself."
+                     /codon_start=1
+                     /transl_table=11
+                     /product="chromosome replication initiator DnaA"
+                     /protein_id="YP_190456.1"
+                     /db_xref="GI:58038492"
+                     /db_xref="GeneID:3249149"
+                     /translation="MKGGTMVENAQYLDASASAPGSTTPLETAWIRVREKLKSEVGEV
+                     EYRTWLRQIVLGPLEEDELTLYLPTRFLRDWVRSQYEERLQTLWRTEREDIKGVELQV
+                     KRGLPEVSMGDAEDGEDGSGEGHELATQAAAPESRSDLAVPLDPRFTFDTFIVGKPNE
+                     FAYACARRVAEKPSSPGFNPLFLYGGVGLGKTHLMHAIGTELTRTGKVSVAYMSAEKF
+                     MYRFIAAIRSQSTMEFKEQLRSVDVLMIDDLQFLIGKDNTQEEFFHTFNALVDAGRQI
+                     IVSADKSPSDLSGLEDRLRTRLGCGMVADIHATTFELRISILEAKAKASGTHVPSKVL
+                     EYLAHKITTNVRELEGALNRLIAHADLVGRPVTLDTTQDVLKDMLKAHDRRVTIEEIQ
+                     RKVSEHWNIRLTDMSSARRARAVARPRQVAMYLAKQLTSRSLPEIGRKFGNRDHTTVM
+                     HAVNRVTELMDQDTSFAEDVELLRRMLEG"
+     misc_feature    230..1591
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="chromosomal replication initiation protein;
+                     Reviewed; Region: dnaA; PRK00149"
+                     /db_xref="CDD:178902"
+     misc_feature    233..424
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="DnaA N-terminal domain; Region: DnaA_N; pfam11638"
+                     /db_xref="CDD:204696"
+     misc_feature    629..1057
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="The AAA+ (ATPases Associated with a wide variety of
+                     cellular Activities) superfamily represents an ancient
+                     group of ATPases belonging to the ASCE (for additional
+                     strand, catalytic E) division of the P-loop NTPase fold.
+                     The ASCE division also includes ABC; Region: AAA; cd00009"
+                     /db_xref="CDD:99707"
+     misc_feature    707..730
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="Walker A motif; other site"
+                     /db_xref="CDD:99707"
+     misc_feature    order(710..733,893..895,992..994)
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="ATP binding site [chemical binding]; other site"
+                     /db_xref="CDD:99707"
+     misc_feature    881..898
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="Walker B motif; other site"
+                     /db_xref="CDD:99707"
+     misc_feature    1031..1033
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="arginine finger; other site"
+                     /db_xref="CDD:99707"
+     misc_feature    1316..1585
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="C-terminal domain of bacterial DnaA proteins. The
+                     DNA-binding C-terminal domain of DnaA contains a
+                     helix-turn-helix motif that specifically interacts with
+                     the DnaA box, a 9-mer motif that occurs repetitively in
+                     the replication origin oriC. Multiple...; Region:
+                     Bac_DnaA_C; cd06571"
+                     /db_xref="CDD:119330"
+     misc_feature    order(1385..1387,1409..1414,1433..1435,1451..1459,
+                     1484..1498,1505..1507,1514..1519)
+                     /gene="dnaA"
+                     /locus_tag="GOX0001"
+                     /note="DnaA box-binding interface [nucleotide binding];
+                     other site"
+                     /db_xref="CDD:119330"
+     gene            1685..2809
+                     /locus_tag="GOX0002"
+                     /db_xref="GeneID:3249150"
+     CDS             1685..2809
+                     /locus_tag="GOX0002"
+                     /EC_number="2.7.7.7"
+                     /note="binds the polymerase to DNA and acts as a sliding
+                     clamp"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="DNA polymerase III subunit beta"
+                     /protein_id="YP_190457.1"
+                     /db_xref="GI:58038493"
+                     /db_xref="GeneID:3249150"
+                     /translation="MKFKVDRTLLQRALAHIHGVAEKRNTIPILANVLMSYQDDVLRL
+                     TATDMEIAVVEDVPASGERSGSTTVPAAVLFEIVRKLPDGVALEFDHQDSEAPLALRA
+                     GRYATSLNVLPVDDFPAMVAGDLPHRFSIPAATLRGLIDRTKFAISNEETRYYLNGIY
+                     LHVAENGSIPMLRAVATDGHRLARVETELPEGARGMPGVIIPRKTINELRKLLDEGAA
+                     DLEVSLSDTRIQFQAGPVLLTSKLIDGTFPEYERVIPKGNDRILRVGKRDFAAAVGRV
+                     AAISQERSRPVKLSVTQNMLNLSATSPDQGVAHEELDENAVSYDAAPIEIGFQARYLT
+                     DITDQIDVEVEFAFSDSSAPTIVRDTASPSALYVLMPMRV"
+     misc_feature    1685..2806
+                     /locus_tag="GOX0002"
+                     /note="DNA polymerase III subunit beta; Validated; Region:
+                     PRK05643"
+                     /db_xref="CDD:180180"
+     misc_feature    1685..2803
+                     /locus_tag="GOX0002"
+                     /note="Beta clamp domain.  The beta subunit (processivity
+                     factor) of DNA polymerase III holoenzyme, refered to as
+                     the beta clamp, forms a ring shaped dimer that encircles
+                     dsDNA (sliding clamp) in bacteria.  The beta-clamp is
+                     structurally similar to the trimeric...; Region:
+                     beta_clamp; cd00140"
+                     /db_xref="CDD:29053"
+     misc_feature    order(1754..1756,1898..1900,1919..1921,2294..2296)
+                     /locus_tag="GOX0002"
+                     /note="putative DNA binding surface [nucleotide binding];
+                     other site"
+                     /db_xref="CDD:29053"
+     misc_feature    order(1901..1903,1910..1912,1994..1996,2000..2002,
+                     2516..2518,2609..2614)
+                     /locus_tag="GOX0002"
+                     /note="dimer interface [polypeptide binding]; other site"
+                     /db_xref="CDD:29053"
+     misc_feature    order(2213..2215,2219..2230,2669..2671,2792..2803)
+                     /locus_tag="GOX0002"
+                     /note="beta-clamp/clamp loader binding surface; other
+                     site"
+                     /db_xref="CDD:29053"
+     misc_feature    order(2213..2215,2219..2224,2441..2443,2546..2548,
+                     2585..2590,2678..2680,2792..2803)
+                     /locus_tag="GOX0002"
+                     /note="beta-clamp/translesion DNA polymerase binding
+                     surface; other site"
+                     /db_xref="CDD:29053"
+     gene            2823..3926
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /db_xref="GeneID:3249146"
+     CDS             2823..3926
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="Required for DNA replication; binds preferentially
+                     to single-stranded, linear DNA"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="recombination protein F"
+                     /protein_id="YP_190458.1"
+                     /db_xref="GI:58038494"
+                     /db_xref="GeneID:3249146"
+                     /translation="MKLTRLALTDFRNYTHTVWTPEASILVLTGENGSGKTNLLEAVS
+                     LLAPGRGLRGAALPALCRQGAERWGVAATLQSGLDEFRIGTGSDLSEKQRRTFRLDGE
+                     NIRSQALIGQRFSCVWLTPQMDRLFQEGSSGRRRFLDRLVMALSPDHGRQIAAHDRSV
+                     VTRNRVLSERPNEAEWLTSIEDSIARHAVAASAARLALIESMNAHPFENDGFSASTLH
+                     LDCAISSRLTTQPALEVEDWIRNSLRQARTEDRQRSTTSVGAHRADFMLSDTATGRPA
+                     ELSSSGQQKVMLTGTILSHARLMTQERGYAPAILLDEPLLHLDEMRRHALLDSLEGLR
+                     APVLITGTDAEAFAPIAGRAQFFSIRNGTISPS"
+     misc_feature    2823..3920
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="recombination protein F; Reviewed; Region: recF;
+                     PRK00064"
+                     /db_xref="CDD:178835"
+     misc_feature    2829..>3326
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="P-loop containing Nucleoside Triphosphate
+                     Hydrolases; Region: P-loop_NTPase; cl09099"
+                     /db_xref="CDD:208973"
+     misc_feature    2910..2933
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="Walker A/P-loop; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    order(2919..2924,2928..2936,3183..3185)
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="ATP binding site [chemical binding]; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    3174..3185
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="Q-loop/lid; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    <3573..3917
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="P-loop containing Nucleoside Triphosphate
+                     Hydrolases; Region: P-loop_NTPase; cl09099"
+                     /db_xref="CDD:208973"
+     misc_feature    3657..3686
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="ABC transporter signature motif; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    3744..3761
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="Walker B; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    3768..3779
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="D-loop; other site"
+                     /db_xref="CDD:72971"
+     misc_feature    3837..3857
+                     /gene="recF"
+                     /locus_tag="GOX0003"
+                     /note="H-loop/switch region; other site"
+                     /db_xref="CDD:72971"
+     gene            4012..6456
+                     /locus_tag="GOX0004"
+                     /db_xref="GeneID:3249147"
+     CDS             4012..6456
+                     /locus_tag="GOX0004"
+                     /EC_number="5.99.1.3"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="DNA gyrase subunit B"
+                     /protein_id="YP_190459.1"
+                     /db_xref="GI:58038495"
+                     /db_xref="GeneID:3249147"
+                     /translation="MSETQNQPEIPGADGEDYGASSISVLKGLDAVRKRPGMYIGDTD
+                     DGSGLHHMVFEIIDNAVDEAQAGHATYCILTLNGDGSVSVRDDGRGIPTDLHPEEGIS
+                     AAEVVLTKLHAGGKFNQNSYKVSGGLHGVGAAVVNALSEWMEVRIWRNGLEHKIRFQH
+                     GERDEALHVIGPSSEDRGTLVTFKPSKQTFTKVDFDISILERRVRELAFLNSGMLIIL
+                     RDERHAEPKELRFHYDGGLSAFAEWLDSSKTSIVTPPITGEIDNPESGIRVEFALTWN
+                     DSYHETMLCFTNNIPQRDGGTHLAGFRQALTRVVGKYAEGVAKREAGSLTGEDMREGM
+                     TAVLSVKVPDPKFSSQTKDKLVSSEVQPVVHAAASDAISHWFETHPKEAKAIVAKIID
+                     AASAREAARRARELTRRKGVLDVSSLPGKLADCQERDASKAEIFIVEGDSAGGTAKQG
+                     RDRRFQAILPLRGKILNVERARFDRMLGSAEIGTLITALGTGIGRGEVDQGGFSAEKL
+                     RYHKIVIMTDADVDGSHIRTLLLTFFFRQMPELIEQGYLYIAQPPLYRAKRGQEERYL
+                     KDDAALEQYLLDKALANASLRFADGRELTGEPLAEEVAFLSAAARRLQSIASKVPVWV
+                     MEQAAISGVLDSDIAVATSRMAEFQQRLDGASLSNERGWKVSISETGLECARSVRGVG
+                     EVYRIEPSLLRSAEARWLVSEWERLARDFAKPVTLTLDPTAYELFGPAAVMERILLQG
+                     RRGLTINRFKGLGEMNDEQLWHTTLDPSTRTLLQVRVGDVEDAGQVFSTLMGDVVEPR
+                     RDFIVGNALKVANLDV"
+     misc_feature    4057..6453
+                     /locus_tag="GOX0004"
+                     /note="DNA gyrase subunit B; Provisional; Region: gyrB;
+                     PRK14939"
+                     /db_xref="CDD:184903"
+     misc_feature    4156..4455
+                     /locus_tag="GOX0004"
+                     /note="Histidine kinase-like ATPases; This family includes
+                     several ATP-binding proteins for example: histidine
+                     kinase, DNA gyrase B, topoisomerases, heat shock protein
+                     HSP90, phytochrome-like ATPases and DNA mismatch repair
+                     proteins; Region: HATPase_c; cd00075"
+                     /db_xref="CDD:28956"
+     misc_feature    order(4174..4176,4186..4188,4195..4197,4261..4263,
+                     4267..4269,4273..4275,4279..4284,4399..4410)
+                     /locus_tag="GOX0004"
+                     /note="ATP binding site [chemical binding]; other site"
+                     /db_xref="CDD:28956"
+     misc_feature    4186..4188
+                     /locus_tag="GOX0004"
+                     /note="Mg2+ binding site [ion binding]; other site"
+                     /db_xref="CDD:28956"
+     misc_feature    order(4273..4275,4279..4281,4399..4401,4405..4407)
+                     /locus_tag="GOX0004"
+                     /note="G-X-G motif; other site"
+                     /db_xref="CDD:28956"
+     misc_feature    4714..5151
+                     /locus_tag="GOX0004"
+                     /note="TopoIIA_Trans_DNA_gyrase: Transducer domain, having
+                     a ribosomal S5 domain 2-like fold, of the type found in
+                     proteins of the type IIA family of DNA topoisomerases
+                     similar to the B subunits of E. coli DNA gyrase and E.
+                     coli Topoisomerase IV which are; Region:
+                     TopoII_Trans_DNA_gyrase; cd00822"
+                     /db_xref="CDD:48467"
+     misc_feature    4873..4875
+                     /locus_tag="GOX0004"
+                     /note="anchoring element; other site"
+                     /db_xref="CDD:48467"
+     misc_feature    order(5041..5043,5050..5055,5059..5061)
+                     /locus_tag="GOX0004"
+                     /note="dimer interface [polypeptide binding]; other site"
+                     /db_xref="CDD:48467"
+     misc_feature    order(5059..5061,5065..5067)
+                     /locus_tag="GOX0004"
+                     /note="ATP binding site [chemical binding]; other site"
+                     /db_xref="CDD:48467"
+     misc_feature    5308..5667
+                     /locus_tag="GOX0004"
+                     /note="TOPRIM_TopoIIA_GyrB: topoisomerase-primase (TOPRIM)
+                     nucleotidyl transferase/hydrolase domain of the type found
+                     in proteins of the type IIA family of DNA topoisomerases
+                     similar to the Escherichia coli GyrB subunit. TopoIIA
+                     enzymes cut both strands of the...; Region:
+                     TOPRIM_TopoIIA_GyrB; cd03366"
+                     /db_xref="CDD:173786"
+     misc_feature    order(5326..5331,5338..5340,5563..5565,5569..5571,
+                     5575..5577)
+                     /locus_tag="GOX0004"
+                     /note="active site"
+                     /db_xref="CDD:173786"
+     misc_feature    order(5326..5328,5563..5565)
+                     /locus_tag="GOX0004"
+                     /note="putative metal-binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:173786"
+     misc_feature    6229..6417
+                     /locus_tag="GOX0004"
+                     /note="DNA gyrase B subunit, carboxyl terminus; Region:
+                     DNA_gyraseB_C; pfam00986"
+                     /db_xref="CDD:201537"
+     gene            6488..7282
+                     /locus_tag="GOX0005"
+                     /db_xref="GeneID:3249148"
+     CDS             6488..7282
+                     /locus_tag="GOX0005"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_190460.1"
+                     /db_xref="GI:58038496"
+                     /db_xref="GeneID:3249148"
+                     /translation="MAGLGCSPARAEGQVNAAYAVYLKGFHVLNAQASYQLQPWGYGG
+                     STQIKPAGLISWFLTMDVTSRVEGKFTPDGNVQPVLFDSGGISRGKHRHVRLEFSNDT
+                     PKVTDLQPPETDREPIPDSSLPHTVDTLSGMAHLLHALATTGKCDGTQIVFDGIRLSE
+                     MVVHGPTMADIPQGQDEAYAGQALRCDFIGRQLAGFVKDSPNRAKLASPQPGSVWFRK
+                     IDGLGLVPVRIEFNQPQTRACHGRHATRRSSLNGALERLAIIGNSK"
+     misc_feature    6542..7180
+                     /locus_tag="GOX0005"
+                     /note="Protein of unknown function (DUF3108); Region:
+                     DUF3108; pfam11306"
+                     /db_xref="CDD:204623"
+     gene            7343..8677
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /db_xref="GeneID:3249141"
+     CDS             7343..8677
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /EC_number="2.3.1.57"
+                     /EC_number="2.7.7.23"
+                     /note="forms a homotrimer; catalyzes the acetylation of
+                     glucosamine-1-phosphate and uridylation of
+                     N-acetylglucosamine-1-phosphate to produce UDP-GlcNAc;
+                     function in cell wall synthesis"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="bifunctional N-acetylglucosamine-1-phosphate
+                     uridyltransferase/glucosamine-1-phosphate
+                     acetyltransferase"
+                     /protein_id="YP_190461.1"
+                     /db_xref="GI:58038497"
+                     /db_xref="GeneID:3249141"
+                     /translation="MTDSTHRTTAIILAAGLGTRMKSRLPKALHRLGNQPMINHLITT
+                     ARQVFDDVVVVTGPDMPELEKAVRPFKTVTQVERLGTAHAANTARDLFGTGDVAILYA
+                     DNPLITAETMRRLLAARREGASLALLGMRPAEPGRYGRIVEDHGRVVKIVEFKDATED
+                     ERRITLCNAGVMCAGVDDFRTWLANVGNDNAQGEYYLTDVVEMAAKAGPVVCVEAPEA
+                     ELAGVNSRSELARAEATLQTRLRNAAMDAGVTLVAPETVFFSTDTVIEADVTIEPNVF
+                     FGPGVKVRSGALIRAFSHLEGCEVGENAMIGPYARLRPGTLCAAQTHVGNFVELKNVE
+                     LGEGAKANHLTYLGDASIGSGTNVGAGTITCNYDGVFKHRTTIGERVFVGSDSILVAP
+                     VTVGDDALIAAGSVITSDVPPGDLALGRARQTLKSGQGLQIKQSLKARKEQG"
+     misc_feature    7352..8662
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="bifunctional N-acetylglucosamine-1-phosphate
+                     uridyltransferase/glucosamine-1-phosphate
+                     acetyltransferase; Provisional; Region: glmU; PRK14353"
+                     /db_xref="CDD:184642"
+     misc_feature    7370..8029
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="N-terminal domain of bacterial GlmU; Region:
+                     GT2_GlmU_N_bac; cd02540"
+                     /db_xref="CDD:133020"
+     misc_feature    order(7379..7387,7505..7507,7583..7585,7592..7594,
+                     7643..7645,7649..7651)
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="Substrate binding site; other site"
+                     /db_xref="CDD:133020"
+     misc_feature    order(7649..7651,8012..8014)
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="Mg++ binding site; other site"
+                     /db_xref="CDD:133020"
+     misc_feature    8024..8611
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="N-acetyl-glucosamine-1-phosphate uridyltransferase
+                     (GlmU), C-terminal left-handed beta-helix (LbH)
+                     acetyltransferase domain: GlmU is also known as
+                     UDP-N-acetylglucosamine pyrophosphorylase. It is a
+                     bifunctional bacterial enzyme that catalyzes two...;
+                     Region: LbH_GlmU_C; cd03353"
+                     /db_xref="CDD:100044"
+     misc_feature    order(8279..8281,8327..8329,8333..8335,8369..8371,
+                     8378..8380,8411..8422,8435..8443,8456..8458,8486..8488,
+                     8492..8497,8546..8551,8600..8602)
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="active site"
+                     /db_xref="CDD:100044"
+     misc_feature    order(8279..8281,8327..8329,8333..8335,8369..8371,
+                     8378..8380,8411..8419,8438..8440,8456..8458)
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="substrate binding site [chemical binding]; other
+                     site"
+                     /db_xref="CDD:100044"
+     misc_feature    order(8420..8422,8435..8437,8441..8443,8492..8497,
+                     8546..8551,8600..8602)
+                     /gene="glmU"
+                     /locus_tag="GOX0006"
+                     /note="CoA binding site [chemical binding]; other site"
+                     /db_xref="CDD:100044"
+     gene            8677..10503
+                     /locus_tag="GOX0007"
+                     /db_xref="GeneID:3249142"
+     CDS             8677..10503
+                     /locus_tag="GOX0007"
+                     /EC_number="2.6.1.16"
+                     /note="Catalyzes the first step in hexosamine metabolism,
+                     converting fructose-6P into glucosamine-6P using glutamine
+                     as a nitrogen source"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="glucosamine--fructose-6-phosphate
+                     aminotransferase"
+                     /protein_id="YP_190462.1"
+                     /db_xref="GI:58038498"
+                     /db_xref="GeneID:3249142"
+                     /translation="MCGICGIVGHQPASPIAFEALRRLEYRGYDSAGIATLTASGDIE
+                     RRRAAGKLDNLEHVLKEHPLPGTTGIGHTRWATHGAPTENNAHPHEAGRVAIVHNGII
+                     ENFAELKKELEAKGRVFRTETDSETVAHLVDDYLGQGLEPREAAFAAIKRLEGAYAIA
+                     MIFKDHEGLLIGARHGAPLAVGYGNGEMFLGSDSIALAPMARKMTYLEDGDWCELTPD
+                     HVTIFDMTGAEVSRPVQDLTFMAGQVGKDGYRHYMEKELHEHPVAIGQTLKRITDPAS
+                     KRIALPEMPFDPAQVPRITITACGSAYYAGMVGRYWLESLARIPVEIDVASEMRYREP
+                     PQPDKGVALLISQSGETADTLGVLRSLKKAGQSIVSVLNVEHSTMGRESDLVLGMDAG
+                     PEISVASTKAFTAQLSVLAALAIDFARARGTMDQAREERLTASLLDLPSRAAEVFTRT
+                     KDIQAMAAVVAQARDVLYLGRGICTPIAFEGALKLKEISYIHAEAYAAGELKHGPISL
+                     IDQTVPVVAIAPSTILFDKTLSNLQEAKARGGRILAFTDAEGAKRLEGVAEQVVIMPD
+                     VDAFVAPILYAIPVQMLAYEVALLKGTDVDQPRNLAKSVTVE"
+     misc_feature    8677..10500
+                     /locus_tag="GOX0007"
+                     /note="glucosamine--fructose-6-phosphate aminotransferase;
+                     Reviewed; Region: PRK00331"
+                     /db_xref="CDD:178980"
+     misc_feature    8680..9321
+                     /locus_tag="GOX0007"
+                     /note="Glutamine amidotransferases class-II
+                     (Gn-AT)_GFAT-type. This domain is found at the N-terminus
+                     of glucosamine-6P synthase (GlmS, or GFAT in humans).  The
+                     glutaminase domain catalyzes amide nitrogen transfer from
+                     glutamine to the appropriate substrate. In...; Region:
+                     GFAT; cd00714"
+                     /db_xref="CDD:48478"
+     misc_feature    order(8680..8682,8755..8757,8896..8901,8905..8910,
+                     8935..8937,8971..8976,9046..9051)
+                     /locus_tag="GOX0007"
+                     /note="glutaminase active site [active]"
+                     /db_xref="CDD:48478"
+     misc_feature    9553..9930
+                     /locus_tag="GOX0007"
+                     /note="SIS (Sugar ISomerase) domain repeat 1 found in
+                     Glucosamine 6-phosphate synthase (GlmS) and
+                     Glucosamine-6-phosphate deaminase (GlmD). The SIS domain
+                     is found in many phosphosugar isomerases and phosphosugar
+                     binding proteins. GlmS contains a N-terminal...; Region:
+                     SIS_GlmS_GlmD_1; cd05008"
+                     /db_xref="CDD:88405"
+     misc_feature    order(9571..9576,9604..9609,9616..9621,9640..9642,
+                     9646..9648,9658..9660,9667..9669,9733..9735)
+                     /locus_tag="GOX0007"
+                     /note="dimer interface [polypeptide binding]; other site"
+                     /db_xref="CDD:88405"
+     misc_feature    order(9577..9582,9712..9720)
+                     /locus_tag="GOX0007"
+                     /note="active site"
+                     /db_xref="CDD:88405"
+     misc_feature    10027..10494
+                     /locus_tag="GOX0007"
+                     /note="SIS (Sugar ISomerase) domain repeat 2 found in
+                     Glucosamine 6-phosphate synthase (GlmS) and
+                     Glucosamine-6-phosphate deaminase (GlmD). The SIS domain
+                     is found in many phosphosugar isomerases and phosphosugar
+                     binding proteins. GlmS contains a N-terminal...; Region:
+                     SIS_GlmS_GlmD_2; cd05009"
+                     /db_xref="CDD:88406"
+     misc_feature    order(10090..10092,10132..10134,10144..10146,10150..10152,
+                     10156..10158,10162..10164,10174..10176,10180..10188,
+                     10192..10203,10252..10257,10267..10269,10273..10278,
+                     10471..10476,10489..10491)
+                     /locus_tag="GOX0007"
+                     /note="dimer interface [polypeptide binding]; other site"
+                     /db_xref="CDD:88406"
+     misc_feature    order(10126..10128,10135..10137)
+                     /locus_tag="GOX0007"
+                     /note="active site"
+                     /db_xref="CDD:88406"
+     gene            10950..13391
+                     /locus_tag="GOX0008"
+                     /db_xref="GeneID:3249143"
+     CDS             10950..13391
+                     /locus_tag="GOX0008"
+                     /EC_number="1.1.1.-"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="oxidoreductase"
+                     /protein_id="YP_190463.1"
+                     /db_xref="GI:58038499"
+                     /db_xref="GeneID:3249143"
+                     /translation="MEPGVILARLNAFLKPHGFFFPPTVSTATRATIGGMIATDASGK
+                     GSRIYGRTSDYIETMDVVLSDGTDLQIGRLTAPQLEEAMSGKGLAAQAYREVHRVVTE
+                     QADEIRRVFPDMNRGLTGYNLQNVLLEDGSFHIARLLAGSEGTLALTKKVVLRVRRLP
+                     KYRQLIVVRYASFNDTLRDVQTLLPANPSAVEVLDDRVLAKAQQDVTWHALERVLGTR
+                     SALPVKGMSFIEFVGDDLDVLQEQMAHAVTLLANSPHKPIDHKAVSDPDIIANLWTLR
+                     EKSVGLLGRPDGHKQGVPFVEDTAVPPEVLPEYVSEFRDILDEYGLSYGMFGHADVGC
+                     LHVRPFLDMLTPQDRALIRPISDAVAALTKRHGGLLWGEHGRGFRGEFSPLFFGETLL
+                     AELCRIKDVFDPKDIFNRGKLAPGGAGYPVDRIDSIPFKGSFDEDIAPALREPYALSI
+                     SCNGNGACFNREPDMAMCPSYKATKDRSQSPKGRALLLRSWARLRSLPDNAPDREMLP
+                     VLTEELKASLDTCLSCKACATQCPIRVDIPSMRSKFLATYFRDNRRPVRDYLVYWLEP
+                     LLAVGRQAPALANLLMHNPLSQAVLSRIGLVDLPHLKPARLGADSRVSRSWLRRNRHN
+                     PRAVILIQDSFTGSFDGGLIEKVHTLLTSLGLDVKVTPVWDNGKARHVLGFRRGFGVT
+                     ARQTLRKLHGLTAFGIPVVSLDAATGLMFTQEYREVAGDTPIPAVLPLETYLRGQIEQ
+                     GAFAEVQTAGKAESLTVISHCTEQAARPESAGDWAFILRHFGLPVQAGKARVLWHGRP
+                     VRTSERTGEPLPPNL"
+     misc_feature    <10953..11150
+                     /locus_tag="GOX0008"
+                     /note="FAD binding domain; Region: FAD_binding_4;
+                     pfam01565"
+                     /db_xref="CDD:201863"
+     misc_feature    11424..12188
+                     /locus_tag="GOX0008"
+                     /note="FAD linked oxidases, C-terminal domain; Region:
+                     FAD-oxidase_C; pfam02913"
+                     /db_xref="CDD:202465"
+     misc_feature    12300..>13304
+                     /locus_tag="GOX0008"
+                     /note="Fe-S oxidoreductase [Energy production and
+                     conversion]; Region: GlpC; COG0247"
+                     /db_xref="CDD:30596"
+     gene            13647..14267
+                     /locus_tag="GOX0009"
+                     /db_xref="GeneID:3249144"
+     CDS             13647..14267
+                     /locus_tag="GOX0009"
+                     /EC_number="2.5.1.3"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="thiamin-phosphate pyrophosphorylase"
+                     /protein_id="YP_190464.1"
+                     /db_xref="GI:58038500"
+                     /db_xref="GeneID:3249144"
+                     /translation="MSSLPSRIYAVVDHPRWVERLGGAGLRFIELYLRDLPEEEIRAQ
+                     ALLAQELAARFNVSLALNRYWQTAIELGYEWLHLGPEDLETADLNAIRTAGIRFGIST
+                     HTHEELQTALACKPDYVSFGPVWSTQLRGVPLTGRGLEKLAEWRGLCGNVPLVAIGGI
+                     TVPRLAECLEAGADTVAVMSDFIGHQDPEGQVRRWLDAVSRETAPT"
+     misc_feature    13668..14237
+                     /locus_tag="GOX0009"
+                     /note="Thiamine monophosphate synthase (TMP
+                     synthase)/TenI. TMP synthase catalyzes an important step
+                     in the thiamine biosynthesis pathway, the substitution of
+                     the pyrophosphate of 2-methyl-4-amino-5-
+                     hydroxymethylpyrimidine pyrophosphate by 4-methyl-5-;
+                     Region: TMP_TenI; cd00564"
+                     /db_xref="CDD:73367"
+     misc_feature    order(13671..13673,13677..13679,13734..13736,13740..13742,
+                     13875..13877,13947..13949,13998..14000,14004..14006,
+                     14025..14027,14031..14033,14109..14111,14121..14123,
+                     14175..14186)
+                     /locus_tag="GOX0009"
+                     /note="thiamine phosphate binding site [chemical binding];
+                     other site"
+                     /db_xref="CDD:73367"
+     misc_feature    order(13734..13736,13740..13742,13746..13748,13830..13835,
+                     13890..13892,13947..13949,14025..14027,14031..14036,
+                     14121..14123,14181..14186)
+                     /locus_tag="GOX0009"
+                     /note="active site"
+                     /db_xref="CDD:73367"
+     misc_feature    order(13740..13742,13746..13748,13830..13835,13881..13883,
+                     13890..13892,13947..13949,14034..14036)
+                     /locus_tag="GOX0009"
+                     /note="pyrophosphate binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:73367"
+     gene            14317..16893
+                     /locus_tag="GOX0010"
+                     /db_xref="GeneID:3249145"
+     CDS             14317..16893
+                     /locus_tag="GOX0010"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="Na+/H+ antiporter"
+                     /protein_id="YP_190465.1"
+                     /db_xref="GI:58038501"
+                     /db_xref="GeneID:3249145"
+                     /translation="MMVTGLAAVLLALAFLLTLVSIIQPLAKRLEISEAVLLALTGIG
+                     LGLVASLIVRSSATDLLDGAAEALIYFPVNSEAFLLIFLPILVFQGAMAIDVRRLAHE
+                     TATVLLLAVVAVIVSTATIGFALYPFAQQSLVVCLLLGSIVATTDPSAVAGIFREIGA
+                     ASRLTRLVEGEALLNDAAAISIFSILLAAVTSHHQIHLADALMDFLTAFIGAIVVGVC
+                     LARLTLLLIAGLGGSAASEVTLTLALPYAVYILCDEMLGFSGVVATAAAGLTVSAYGP
+                     STFRPQVWRFLNEMWEQLVFWAGSLVFLLAAMLVPRLLIGMTKWDFVLILIASVAGLI
+                     ARSAVIFGMLPLLAITKLSPPVPNPFKATMAWGGIRGAITLALALAVTENQSVSSPVA
+                     HFVGIIATGFVLITLLVNGTTLRALVLFFKLDQLSPIDQAIRQQIVGIGLGEVAERTR
+                     ELSEELGFSEQTRAGVISRLERRAEKERAANNFESALSDRNRVDIALITIANQERSLL
+                     LDLFRIQGLSRRVMETLLRTTESMADGARLEGRYGYVRALKRRLQPSLRFRIAQELHS
+                     RLHIDEPLTNCMMERFEMLIIAHLVSLSLQRFIRQRMEPTLGPRITEIVSEVLGRQRK
+                     LLDDALETLRLHYSGYSEALESRILRQIALRLEDEEYDALEADNLISEELHRELHREI
+                     ERQRARLDAPLRFNLKSGIEQRLRAFPAFNGVPDSVLQKLSRKVSMHFVSPGEILFKR
+                     GQRVRVVYAQVAGLAEVNLAERDLLFGSGDLIGAASVIRNETMPGTVRSLQFSHLLAI
+                     PRPVFEKLLKEYPIVQRLIIQRSQKRADGLLTPVTVRTLDGDVVSTASAPEMRRLVAP
+                     PS"
+     misc_feature    14374..15621
+                     /locus_tag="GOX0010"
+                     /note="NhaP-type Na+/H+ and K+/H+ antiporters [Inorganic
+                     ion transport and metabolism]; Region: NhaP; COG0025"
+                     /db_xref="CDD:30375"
+     misc_feature    16447..16770
+                     /locus_tag="GOX0010"
+                     /note="effector domain of the CAP family of transcription
+                     factors; members include CAP (or cAMP receptor protein
+                     (CRP)), which binds cAMP, FNR (fumarate and nitrate
+                     reduction), which uses an iron-sulfur cluster to sense
+                     oxygen) and CooA, a heme containing CO...; Region: CAP_ED;
+                     cd00038"
+                     /db_xref="CDD:28920"
+     misc_feature    order(16633..16638,16663..16671)
+                     /locus_tag="GOX0010"
+                     /note="ligand binding site [chemical binding]; other site"
+                     /db_xref="CDD:28920"
+     misc_feature    order(16729..16737,16747..16755)
+                     /locus_tag="GOX0010"
+                     /note="flexible hinge region; other site"
+                     /db_xref="CDD:28920"
+     gene            complement(16890..18317)
+                     /locus_tag="GOX0011"
+                     /db_xref="GeneID:3249132"
+     CDS             complement(16890..18317)
+                     /locus_tag="GOX0011"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="di-/tripeptide transporter"
+                     /protein_id="YP_190466.1"
+                     /db_xref="GI:58038502"
+                     /db_xref="GeneID:3249132"
+                     /translation="MTEILPASPVVEPSSAGKQLELWGHPIGLWVLTLTEGWVGFSLY
+                     GMQAILALYLTDHLLQPAHSGAVVGLGPLEAFVSALYAPVGPRAMGAAITGLFLALIY
+                     ATPLLGGFLADRVLGQTRTILLGAILMTAGHFLMSFDWSFVLALGFLLAGLGMAGGLR
+                     AQVGALYELGDRRRSDAYQIYMMGLQIAVIVSPILCASLAQIEWHWGFLAAGLGMLIG
+                     LVVYLVGRRWLPAPAVAVRRSEAPAATTKHARPALTSQEKKTTLLLLALVPVLAVGAV
+                     PNSEIFDGYLLWGREHFQLHLLGYEMPVSDLISLDGFISTLCAVLVLWFWKAYARRRP
+                     DLSEISKVALGTFIAAFGPLMLALGSWISPGPHEVSLFWGLAFHIINDIGFSMSYAIG
+                     MALFSRAAPVSLNTILVACFSLHLFLSNLLIGKLATLLGRISDVSFWLLHSGAALVAA
+                     AILGFCAVRFRDLLVPGKETAPPVP"
+     misc_feature    complement(17031..18284)
+                     /locus_tag="GOX0011"
+                     /note="Dipeptide/tripeptide permease [Amino acid transport
+                     and metabolism]; Region: PTR2; COG3104"
+                     /db_xref="CDD:32918"
+     misc_feature    complement(<17637..18245)
+                     /locus_tag="GOX0011"
+                     /note="The Major Facilitator Superfamily (MFS) is a large
+                     and diverse group of secondary transporters that includes
+                     uniporters, symporters, and antiporters. MFS proteins
+                     facilitate the transport across cytoplasmic or internal
+                     membranes of a variety of...; Region: MFS; cl11420"
+                     /db_xref="CDD:200784"
+     gene            complement(18324..18704)
+                     /locus_tag="GOX0012"
+                     /db_xref="GeneID:3249133"
+     CDS             complement(18324..18704)
+                     /locus_tag="GOX0012"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_190467.1"
+                     /db_xref="GI:58038503"
+                     /db_xref="GeneID:3249133"
+                     /translation="MSANPALTCVRISLRQIALEAIISAVFSHFSLMAECHYHFTQDF
+                     PASSSCFLMDARLSRNGKPGIYGKMPILGTGPFCHRSDAGSPCYGTMAKRHKCTLWHF
+                     ATALSPPLPHGLSPFTQVIPPLRE"
+     gene            19142..20524
+                     /locus_tag="GOX0013"
+                     /db_xref="GeneID:3249134"
+     CDS             19142..20524
+                     /locus_tag="GOX0013"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_190468.1"
+                     /db_xref="GI:58038504"
+                     /db_xref="GeneID:3249134"
+                     /translation="MRYRPQNEGNSLEAPPDVTTIAAVSAARRAAMEASASAQDARNS
+                     LLEARRTYNPDSIVRVKPYVAGKGVTIQAGQIDINISGFVNAYYTYNSPAGGRAVAGG
+                     VSTGSSGFDSSSVRNGLLPGGLILKLNTVQDGIKLGAVFGMYPGINNNNPSTFNANSG
+                     GSPVGLGTAGLDFRQVYMTAGTDQFGTVKLGRDIALFASDAILNDATLLSVGSTGSNA
+                     NPANTSLGRIGVGYVYTDWLPQITYISPKWKGFQASVGVMTPLDEYNFAGGGLSATTT
+                     QHSSPMLQGKVTYDGNILGFTTRFWSSFLVQHQQNLTSSTLGSSSRKGTTVEAGDVGV
+                     KVTRGPFEGVAYYYYGSGLGTTGIFFDGVSADGRKRDSEGYYVQAAYKILPKLKLVGS
+                     YGVSNLYQAPGEDNPDMVRRNQSEVGAIYYNLTDWFTIVGEYAHTESDSHSSAHESDH
+                     TMSAGAMMTF"
+     misc_feature    <19640..20443
+                     /locus_tag="GOX0013"
+                     /note="Porin superfamily.  These outer membrane channels
+                     share a beta-barrel structure that differ in strand and
+                     shear number.  Classical (gram-negative ) porins are
+                     non-specific channels for small hydrophillic molecules and
+                     form 16 beta-stranded barrels (16,20)...; Region:
+                     OM_channels; cl00284"
+                     /db_xref="CDD:206958"
+     gene            complement(20633..21430)
+                     /locus_tag="GOX0014"
+                     /db_xref="GeneID:3249135"
+     CDS             complement(20633..21430)
+                     /locus_tag="GOX0014"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="PhnP protein"
+                     /protein_id="YP_190469.1"
+                     /db_xref="GI:58038505"
+                     /db_xref="GeneID:3249135"
+                     /translation="MKVTILGCGGSAGVPMIGGEEGPRTGIWGACDPTEPRNRRTRSS
+                     VVIEGEGGFRLLVDSGPDFRNQMLNCGLSHVHAVLYTHPHSDHIGGLDELRAINRVIE
+                     TPLPLLAAPDVLEELRLRYAYAFAPWKGPEFYRPVFDEHVVQPGETVTFPGLTARIFE
+                     QRHGRITSLGVRCGNFAYSTDVETLSEESLSLLEGVQTWIVDCFQYEPHPAHAWLERV
+                     LEWRERLGVGHVILTHMGPEMDYQTLRQTLPAGVEPAYDGMVLDLQD"
+     misc_feature    complement(20654..21430)
+                     /locus_tag="GOX0014"
+                     /note="Metallo-beta-lactamase superfamily; Region:
+                     Lactamase_B; cl00446"
+                     /db_xref="CDD:207049"
+     gene            complement(21427..22212)
+                     /locus_tag="GOX0015"
+                     /db_xref="GeneID:3249136"
+     CDS             complement(21427..22212)
+                     /locus_tag="GOX0015"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="Sec-independent protein translocase protein
+                     TatD"
+                     /protein_id="YP_190470.1"
+                     /db_xref="GI:58038506"
+                     /db_xref="GeneID:3249136"
+                     /translation="MTGLIDTHCHLDKLDDLAPAFELARESGLSGMLTIGTRFSQADT
+                     QIALTQHDTPDLRIWCAIGIHPDYADEERLPSVEELVAKTEAPSVVAIGETGLDYFHS
+                     GDEAKPAQHAAFRTHIAAARQTGLPVVIHTRNADDDMIAILRDEHAKGAFPFLIHCFA
+                     SGPKLAEAALELGGYISFSGLLTFPKCEEIREVARMVPEDRILVETDSPFLAPVPKRG
+                     KPNTPGYVAHTAARLAEERGVSLDEIARITSENARRLFTRIAA"
+     misc_feature    complement(21445..22203)
+                     /locus_tag="GOX0015"
+                     /note="TatD like proteins;  E.coli TatD is a cytoplasmic
+                     protein, shown to have magnesium dependent DNase activity;
+                     Region: TatD_DNAse; cd01310"
+                     /db_xref="CDD:30053"
+     misc_feature    complement(order(21592..21594,21742..21744,21820..21822,
+                     22183..22185,22189..22191))
+                     /locus_tag="GOX0015"
+                     /note="active site"
+                     /db_xref="CDD:30053"
+     gene            complement(22209..23759)
+                     /locus_tag="GOX0016"
+                     /db_xref="GeneID:3249137"
+     CDS             complement(22209..23759)
+                     /locus_tag="GOX0016"
+                     /EC_number="6.1.1.10"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="methionyl-tRNA synthetase"
+                     /protein_id="YP_190471.1"
+                     /db_xref="GI:58038507"
+                     /db_xref="GeneID:3249137"
+                     /translation="MKRVDMTRRFIITTPIFYVNGAPHIGHAYTSIAADVLARFHRLN
+                     GEEVLFVSGTDEHGQKVEQTAVAKGMDPQAYADEVSASFRQMQKDMAISTDEFIRTTE
+                     ERHKGAAKALWEKVAANGHIYLGAYEGWYSTRDEAFIGEDELVKKPDGTFVAPSGAPV
+                     ERVKEPSYFFRLSDFQDRLLKLYEDNPDFIGPVGPRREIESFVRQGLRDLSVSRTSFK
+                     WGVPVPNDPDHVMYVWFDALANYLTAVGYPDLNDPRAKFWPADVHIVGKEIARFHCVY
+                     WPAFLMAAGIDLPKSVFAHGWWTVEGEKMSKSLGNVLDPKALADEFGLDALRFFLMRE
+                     VPFGGDSNFSRRSMITRTNVELANDLGNLCQRTLSQVARNLGGVLPERGTLTEDDQAM
+                     LAMVTLLPTIMSEQIERKAITDALEEVWKVIRAANSYIDRQAPWALKKTDPERMADVL
+                     RVLVDMIRGIATMLQPYMPNTMDRMLTQLGVQDDERTFAALETPLPAGRTLPKPEGLF
+                     PRFVEEEA"
+     misc_feature    complement(22218..23738)
+                     /locus_tag="GOX0016"
+                     /note="methionyl-tRNA synthetase; Reviewed; Region:
+                     PRK11893"
+                     /db_xref="CDD:183364"
+     misc_feature    complement(22731..23735)
+                     /locus_tag="GOX0016"
+                     /note="catalytic core domain of methioninyl-tRNA
+                     synthetases; Region: MetRS_core; cd00814"
+                     /db_xref="CDD:173907"
+     misc_feature    complement(order(22941..22943,22953..22955,23037..23039,
+                     23046..23051,23058..23060,23595..23597,23706..23708,
+                     23712..23717))
+                     /locus_tag="GOX0016"
+                     /note="active site"
+                     /db_xref="CDD:173907"
+     misc_feature    complement(23679..23690)
+                     /locus_tag="GOX0016"
+                     /note="HIGH motif; other site"
+                     /db_xref="CDD:173907"
+     misc_feature    complement(22836..22850)
+                     /locus_tag="GOX0016"
+                     /note="KMSKS motif; other site"
+                     /db_xref="CDD:173907"
+     misc_feature    complement(22323..22703)
+                     /locus_tag="GOX0016"
+                     /note="Anticodon-binding domain of methionyl tRNA
+                     synthetases; Region: Anticodon_Ia_Met; cd07957"
+                     /db_xref="CDD:153411"
+     misc_feature    complement(order(22452..22454,22467..22472,22476..22481,
+                     22629..22634,22641..22646,22653..22658,22665..22670,
+                     22677..22682,22701..22703))
+                     /locus_tag="GOX0016"
+                     /note="tRNA binding surface [nucleotide binding]; other
+                     site"
+                     /db_xref="CDD:153411"
+     misc_feature    complement(order(22452..22454,22470..22472,22629..22634,
+                     22641..22646,22653..22658,22665..22670,22680..22682))
+                     /locus_tag="GOX0016"
+                     /note="anticodon binding site; other site"
+                     /db_xref="CDD:153411"
+     gene            complement(23775..24617)
+                     /locus_tag="GOX0017"
+                     /db_xref="GeneID:3249138"
+     CDS             complement(23775..24617)
+                     /locus_tag="GOX0017"
+                     /EC_number="2.7.7.7"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="DNA polymerase III subunit delta' DnaC"
+                     /protein_id="YP_190472.1"
+                     /db_xref="GI:58038508"
+                     /db_xref="GeneID:3249138"
+                     /translation="MLHHAWLICGPAGIGKATLAFRLARLLLNAENPDSSQARRIAAG
+                     THGDLLEISRAVDEKKGRLRGEITAADVRPVQTFLHHTATEGGWRVVIVDGAEYLNRF
+                     AANALLKILEEPPPRCVLLLTTSSPGALLPTIRSRCRMLTLSALSDADMRAALPGISA
+                     DVLARAHGSPGRALFLSQDRDGAIASFVAEILAGQVRGSETMALSERIAREAEGFALL
+                     CDLLGEGLADRARSAARRGDLAKADLAARQCSELDTLRRQTEGFNLDKAQAIRQAAEL
+                     ASGS"
+     misc_feature    complement(23808..24614)
+                     /locus_tag="GOX0017"
+                     /note="DNA polymerase III subunit delta'; Validated;
+                     Region: PRK09112"
+                     /db_xref="CDD:169667"
+     misc_feature    complement(<24207..>24350)
+                     /locus_tag="GOX0017"
+                     /note="P-loop containing Nucleoside Triphosphate
+                     Hydrolases; Region: P-loop_NTPase; cl09099"
+                     /db_xref="CDD:208973"
+     gene            complement(24695..25339)
+                     /locus_tag="GOX0018"
+                     /db_xref="GeneID:3249139"
+     CDS             complement(24695..25339)
+                     /locus_tag="GOX0018"
+                     /EC_number="2.7.4.9"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="thymidylate kinase"
+                     /protein_id="YP_190473.1"
+                     /db_xref="GI:58038509"
+                     /db_xref="GeneID:3249139"
+                     /translation="MAGKGLFITLEGGEGAGKSTQARLLAEALRAEGHKVLLTREPGG
+                     TPGAEEIRNLLLFGKVDLSWRAEILMHMAARSDHLDNAILPALERGEIVVCDRFHDST
+                     LAYQGYGIGQGAPEVLAFLNGARKLVDFEPDLTLMLELPRPQALARLKARGGQTDRYE
+                     AQAEAFHERVLAGFDAIASADPVRVKRVDAGQTPEAVSAALLQAVHESLTVQGV"
+     misc_feature    complement(24713..25330)
+                     /locus_tag="GOX0018"
+                     /note="thymidylate kinase; Validated; Region: tmk;
+                     PRK00698"
+                     /db_xref="CDD:179089"
+     misc_feature    complement(24719..25324)
+                     /locus_tag="GOX0018"
+                     /note="Thymidine monophosphate kinase (TMPK), also known
+                     as thymidylate kinase, catalyzes the phosphorylation of
+                     thymidine monophosphate (TMP) to thymidine diphosphate
+                     (TDP) utilizing ATP as its preferred phophoryl donor. TMPK
+                     represents the rate-limiting step...; Region: TMPK;
+                     cd01672"
+                     /db_xref="CDD:30190"
+     misc_feature    complement(order(24884..24886,25025..25027,25049..25054,
+                     25115..25117,25127..25129,25283..25285))
+                     /locus_tag="GOX0018"
+                     /note="TMP-binding site; other site"
+                     /db_xref="CDD:30190"
+     misc_feature    complement(order(24770..24772,24896..24898,25280..25282))
+                     /locus_tag="GOX0018"
+                     /note="ATP-binding site [chemical binding]; other site"
+                     /db_xref="CDD:30190"
+     gene            complement(25344..26618)
+                     /locus_tag="GOX0019"
+                     /db_xref="GeneID:3249140"
+     CDS             complement(25344..26618)
+                     /locus_tag="GOX0019"
+                     /EC_number="3.4.16.4"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="D-alanyl-D-alanine carboxypeptidase"
+                     /protein_id="YP_190474.1"
+                     /db_xref="GI:58038510"
+                     /db_xref="GeneID:3249140"
+                     /translation="MTAACVKAVELGTNVRTRRSLFGGVAGIAACASFAGPLKAFARP
+                     HRHAGHAAKAAAASAADAPVGTPANTPIGPFDTVARWAYVVDYDTGAVLLDKASDERM
+                     APSSLTKMMTAYIVFGMLATGRIRLEQSLPVSEKAWRTQGSKMFVPLGQSVLVSDLIQ
+                     GMLIQSGNDACIVLAEGIAGSEERFVAMMNEEAPKLGMMNSHFVNVTGLPADGHYMTA
+                     RDVATVASHLIRDFPQYYHYFGELEFTYNHIRQGNRNVLVDKGLADGLKTGHTEAGGF
+                     GLCASSQRNGNRVIVVINGSSSSNERAHEGERLMSWAFANFENATLFRRGQVVDSAPV
+                     WMGEHRQVSLVAGADIVMTLPVGWQQRSHIGVDYASPVIAPVTKGQVCGALVISAPNM
+                     ADIRVPLEAGESVAKLGLVARAMTRLGHGPAQ"
+     misc_feature    complement(25377..26408)
+                     /locus_tag="GOX0019"
+                     /note="D-alanyl-D-alanine carboxypeptidase [Cell envelope
+                     biogenesis, outer membrane]; Region: DacC; COG1686"
+                     /db_xref="CDD:31872"
+     misc_feature    complement(25398..25670)
+                     /locus_tag="GOX0019"
+                     /note="Penicillin-binding protein 5, C-terminal domain;
+                     Region: PBP5_C; cl06814"
+                     /db_xref="CDD:208553"
+     gene            complement(26615..27463)
+                     /locus_tag="GOX0020"
+                     /db_xref="GeneID:3248835"
+     CDS             complement(26615..27463)
+                     /locus_tag="GOX0020"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="rare lipoprotein A"
+                     /protein_id="YP_190475.1"
+                     /db_xref="GI:58038511"
+                     /db_xref="GeneID:3248835"
+                     /translation="MSLRNYGAALALLPLLAACHREEPTPAPHPHYELGSAWRGTHGW
+                     FYPNEQFDYHVTGLATRQHAPAGGLMADGEAWSANGMTGAHQTLQLPAIVSVRDLLNG
+                     RIVRIRLTDRGPADPGRIIALSPKVADLLGMTADTPVEVTEDEAASRSLAEGLGKPPA
+                     QNISAAPVGEVRETSLSDGSSRVYGNDSSAAASSVAVGPLPATWMQGSPGPSGLYVLM
+                     GIFSGHATAASVAMRCGGTVLHASEGAGLEWRAVGGPYADIAQADAALDRTRLCGVEG
+                     ARIIVE"
+     misc_feature    complement(26978..>27334)
+                     /locus_tag="GOX0020"
+                     /note="Lipoproteins [Cell envelope biogenesis, outer
+                     membrane]; Region: RlpA; COG0797"
+                     /db_xref="CDD:31140"
+     misc_feature    complement(27062..>27229)
+                     /locus_tag="GOX0020"
+                     /note="Rare lipoprotein A (RlpA)-like double-psi
+                     beta-barrel; Region: DPBB_1; cl04011"
+                     /db_xref="CDD:208083"
+     gene            complement(27450..28445)
+                     /locus_tag="GOX0021"
+                     /db_xref="GeneID:3248836"
+     CDS             complement(27450..28445)
+                     /locus_tag="GOX0021"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="membrane-bound lytic murein transglycosylase"
+                     /protein_id="YP_190476.1"
+                     /db_xref="GI:58038512"
+                     /db_xref="GeneID:3248836"
+                     /translation="MLQRRHLLAALTSVAGSAAVGISSANAQARVQSYGAFLESVRAQ
+                     ALAQGLSSSIVSQALSLTTQPNASVLKLDRHQPEFTLTWAQYRDRVLPESRFAKGRS"

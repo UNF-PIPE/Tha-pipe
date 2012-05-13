@@ -1,0 +1,1000 @@
+LOCUS       NC_008783            1445021 bp    DNA     circular BCT 28-MAY-2010
+DEFINITION  Bartonella bacilliformis KC583, complete genome.
+ACCESSION   NC_008783
+VERSION     NC_008783.1  GI:121601635
+DBLINK      Project: 58533
+KEYWORDS    .
+SOURCE      Bartonella bacilliformis KC583
+  ORGANISM  Bartonella bacilliformis KC583
+            Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales;
+            Bartonellaceae; Bartonella.
+REFERENCE   1  (bases 1 to 1445021)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-JAN-2007) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   2  (bases 1 to 1445021)
+  AUTHORS   Hendrix,L., Mohamoud,Y., Radune,D., Shvartsbeyn,A., Daugherty,S.,
+            Dodson,R., Durkin,A.S., Harkins,D., Huot,H., Kothari,S.P.,
+            Madupu,R., Li,J., Nelson,W.C., Shrivastava,S., Giglio,M.G.,
+            Haft,D., Selengut,J., Fraser-Ligget,C. and Seshadri,R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-DEC-2006) The Institute for Genomic Research, 9712
+            Medical Center Dr, Rockville, MD 20850, USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence was derived from CP000524.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..1445021
+                     /organism="Bartonella bacilliformis KC583"
+                     /mol_type="genomic DNA"
+                     /strain="KC583; ATCC 35685"
+                     /db_xref="ATCC:35685"
+                     /db_xref="taxon:360095"
+     gene            213..986
+                     /locus_tag="BARBAKC583_0001"
+                     /db_xref="GeneID:4685072"
+     CDS             213..986
+                     /locus_tag="BARBAKC583_0001"
+                     /note="identified by match to protein family HMM PF01027"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_988340.1"
+                     /db_xref="GI:121602380"
+                     /db_xref="GeneID:4685072"
+                     /translation="MADFKNLRSASVSHADASIDQGLRSYMLSVYNTMAIGLLVTAAA
+                     AYAIASLTTTTDMNLAAAQINSSVYLTSFGVAFYTSPLSYVIMFSPLIAVLFLSFKIN
+                     TLSTSAARSLFYGYAMLVGLSLSSIILRYTPESIVQTFVITAAAFGSLSLYGYTTKRD
+                     LTAMGSFLFIGMIGLMLSMIINIFLGSDALQFAISVIGVLIFAGLTAYNTQTIKTMYY
+                     EGDEDDTRGRKIIMGALNLYLDFINMFVFLLQFLGSNRD"
+     misc_feature    276..977
+                     /locus_tag="BARBAKC583_0001"
+                     /note="BAX inhibitor (BI)-1 like protein family. Mammalian
+                     members of this family of small transmembrane proteins
+                     have been shown to have an antiapoptotic effect either by
+                     stimulating the antiapoptotic function of Bcl-2, a well
+                     characterized oncogene, or...; Region: BI-1-like; cd06181"
+                     /db_xref="CDD:100120"
+     gene            1105..2004
+                     /locus_tag="BARBAKC583_0003"
+                     /db_xref="GeneID:4684485"
+     CDS             1105..2004
+                     /locus_tag="BARBAKC583_0003"
+                     /note="identified by match to protein family HMM PF03372"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="endonuclease/exonuclease/phosphatase family
+                     protein"
+                     /protein_id="YP_988341.1"
+                     /db_xref="GI:121602196"
+                     /db_xref="GeneID:4684485"
+                     /translation="MTKKPNKLRFHWPTKFIENKFYNPFLSALHKRCGYQSNTTNHQA
+                     SYDLVAASYNVHKCVGVDKVFNPTRIVRVIAELQADILALQEVDKRFEERIGFIDLEF
+                     LKSETDLTLVPLNTKSPHGHGWHGNALFLRQGHVRDILQINLPGIEPRGAVIAELEMN
+                     MGAIRVIAAHFSLLRHSRNKQVKMLLALLQKRPFMPTLIIGDLNEWRVGKRSSLHHFS
+                     LYFDTTLGVVPSFPSRFPFLALDRVFAFPHQLITGVESHLSPLARIASDHLPIKAYLD
+                     LGNTITSLKNKEANALHPNFEQP"
+     misc_feature    1255..>1716
+                     /locus_tag="BARBAKC583_0003"
+                     /note="Exonuclease-Endonuclease-Phosphatase (EEP) domain
+                     superfamily; Region: EEP; cl00490"
+                     /db_xref="CDD:197411"
+     misc_feature    order(1264..1266,1360..1362,1612..1614,1708..1710,
+                     1714..1716)
+                     /locus_tag="BARBAKC583_0003"
+                     /note="putative catalytic site [active]"
+                     /db_xref="CDD:197306"
+     misc_feature    1360..1362
+                     /locus_tag="BARBAKC583_0003"
+                     /note="putative metal binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:197306"
+     misc_feature    order(1612..1614,1714..1716)
+                     /locus_tag="BARBAKC583_0003"
+                     /note="putative phosphate binding site [ion binding];
+                     other site"
+                     /db_xref="CDD:197306"
+     gene            complement(1970..4876)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /db_xref="GeneID:4684113"
+     CDS             complement(1970..4876)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /EC_number="2.7.7.7"
+                     /note="has 3'-5' exonuclease, 5'-3' exonuclease and
+                     5'-3'polymerase activities, primarily functions to fill
+                     gaps during DNA replication and repair"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="DNA polymerase I"
+                     /protein_id="YP_988342.1"
+                     /db_xref="GI:121601792"
+                     /db_xref="GeneID:4684113"
+                     /translation="MKINDHLFLVDGSSYIFRAYHALPPLKRKKDGLPVGAVSGFCNM
+                     LWRLLCDARNTAVGLTPTHFAVIFDHSSHTFRKQIYPEYKANRATPPDDLIPQFSLIR
+                     QATKAFNVPCIEKEGFEADDLIATYAHLATQVGAKTTIISSDKDLMQLVNAHVSLYDG
+                     MKDKHIGVAEVVEKWGVTPDKMVDLQALTGDPVDNIPGIPGIGPKTAAQLLNQFGSLD
+                     LLLQHVSEIKQTKRRENIQTYGKQTEISRVLVKLKTDVPIDNDLDSFILEPQDGPRLI
+                     AFLKAMEFTTLTRRVAEATECDATIIEACDVETEWTETVHGPDLDVQKADAALSHTSS
+                     ENCPQFLAQKRKEQAFTQVITRDAYETLLDEDILKKWLLEAEEQGYFSFDTETTSLDP
+                     MQAKLVGFSLALQPNKAAYIPLEHIEGGNDLFGGERIVGQIETQRALALLKPILENQA
+                     VLKIGQNMKYDWLVMRQYDITIRSFDDTMLLSYVLDAGISTHGMDVLSERWLGHTPIA
+                     YKNLTCDGKKIVSFAQVDLKQATLYAAEDADITLRLWQVLKPQLVAQGMTKIYERLDR
+                     PLIEVLARMEERGILVDRQILSCLSGELAQAALSLEEEIYQLAGEQFNIASPKQLGDI
+                     LFSKIGLPGGAKTKGGQWSTSAQILEELAAEGHMLPRKIVDWRQIAKLKSTYTDALPS
+                     YISPKTGRVHTNYSLATTSTGRLSSSEPNLQNIPIRTIEGRKIRTAFIASEGCLLLSA
+                     DYSQIELRLLAHIADITALKEAFAQGQDIHAMTASQMFGVAIERMSSDVRRRAKAINF
+                     GIIYGISAFGLANQLGISREEASHYIRVYFERFPGIQSYMEATKIFARQHGYVETIFG
+                     RRIHYPEIKARDRQVRAFNERAAINAPIQGSAADIIRRAMIQMEGALEKEGLSAKMLL
+                     QVHDELIFEIPKAESEKTKAIVKKVMENATMPALSLSVPLEVKVMVAQNWDEAH"
+     misc_feature    complement(1973..4864)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="DNA polymerase I; Provisional; Region: PRK05755"
+                     /db_xref="CDD:180237"
+     misc_feature    complement(4358..4858)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="PIN domain of the 5'-3' exonuclease of Taq DNA
+                     polymerase I and homologs; Region: PIN_53EXO; cd09859"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(order(4439..4441,4445..4447,4511..4516,
+                     4520..4522,4670..4672,4844..4846))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="active site"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(order(4445..4447,4514..4516,4844..4846))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="metal binding site 1 [ion binding]; metal-binding
+                     site"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(4616..4654)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="putative 5' ssDNA interaction site; other site"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(order(4511..4513,4520..4522))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="metal binding site 3; metal-binding site"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(order(4439..4441,4445..4447))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="metal binding site 2 [ion binding]; metal-binding
+                     site"
+                     /db_xref="CDD:189029"
+     misc_feature    complement(4121..4342)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="H3TH domain of the 5'-3' exonuclease of Taq DNA
+                     polymerase I and homologs; Region: H3TH_53EXO; cd09898"
+                     /db_xref="CDD:188618"
+     misc_feature    complement(order(4241..4252,4256..4285,4289..4312))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="putative DNA binding site [nucleotide binding];
+                     other site"
+                     /db_xref="CDD:188618"
+     misc_feature    complement(order(4295..4297,4304..4306))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="putative metal binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:188618"
+     misc_feature    complement(3155..3757)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="DEDDy 3'-5' exonuclease domain of Escherichia coli
+                     DNA polymerase I and similar bacterial family-A DNA
+                     polymerases; Region: DNA_polA_I_Ecoli_like_exo; cd06139"
+                     /db_xref="CDD:176651"
+     misc_feature    complement(order(3266..3268,3278..3280,3347..3352,
+                     3395..3400,3494..3502,3506..3511,3707..3709,3716..3727))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="active site"
+                     /db_xref="CDD:176651"
+     misc_feature    complement(order(3266..3268,3278..3280,3494..3496,
+                     3719..3721,3725..3727))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="catalytic site [active]"
+                     /db_xref="CDD:176651"
+     misc_feature    complement(order(3266..3268,3278..3280,3347..3352,
+                     3395..3400,3497..3502,3506..3511,3707..3709,3716..3724))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="substrate binding site [chemical binding]; other
+                     site"
+                     /db_xref="CDD:176651"
+     misc_feature    complement(1982..3064)
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="Polymerase I functions primarily to fill DNA gaps
+                     that arise during DNA repair, recombination and
+                     replication; Region: DNA_pol_A_pol_I_C; cd08637"
+                     /db_xref="CDD:176474"
+     misc_feature    complement(order(2123..2131,2222..2224,2243..2245,
+                     2495..2497,2507..2509,2567..2569,2651..2656,2750..2761,
+                     2765..2767,2771..2779,2852..2857,2864..2866,2876..2878))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="active site"
+                     /db_xref="CDD:176474"
+     misc_feature    complement(order(2123..2131,2222..2224,2234..2236,
+                     2243..2248,2471..2473,2750..2761,2765..2767,2771..2779,
+                     2852..2857,2864..2866,2876..2878))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="DNA binding site [nucleotide binding]"
+                     /db_xref="CDD:176474"
+     misc_feature    complement(order(2123..2125,2495..2497,2507..2509,
+                     2567..2569,2645..2647,2651..2656))
+                     /gene="polA"
+                     /locus_tag="BARBAKC583_0002"
+                     /note="catalytic site [active]"
+                     /db_xref="CDD:176474"
+     gene            complement(5177..5881)
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /db_xref="GeneID:4683943"
+     CDS             complement(5177..5881)
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /EC_number="2.7.7.7"
+                     /note="identified by match to protein family HMM PF00929;
+                     match to protein family HMM TIGR00573; match to protein
+                     family HMM TIGR01406"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="DNA polymerase III, epsilon subunit"
+                     /protein_id="YP_988343.1"
+                     /db_xref="GI:121602632"
+                     /db_xref="GeneID:4683943"
+                     /translation="MREIIFDTETTGLDKDNDRIIEIGCVEMVDRYLTGRQFHVYLNP
+                     QGVIIPDEVVAIHGLTNERLKGEKKFDDIADELLEFIDGAMMIAHNANFDISFLNAEL
+                     KRVNKPLISIDNVIDTLAMARRKFPMGPNSLDVLCKRFGIDNSHRILHGALLDAEILA
+                     DVYIELIGGKQGTLGFYNSNGRHLNTENGSNISYVFKIRPQALPPRLSEQEKSMHADL
+                     VNQIGKKALWNQFKIP"
+     misc_feature    complement(5204..5878)
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /note="Proteobacterial; Region: dnaQ_proteo; TIGR01406"
+                     /db_xref="CDD:130473"
+     misc_feature    complement(5381..5875)
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /note="DEDDh 3'-5' exonuclease domain of the epsilon
+                     subunit of Escherichia coli DNA polymerase III and similar
+                     proteins; Region: DNA_pol_III_epsilon_Ecoli_like; cd06131"
+                     /db_xref="CDD:99835"
+     misc_feature    complement(order(5417..5419,5432..5434,5441..5443,
+                     5483..5488,5600..5608,5612..5617,5711..5716,5723..5728,
+                     5843..5848,5852..5863))
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /note="active site"
+                     /db_xref="CDD:99835"
+     misc_feature    complement(order(5417..5419,5432..5434,5441..5443,
+                     5483..5488,5603..5608,5612..5617,5711..5716,5723..5728,
+                     5843..5848,5852..5863))
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /note="substrate binding site [chemical binding]; other
+                     site"
+                     /db_xref="CDD:99835"
+     misc_feature    complement(order(5417..5419,5432..5434,5600..5602,
+                     5855..5857,5861..5863))
+                     /gene="dnaQ"
+                     /locus_tag="BARBAKC583_0004"
+                     /note="catalytic site [active]"
+                     /db_xref="CDD:99835"
+     gene            complement(5886..6488)
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /db_xref="GeneID:4684309"
+     CDS             complement(5886..6488)
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /EC_number="2.7.1.24"
+                     /note="catalyzes the phosphorylation of the 3'-hydroxyl
+                     group of dephosphocoenzyme A to form coenzyme A; involved
+                     in coenzyme A biosynthesis"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="dephospho-CoA kinase"
+                     /protein_id="YP_988344.1"
+                     /db_xref="GI:121602047"
+                     /db_xref="GeneID:4684309"
+                     /translation="MKIIGLTGSIAMGKSTTASFFKQAGIPVFSADEAVQQLYKSNPT
+                     VSLIARIFPDVVENGRVNNQELSKILAKDHEKLQILEKTIHPLVRKKEQKFIEKARQQ
+                     GKELVVLDIPLLFETKSESRVDSVVVVSAPPEIQKKRAMSRPNMSEEKFAILNNRQMS
+                     DEEKKERADFVIDTGKDLEDTRKQVLHVIKKLSKDPSLKN"
+     misc_feature    complement(5889..6488)
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /note="Dephospho-CoA kinase [Coenzyme metabolism]; Region:
+                     CoaE; COG0237"
+                     /db_xref="CDD:30586"
+     misc_feature    complement(5949..6482)
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /note="Dephospho-coenzyme A kinase (DPCK, EC 2.7.1.24)
+                     catalyzes the phosphorylation of dephosphocoenzyme A
+                     (dCoA) to yield CoA, which is the final step in CoA
+                     biosynthesis; Region: DPCK; cd02022"
+                     /db_xref="CDD:30195"
+     misc_feature    complement(order(6015..6017,6150..6155,6234..6236,
+                     6393..6395,6468..6470))
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /note="CoA-binding site [chemical binding]; other site"
+                     /db_xref="CDD:30195"
+     misc_feature    complement(order(5967..5969,6072..6074,6447..6452,
+                     6459..6467))
+                     /gene="coaE"
+                     /locus_tag="BARBAKC583_0005"
+                     /note="ATP-binding [chemical binding]; other site"
+                     /db_xref="CDD:30195"
+     gene            complement(6485..7360)
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /db_xref="GeneID:4684935"
+     CDS             complement(6485..7360)
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /EC_number="1.1.1.25"
+                     /note="AroE; catalyzes the conversion of shikimate to
+                     3-dehydroshikimate"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="shikimate 5-dehydrogenase"
+                     /protein_id="YP_988345.1"
+                     /db_xref="GI:121602531"
+                     /db_xref="GeneID:4684935"
+                     /translation="MVDLVDHKKICSRVFVVGYPIHHSKSPKIHKFWLKYYGLQGESV
+                     SEEVTVREFSNFIASIKKGNFLGGNVTSPHKQEAFRLADYKDGIATAIGAANTLWIEG
+                     KKLLATNSDAYGFSANLDDFVPGWAGETALVFGAGGAARAIIYALKKRKFERIFLFNR
+                     TKKNADDLAEYFGKSTIKVYDWCSSCEKARQADLIVNTTSMDMINFSERENGAFFDFH
+                     KTKPTALVTDVVYTPLITPFLQQAKAHGLKTVNGLGMLLHQAVPGFEKWFGVRPSVTK
+                     ELRAAILEDMGENRG"
+     misc_feature    complement(6497..7324)
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /note="shikimate 5-dehydrogenase; Reviewed; Region: aroE;
+                     PRK00258"
+                     /db_xref="CDD:178949"
+     misc_feature    complement(7067..7315)
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /note="Shikimate dehydrogenase substrate binding domain;
+                     Region: Shikimate_dh_N; pfam08501"
+                     /db_xref="CDD:149523"
+     misc_feature    complement(6554..7030)
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /note="NAD(P) binding domain of Shikimate dehydrogenase;
+                     Region: NAD_bind_Shikimate_DH; cd01065"
+                     /db_xref="CDD:133443"
+     misc_feature    complement(order(6584..6586,6593..6595,6668..6670,
+                     7028..7030))
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /note="shikimate binding site; other site"
+                     /db_xref="CDD:133443"
+     misc_feature    complement(order(6593..6598,6605..6607,6674..6676,
+                     6761..6769,6881..6886,6944..6946,6953..6955))
+                     /gene="aroE"
+                     /locus_tag="BARBAKC583_0006"
+                     /note="NAD(P) binding site [chemical binding]; other site"
+                     /db_xref="CDD:133443"
+     gene            complement(7353..7949)
+                     /gene="maf1"
+                     /locus_tag="BARBAKC583_0007"
+                     /db_xref="GeneID:4684894"
+     CDS             complement(7353..7949)
+                     /gene="maf1"
+                     /locus_tag="BARBAKC583_0007"
+                     /note="identified by match to protein family HMM PF02545;
+                     match to protein family HMM TIGR00172"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="septum formation protein Maf"
+                     /protein_id="YP_988346.1"
+                     /db_xref="GI:121601838"
+                     /db_xref="GeneID:4684894"
+                     /translation="MKKNTLILASRSFHRAQLLKNAGLNFSVEGASFDEREVEKKIGT
+                     KTPKELSRFLAIAKAKNVSDRFPNTLIIGCDQVLDLEGQVFHKVTNRKEAHQRLHSLS
+                     GKTHSLHSAVALVQNGQEIWSEVFSVHMTMRFLSSKFIERYLEHVGMDVLKSLGIYQI
+                     EGEGIHLFEKIEGDYFTIIGLPLLPLLAKLRHLGVIDG"
+     misc_feature    complement(7410..7934)
+                     /gene="maf1"
+                     /locus_tag="BARBAKC583_0007"
+                     /note="Nucleotide binding protein Maf. Maf has been
+                     implicated in inhibition of septum formation in
+                     eukaryotes, bacteria and archaea, but homologs in
+                     B.subtilis and S.cerevisiae are nonessential for cell
+                     division. Maf has been predicted to be a nucleotide-
+                     or...; Region: Maf; cd00555"
+                     /db_xref="CDD:29954"
+     misc_feature    complement(order(7689..7691,7725..7727,7776..7778,
+                     7845..7847,7905..7907,7920..7922))
+                     /gene="maf1"
+                     /locus_tag="BARBAKC583_0007"
+                     /note="active site"
+                     /db_xref="CDD:29954"
+     misc_feature    complement(order(7575..7592,7794..7796))
+                     /gene="maf1"
+                     /locus_tag="BARBAKC583_0007"
+                     /note="dimer interface [polypeptide binding]; other site"
+                     /db_xref="CDD:29954"
+     gene            complement(7946..8785)
+                     /locus_tag="BARBAKC583_0008"
+                     /db_xref="GeneID:4683852"
+     CDS             complement(7946..8785)
+                     /locus_tag="BARBAKC583_0008"
+                     /note="identified by similarity to SP:Q92TF2; match to
+                     protein family HMM PF03618"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_988347.1"
+                     /db_xref="GI:121601741"
+                     /db_xref="GeneID:4683852"
+                     /translation="MKKEKNFFHLYMVSDATGETLISAGKAVASQYPTIQPIEHIYPM
+                     IRNKTQLQRVLDEIQREPGIVLYTIIDQEIKQLLSRECTKIGVPCAAVLDPVLNVFQS
+                     YLGTPKNLRVSAQHDLNTDYFRRIEALDFTIEHDDGQSSDDLFNADVILVGISRTSKT
+                     PTSIYLANRGIKTANVPLIPGIDLPKALLEEKNSLIIGLIASAERISHVRQNRELGKD
+                     VSIERYTDRVNIAEELTYAKRICERFGWPIIDVTRRSIEETAAAVFELLSRFREEKLR
+                     EIL"
+     misc_feature    complement(7973..8776)
+                     /locus_tag="BARBAKC583_0008"
+                     /note="Domain of unknown function (DUF299); Region:
+                     DUF299; cl00780"
+                     /db_xref="CDD:186186"
+     gene            9401..10666
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /db_xref="GeneID:4685051"
+     CDS             9401..10666
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="An RNA-DNA helicase that actively releases nascent
+                     mRNAs from paused transcription complexes"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="transcription termination factor Rho"
+                     /protein_id="YP_988348.1"
+                     /db_xref="GI:121602564"
+                     /db_xref="GeneID:4685051"
+                     /translation="MQEMKLQELKSKSPVELISFAETLEVENASLMRKQELMFAILKK
+                     LALQDVEIIGEGVVEVLQDGFGFLRSADANYLPGPDDIYILPSQIQSFSLKTGDTVEG
+                     PIRGPKEGEHYFALLKVNKINFEDPEKIRYKIHFDNLTPLYPNEPFRMEIQDPTEKDI
+                     SSRIVDLISPLGKGQRGLIVAPPRTGKTVLLQNIAHSITTNHPECYLIVLLIDERPEE
+                     VTDMQRSVKGEVVSSTFDEPAIRHVRVAEMVIEKAKRLVEYGRDVVILLDSITRLGRA
+                     YNTVVPSSGKVLTGGVDANALQRPKRFFGAARNIEEGGSLTIIATALIDTGSRMDEVI
+                     FEEFKGTGNSEIVLDRKVSDKRIFPAMDVLKSGTRKEDLLVARQDLHKIFVLRRILAP
+                     MNITDAMEFLIDKLKHTKNNSEFFDSMNT"
+     misc_feature    9410..10663
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="transcription termination factor Rho; Provisional;
+                     Region: rho; PRK09376"
+                     /db_xref="CDD:181809"
+     misc_feature    9422..9547
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="Rho termination factor, N-terminal domain; Region:
+                     Rho_N; pfam07498"
+                     /db_xref="CDD:191758"
+     misc_feature    9581..9763
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="Rho_CSD: Rho protein cold-shock domain (CSD). Rho
+                     protein is a transcription termination factor in most
+                     bacteria. In bacteria, there are two distinct mechanisms
+                     for mRNA transcription termination. In intrinsic
+                     termination, RNA polymerase and nascent...; Region:
+                     Rho_CSD; cd04459"
+                     /db_xref="CDD:88425"
+     misc_feature    order(9581..9583,9593..9595,9599..9601,9605..9607,
+                     9641..9643,9647..9649,9722..9724,9731..9739)
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="RNA binding site [nucleotide binding]; other site"
+                     /db_xref="CDD:88425"
+     misc_feature    9875..10621
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="Transcription termination factor rho is a bacterial
+                     ATP-dependent RNA/DNA helicase. It is a homohexamer. Each
+                     monomer consists of an N-terminal domain of the OB fold,
+                     which is responsible for binding to cysteine rich
+                     nucleotides. This alignment is of...; Region: rho_factor;
+                     cd01128"
+                     /db_xref="CDD:29994"
+     misc_feature    order(9926..9928,10259..10261,10292..10294,10301..10306,
+                     10313..10315,10322..10324,10331..10333,10406..10411,
+                     10415..10429,10433..10435,10505..10510,10550..10552,
+                     10562..10564)
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="multimer interface [polypeptide binding]; other
+                     site"
+                     /db_xref="CDD:29994"
+     misc_feature    9941..9964
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="Walker A motif; other site"
+                     /db_xref="CDD:29994"
+     misc_feature    order(9950..9952,9956..9967,10472..10474)
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="ATP binding site [chemical binding]; other site"
+                     /db_xref="CDD:29994"
+     misc_feature    10190..10204
+                     /gene="rho"
+                     /locus_tag="BARBAKC583_0009"
+                     /note="Walker B motif; other site"
+                     /db_xref="CDD:29994"
+     gene            10700..12007
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /db_xref="GeneID:4684249"
+     CDS             10700..12007
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="in Escherichia coli this protein is involved in the
+                     biosynthesis of the hypermodified nucleoside
+                     5-methylaminomethyl-2-thiouridine, which is found in the
+                     wobble position of some tRNAs and affects ribosomal
+                     frameshifting; shows potassium-dependent dimerization and
+                     GTP hydrolysis; also involved in regulation of
+                     glutamate-dependent acid resistance and activation of
+                     gadE"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="tRNA modification GTPase TrmE"
+                     /protein_id="YP_988349.1"
+                     /db_xref="GI:121602914"
+                     /db_xref="GeneID:4684249"
+                     /translation="MDTIFAVSSGLLPSGVAVIRVSGPRVVDIVKTLCGCLPKARFMH
+                     HGDLIARDGSFLDSALTVFFPRPHSFTGEDCAEFHLHGGKAVVNRFLDELSTFTGCRL
+                     AEAGEFSRRAFIEGKIDLVQAEGLADLIEAETESQRRLAVMGANGHLTELYRHWRNKL
+                     MTARALIEAELDFSDEADVSNFSSDKVWQNMQELSDSLCEHIAEGERANILRDGIKVV
+                     IVGVPNSGKSSIINRLAGRPVAIVTEEEGTTRDALEVRLILGGLPVLVMDTAGFRETE
+                     SKIEQLGIDIAKQHVLDADLVILVDDMKNPQKISLPNTSAEIWRVGNKLDICEGDKTR
+                     WPIQFSALNGLNFDYFLKEIESFCLHRIAEIGNIFPARKRQIQLLKEAVKEIDSSINY
+                     TFLDLSLRAEHLRRASDALGRITGDIDVEDLLDIIFSQFCIGK"
+     misc_feature    10700..12004
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="tRNA modification GTPase TrmE; Reviewed; Region:
+                     trmE; PRK05291"
+                     /db_xref="CDD:179996"
+     misc_feature    10706..11050
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="GTP-binding protein TrmE N-terminus; Region:
+                     TrmE_N; pfam10396"
+                     /db_xref="CDD:192568"
+     misc_feature    11339..11773
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="TrmE (MnmE, ThdF, MSS1) is a 3-domain protein found
+                     in bacteria and eukaryotes.  It controls modification of
+                     the uridine at the wobble position (U34) of tRNAs that
+                     read codons ending with A or G in the mixed codon family
+                     boxes.  TrmE contains a GTPase...; Region: trmE; cd04164"
+                     /db_xref="CDD:133364"
+     misc_feature    11360..11383
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="G1 box; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    order(11369..11371,11375..11386,11666..11671,11675..11677,
+                     11717..11725)
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="GTP/Mg2+ binding site [chemical binding]; other
+                     site"
+                     /db_xref="CDD:133364"
+     misc_feature    11405..11455
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="Switch I region; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    11444..11446
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="G2 box; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    order(11498..11530,11534..11578)
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="Switch II region; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    11501..11512
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="G3 box; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    11666..11677
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="G4 box; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    11717..11725
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="G5 box; other site"
+                     /db_xref="CDD:133364"
+     misc_feature    11795..11989
+                     /gene="trmE"
+                     /locus_tag="BARBAKC583_0010"
+                     /gene_synonym="mnmE; thdF"
+                     /note="Catalytic cysteine-containing C-terminus of GTPase,
+                     MnmE; Region: GTPase_Cys_C; pfam12631"
+                     /db_xref="CDD:193109"
+     gene            12116..13984
+                     /gene="gidA"
+                     /locus_tag="BARBAKC583_0011"
+                     /gene_synonym="gidA"
+                     /db_xref="GeneID:4684542"
+     CDS             12116..13984
+                     /gene="gidA"
+                     /locus_tag="BARBAKC583_0011"
+                     /gene_synonym="gidA"
+                     /note="GidA; glucose-inhibited cell division protein A;
+                     involved in the 5-carboxymethylaminomethyl modification
+                     (mnm(5)s(2)U) of the wobble uridine base in some tRNAs"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="tRNA uridine 5-carboxymethylaminomethyl
+                     modification enzyme GidA"
+                     /protein_id="YP_988350.1"
+                     /db_xref="GI:121602359"
+                     /db_xref="GeneID:4684542"
+                     /translation="MQSYDVIIVGGGHAGCEAASASARTGARTALVTYRLSDMGTMSC
+                     NPAIGGLGKGHLVREIDALDGLMGRAADFAGIQFRLLNRRKGPAVRGPRTQADRQLYK
+                     KAIQKLLREQDNLFIIEDEVVDIIVKNNRVSGVFLKNQGNIFSGAVVLTTGTFLNGLI
+                     HIGDKTWPAGRMGEQASVQLAERLKNYGISFGRLKTGTPARLSKKTIRWDVLPKQQAD
+                     EDPVPFSFLTEKIKQPQIECAITRTNAQTHHIISENIHRSALYSGAIEGVGPRYCPSI
+                     EDKIIKFGERDGHQIFLEPEGLEDDVIYPNGISTSLPEDVQISLLKTIEGLENVNVLQ
+                     PGYAIEYDFINPQYLSKTLELRSLPGLFLAGQINGTTGYEEAAAQGLLAGLNAARQVG
+                     GLDEIILSRSTAYIGVMIDDLISRGVCEPYRMFTSRAEFRLSLRADNADARLTPLAQE
+                     WGIVSHKRWTCYQNKQQRLDHARSICQKLFLTPNEASAHGLQINNDGVRRSAYSLLSY
+                     PNMNVARLTDFWPQLHSIDAKTVESLEIEAQYAVYLERQKQDIAALQRDESLEIPSSL
+                     NIQAIYGLSNELKTKIQKISPRSIADAQKIDGMTPAALSLIITYIQRQRREKGKLA"
+     misc_feature    12116..13969
+                     /gene="gidA"
+                     /locus_tag="BARBAKC583_0011"
+                     /gene_synonym="gidA"
+                     /note="NAD(FAD)-utilizing enzyme possibly involved in
+                     translation [Translation, ribosomal structure and
+                     biogenesis]; Region: Gid; cl11520"
+                     /db_xref="CDD:187089"
+     misc_feature    12116..13969
+                     /gene="gidA"
+                     /locus_tag="BARBAKC583_0011"
+                     /gene_synonym="gidA"
+                     /note="Flavin-dependent tRNA uridine
+                     5-carboxymethylaminomethyl modification enzyme GidA
+                     [Cell cycle control, cell division, chromosome
+                     partitioning]; Region: GidA; COG0445"
+                     /db_xref="CDD:30794"
+     gene            13984..14631
+                     /gene="gidB"
+                     /locus_tag="BARBAKC583_0012"
+                     /db_xref="GeneID:4683881"
+     CDS             13984..14631
+                     /gene="gidB"
+                     /locus_tag="BARBAKC583_0012"
+                     /EC_number="2.1.-.-"
+                     /note="glucose-inhibited division protein B; SAM-dependent
+                     methyltransferase; methylates the N7 position of guanosine
+                     in position 527 of 16S rRNA"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="16S rRNA methyltransferase GidB"
+                     /protein_id="YP_988351.1"
+                     /db_xref="GI:121602548"
+                     /db_xref="GeneID:4683881"
+                     /translation="MVVLVEQKYQELLNMLPSVSRETMENLIQFESLIIQWNAHINLI
+                     SAATVPFLWTRHILDSAQIYPLYSQCLHWCDLGSGGGFPAIVIAIFLKEKQKGHIDLI
+                     ESNGKKVAFLRTVIAQLNLPATVYHCRIEDVYQKINAPEIITARGLASLNTLLQLTFP
+                     WLKQKTIALLQKGRDYAIEVENAYANWRFNLLKHQSKIDENSVILEISHVRSCQG"
+     misc_feature    14056..14613
+                     /gene="gidB"
+                     /locus_tag="BARBAKC583_0012"
+                     /note="16S rRNA methyltransferase GidB; Reviewed; Region:
+                     gidB; PRK00107"
+                     /db_xref="CDD:178868"
+     gene            14637..15434
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /db_xref="GeneID:4684369"
+     CDS             14637..15434
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="identified by similarity to SP:O05189; match to
+                     protein family HMM PF01656"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="chromosome partitioning protein ParA"
+                     /protein_id="YP_988352.1"
+                     /db_xref="GI:121601810"
+                     /db_xref="GeneID:4684369"
+                     /translation="MNETRIIAVANQKGGVGKTTTTINLATALAAIGKNVLIMDIDPQ
+                     GNASTALGIDRNNRPLSSYDVLVSGVSIAKAALKTVVPNLHIVPSTLDLLGVEMEIAS
+                     SLDRIKRLRKALCDDQKVAKKFNYILIDCPPSLNLLTLNAMGAADSVLVPMQCEFLAL
+                     EGLSQLLETVKQVRYALNPSLEIQGIVLTMYDGRNNLSNQVVEDVRSFMGEKVYRTVI
+                     PRNVRVSEAPSFGKPALLYDLKCAGSQAYLRLASEVIQREKQAEAAA"
+     misc_feature    14646..15407
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="ATPases involved in chromosome partitioning [Cell
+                     division and chromosome partitioning]; Region: Soj;
+                     COG1192"
+                     /db_xref="CDD:31385"
+     misc_feature    14652..>14768
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="ParA and ParB of Caulobacter crescentus belong to a
+                     conserved family of bacterial proteins implicated in
+                     chromosome segregation. ParB binds to DNA sequences
+                     adjacent to the origin of replication and localizes to
+                     opposite cell poles shortly following...; Region: ParA;
+                     cd02042"
+                     /db_xref="CDD:73302"
+     misc_feature    14673..14693
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="P-loop; other site"
+                     /db_xref="CDD:73302"
+     misc_feature    14691..14693
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="Magnesium ion binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:73302"
+     misc_feature    <15006..15203
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="ParA and ParB of Caulobacter crescentus belong to a
+                     conserved family of bacterial proteins implicated in
+                     chromosome segregation. ParB binds to DNA sequences
+                     adjacent to the origin of replication and localizes to
+                     opposite cell poles shortly following...; Region: ParA;
+                     cd02042"
+                     /db_xref="CDD:73302"
+     misc_feature    15024..15026
+                     /gene="parA"
+                     /locus_tag="BARBAKC583_0013"
+                     /note="Magnesium ion binding site [ion binding]; other
+                     site"
+                     /db_xref="CDD:73302"
+     gene            15486..16397
+                     /gene="parB"
+                     /locus_tag="BARBAKC583_0014"
+                     /db_xref="GeneID:4684144"
+     CDS             15486..16397
+                     /gene="parB"
+                     /locus_tag="BARBAKC583_0014"
+                     /note="identified by similarity to SP:O05190; match to
+                     protein family HMM PF02195; match to protein family HMM
+                     TIGR00180"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="chromosome partitioning protein ParB"
+                     /protein_id="YP_988353.1"
+                     /db_xref="GI:121602744"
+                     /db_xref="GeneID:4684144"
+                     /translation="MNEDQSKKRLGRGLAALIGDINLDGNSVYQSEYQPDFSGLSVKS
+                     EIAFEKIVSIELISPNPCNPRRYFTDLELDDLAQSIRQHGVIQPIVVRPSRNYPNRFE
+                     LIAGERRWRAAQRANLSQLPVIIRDVDDKTALELAIIENIQRTDLNSIEEGKGYELLL
+                     NEHGYTQVELAQIIGKSRSHIANTLRLLKLPPEVQQFVIEGQLSAGHARCLITVDNPR
+                     DLANKIIREGLSVRQAEMLANERMDSENKKKIVKEKDAETESLEKLLSDIIGMKVIIQ
+                     HSKKGGNLKIHYSSLEQLDDICRRLQD"
+     misc_feature    15639..16160
+                     /gene="parB"
+                     /locus_tag="BARBAKC583_0014"
+                     /note="ParB-like partition proteins; Region: parB_part;
+                     TIGR00180"
+                     /db_xref="CDD:161748"
+     misc_feature    15639..15911
+                     /gene="parB"
+                     /locus_tag="BARBAKC583_0014"
+                     /note="ParB-like nuclease domain; Region: ParBc; cl02129"
+                     /db_xref="CDD:154762"
+     gene            complement(16398..16931)
+                     /locus_tag="BARBAKC583_0015"
+                     /db_xref="GeneID:4684416"
+     CDS             complement(16398..16931)
+                     /locus_tag="BARBAKC583_0015"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /protein_id="YP_988354.1"
+                     /db_xref="GI:121602022"
+                     /db_xref="GeneID:4684416"
+                     /translation="MDKRFLPSPTKKKRLFLAMLKITLHVFFILLFPFATYAQETIKN
+                     EPDGHFILTPTNNPKIVANYPLTENFLEKMEKAKQKIINLPPELQTSHTENDHSIEGL
+                     IAFVSSRPHLKEILDNNGLTPKDYVIGFIALQATLIAVTALEDTDAFFDETTTVFQDN
+                     LKFGQKHINRIRAFLDY"
+     gene            complement(17303..17968)
+                     /gene="ispZ"
+                     /locus_tag="BARBAKC583_0016"
+                     /db_xref="GeneID:4684488"
+     CDS             complement(17303..17968)
+                     /gene="ispZ"
+                     /locus_tag="BARBAKC583_0016"
+                     /note="Involved in cell division; probably involved in
+                     intracellular septation"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="intracellular septation protein A"
+                     /protein_id="YP_988355.1"
+                     /db_xref="GI:121602195"
+                     /db_xref="GeneID:4684488"
+                     /translation="MKHSLFKSNSQNTKNNQKVSPTFKFFLEMGPLVIFFLANYKGRW
+                     LINNVELFKHFDKPIYPATFIFMVAIVITLSLSWIIVRTIPIIPLISGLLVIVFGFLT
+                     LWLKDDTFIKVKPTIINSLFSLMLLGSLLLKKQLLRYVFDSAFKITDEGWQILTYCWA
+                     LFFAFLALLNEIIWRNFSNDFWATFKVFGVVPITILFVMIHLPIIIKYSDFSPIEDDE
+                     SNS"
+     misc_feature    complement(17342..17902)
+                     /gene="ispZ"
+                     /locus_tag="BARBAKC583_0016"
+                     /note="Intracellular septation protein A; Region: IspA;
+                     cl01098"
+                     /db_xref="CDD:186332"
+     gene            complement(17965..19128)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /db_xref="GeneID:4684099"
+     CDS             complement(17965..19128)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="identified by match to protein family HMM PF00448;
+                     match to protein family HMM PF02881; match to protein
+                     family HMM TIGR00064"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="signal recognition particle-docking protein
+                     FtsY"
+                     /protein_id="YP_988356.1"
+                     /db_xref="GI:121602701"
+                     /db_xref="GeneID:4684099"
+                     /translation="MTKFFIKKIFSFNKSKNETTKNDHPSIKLEKEKQREEYNINPTT
+                     HSEEIQSSESNLKKVVITDTIIEKEEAPLPTPPVEQKEVAWFERLKHGLSRSSQQLGG
+                     SIGALFTKRKLNADTLQELEDILIQADLGVETASHITDILSSGRYGKNLSLDDIHTIV
+                     ADEIKKVLEPVAIPLELDLSYKPHVILFVGVNGTGKTTTIGKLAAKLTSNGLKVMLAA
+                     GDTFRAAAIEQLHIWGERTGAPVVSTQSGADAASLAFEAYEKAKKANNDVLIIDTAGR
+                     LQNKTELMDELAKIIRVLRKHDPQAPHTILQTLDATTGQNALNQVDIFRNIAGVNGLV
+                     MTKLDGTARGGILVALAAKYKLPVYFIGIGENTEDLEPFSASDFAQAITGKYS"
+     misc_feature    complement(17974..18894)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="signal recognition particle-docking protein FtsY;
+                     Provisional; Region: PRK10416"
+                     /db_xref="CDD:182441"
+     misc_feature    complement(18637..>18813)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="SRP54-type protein, helical bundle domain; Region:
+                     SRP54_N; pfam02881"
+                     /db_xref="CDD:190463"
+     misc_feature    complement(18043..18579)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="The signal recognition particle (SRP) mediates the
+                     transport to or across the plasma membrane in bacteria and
+                     the endoplasmic reticulum in eukaryotes. SRP recognizes
+                     N-terminal sighnal sequences of newly synthesized
+                     polypeptides at the ribosome. The...; Region: SRP;
+                     cd03115"
+                     /db_xref="CDD:48379"
+     misc_feature    complement(18538..18561)
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="P loop; other site"
+                     /db_xref="CDD:48379"
+     misc_feature    complement(order(18109..18114,18121..18123,18304..18306,
+                     18469..18471))
+                     /gene="ftsY"
+                     /locus_tag="BARBAKC583_0017"
+                     /note="GTP binding site [chemical binding]; other site"
+                     /db_xref="CDD:48379"
+     gene            complement(19143..20426)
+                     /locus_tag="BARBAKC583_0018"
+                     /db_xref="GeneID:4684557"
+     CDS             complement(19143..20426)
+                     /locus_tag="BARBAKC583_0018"
+                     /note="identified by match to protein family HMM PF00919;
+                     match to protein family HMM PF04055; match to protein
+                     family HMM TIGR00089; match to protein family HMM
+                     TIGR01579"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="MiaB family tRNA modification protein"
+                     /protein_id="YP_988357.1"
+                     /db_xref="GI:121601837"
+                     /db_xref="GeneID:4684557"
+                     /translation="MSVKIVTFGCRLNSYESEVIRQKSSSAGLDQLKDGAIIFNTCAV
+                     TSEAVRQAKQAIRKARRENPHTRIIVTGCAAQTETDNFSLMTEVDLILGNEDKLHAHS
+                     YRQLPDFGINHDEKIRVNDIMEVRKNAPHMINSIEGRTRAFVQIQNGCDHRCTFCIIP
+                     YGRGPSRSVPMGTIIEQIKRLIDNGIQEVVLTGVDLTSYGSNLPGKATLGKLVSAILH
+                     HIPDLPRLHLSSIDSIEADQELIDLLAYEERIMPHLHLSLQAGDNMILKRMKRRHLRE
+                     HAIQFCQDLRAKRPSMVYGADLIAGFPTETEKMFQNSLNLINDCGLIHLHVFPFSPRK
+                     GTPAARMPQVNRETIKMRAEKLRKAGEKAYQKHLSYLQNTKQKILVERDEIGRTEDYT
+                     LTHIKGAKAGTIVKALIIDHDGNKLIARHLESHAA"
+     misc_feature    complement(20148..20420)
+                     /locus_tag="BARBAKC583_0018"
+                     /note="Uncharacterized protein family UPF0004; Region:
+                     UPF0004; pfam00919"
+                     /db_xref="CDD:189770"
+     misc_feature    complement(19200..20414)
+                     /locus_tag="BARBAKC583_0018"
+                     /note="MiaB-like tRNA modifying enzyme; Region:
+                     MiaB-like-C; TIGR01579"
+                     /db_xref="CDD:162433"
+     misc_feature    complement(19476..19997)
+                     /locus_tag="BARBAKC583_0018"
+                     /note="Radical SAM superfamily. Enzymes of this family
+                     generate radicals by combining a 4Fe-4S cluster and
+                     S-adenosylmethionine (SAM) in close proximity. They are
+                     characterized by a conserved CxxxCxxC motif, which
+                     coordinates the conserved iron-sulfur cluster...; Region:
+                     Radical_SAM; cl14056"
+                     /db_xref="CDD:197444"
+     gene            complement(20426..21274)
+                     /gene="dapF"
+                     /locus_tag="BARBAKC583_0019"
+                     /db_xref="GeneID:4684357"
+     CDS             complement(20426..21274)
+                     /gene="dapF"
+                     /locus_tag="BARBAKC583_0019"
+                     /EC_number="5.1.1.7"
+                     /note="involved in lysine biosynthesis; DAP epimerase;
+                     produces DL-diaminopimelate from LL-diaminopimelate"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="diaminopimelate epimerase"
+                     /protein_id="YP_988358.1"
+                     /db_xref="GI:121602373"
+                     /db_xref="GeneID:4684357"
+                     /translation="MKTPFSKMNGLGNKIIVADLRKAIHNITPQAIQALASNPQTHFD
+                     QIMAIHPPTQDADFRIEIWNADGSMAKACGNGTRCVIEWLANHNLGNNFRLETSTGIV
+                     EGKRQTDGLISVDMGRPYLNAKDMPVSREIIDTNHVDITAGPLQDACLVSVGNLHAIF
+                     FIESNIQNIPLEKYGPKLEHDPLFPERCNISIAQITSKKSLTLRTWERGAGLTQACGS
+                     AACASAVAAYRRGLTERHIDVNLPKGILSILYRDDEHIIMTGPTEHEFSGLFNPLTGT
+                     YKKDHL"
+     misc_feature    complement(20459..21274)
+                     /gene="dapF"
+                     /locus_tag="BARBAKC583_0019"
+                     /note="diaminopimelate epimerase; Provisional; Region:
+                     dapF; PRK00450"
+                     /db_xref="CDD:179032"
+     misc_feature    complement(20912..21262)
+                     /gene="dapF"
+                     /locus_tag="BARBAKC583_0019"
+                     /note="Diaminopimelate epimerase; Region: DAP_epimerase;
+                     cl14668"
