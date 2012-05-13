@@ -1,6 +1,15 @@
 package findParalogs;
 use strict;
 use warnings;
+use Bio::SeqIO;
+use Getopt::Long;
+use File::Slurp;
+use Bio::TreeIO;
+use IO::String;
+use Bio::AlignIO;
+use Bio::Align::ProteinStatistics;
+use Bio::Tree::DistanceFactory;
+use Bio::Tree::TreeI;
 
 use Exporter;
 use base qw( Exporter );
@@ -29,10 +38,10 @@ sub findParalogs {
 	my @paralogs;
 	for(@leaves){
 		my $id = $_->id;
-		my $specie = split(/\|/, $id)[1];
+		my $specie = (split(/\|/, $id))[0];
 		$species{$specie}++;
 	}
-	for(keys %species){a
+	for(keys %species){
 		if($species{$_}==2){
 			if( checkIfParalog($tree,$_) ){
 				push(@paralogs,$_);
@@ -53,7 +62,7 @@ sub checkIfParalog{
 	my @parCandidates;
 	for(@leaves){
                 my $id = $_->id;
-                my $parCandidate = split(/\|/, $id)[1];
+                my $parCandidate = (split(/\|/, $id))[0];
 		if($parCandidate eq $species){
 			push(@parCandidates, $_);
 		}
@@ -63,40 +72,27 @@ sub checkIfParalog{
 		return 0;
 	}
 	return 1; 
-
-
 }
 
 
-
-sub checkIfParalogsComplicated{
-	my ($tree, $species) = @_;
-	my @leaves = $tree->get_leaf_nodes;
-	my @parCandidates;
-	for(@leaves){
-                my $id = $_->id;
-                my $parCandidate = split(/\|/, $id)[1];
-		if($parCandidate eq $species){
-			push(@parCandidates, $_);
-		}
-        }
-	
-	for my $i (0 .. (length($parCandidates)-1){
-		for my $j (($i+1) .. length($parCandidates)){
-			print $i.$j."\n";
-		}
-	}	
-
-}
-
-
-
-
-
-
-for my $i (0 .. (5-1){
-	for my $j (($i+1) .. 5){
-		print $i.$j."\n";
-	}
-}	
-
+#
+#sub checkIfParalogsComplicated{
+#	my ($tree, $species) = @_;
+#	my @leaves = $tree->get_leaf_nodes;
+#	my @parCandidates;
+#	for(@leaves){
+#                my $id = $_->id;
+#                my $parCandidate = (split(/\|/, $id))[1];
+#		if($parCandidate eq $species){
+#			push(@parCandidates, $_);
+#		}
+#        }
+#	
+#	for my $i (0 .. (length(@parCandidates)-1){
+#		for my $j (($i+1) .. length($parCandidates)){
+#			print $i.$j."\n";
+#		}
+#	}	
+#
+#}
+1;
