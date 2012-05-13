@@ -4,7 +4,7 @@ use warnings;
 
 use Exporter;
 use base qw( Exporter );
-our @EXPORT_OK = qw( parse_orthomcl_file );
+our @EXPORT_OK = qw( parse_orthomcl_file parse_groups );
 
 
 sub parse_orthomcl_file {
