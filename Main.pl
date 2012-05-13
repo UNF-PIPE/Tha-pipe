@@ -11,6 +11,8 @@ use Bio::AlignIO;
 use Bio::Align::ProteinStatistics;
 use Bio::Tree::DistanceFactory;
 use Bio::Tree::TreeI;
+use Parallel::ForkManager;
+
 
 use OrthoMCLParser qw( parse_orthomcl_file );
 use findParalogs qw( findParalogs );
@@ -28,14 +30,21 @@ my %orthoHash = parse_orthomcl_file(
 
 my %prot = proteoms("/home/data/NCBI-proteoms/");
 
+my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`;
+my $pm = new Parallel::ForkManager($cores++);
 while (my ($key,$value) = each %orthoHash) {
+	my $pid = $pm->start and next;
+
 	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
-	if(my @gap_ids = findGaps($alignSequence,10)){
+	#my $alignSequence = multipleAlign(\@{$value}, \%prot, \%INSERT NEW SEQUENCE HASH HERE <-----); 
+	if(my @gap_ids = findGaps($alignSequence,11)){
 		
 	}
+
+	$pm->finish; # Terminates the child process
 	#makeTree($alignSequence);
 }
-
+$pm->wait_all_children;
 #&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
 #print $orthoHash{1244}[1][0] . "\n";
 
@@ -129,13 +138,18 @@ sub proteoms {
 }
 
 sub multipleAlign {
+	my ($orthologsRef, $proteomes, $new_sequences) = @_;
 	my $ortseq = "";			#Reset string
 	my $alignStr = "";			#Reset string
-	foreach my $ortrow  (@{$_[0]}) { #Loop array containing orthologs  
+	foreach my $ortrow  (@{$orthologsRef}) { #Loop array containing orthologs  
 		$ortseq = $ortseq . "\>gi\|@{$ortrow}[1]\|@{$ortrow}[0]\n"; 	#Append fasta header containing species name and gene-ID 
-		$ortseq = $ortseq .  " $_[1]{@{$ortrow}[1]} \n"; 		#Append sequence
+		if (ref $new_sequences && exists $new_sequences->{$ortrow->[1]} ) {
+			$ortseq .= $new_sequences->{$ortrow->[1]} . "\n";
+		}
+		else {
+			$ortseq .= $proteomes->{$ortrow->[1]} . "\n"; 
+		}
 	}
-	#print $ortseq . "\n";
 	my @ortalign = qx(echo  '$ortseq' \| muscle -quiet);	#Pipe ortholog fasta into clustalO
 	foreach my $rows (@ortalign) {
 		$alignStr =  $alignStr . $rows;	#Append all rows into a single string
