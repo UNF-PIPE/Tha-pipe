@@ -51,29 +51,31 @@ $pm->wait_all_children;
 #my %gbkhash = &make_gbk_hash("/home/data/NCBI-annotation/NC_008783.gbk");
 #print &get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", \%gbkhash, $ARGV[0]);
 
-sub get_gene{ 
+sub get_gene{
+    my ($genome_path,$orthoHash,$ID,$ext_start,$ext_stop) = @_;
     #The soubroutine will retrieve a subseq (e.g. a gene) from a genome
     #Arguments: 1 = path to genome, 2 = %gbkhash, 3 = protein_id, 4 = extension of startposition backwards (optional), 5 = extension of stop position (optional)
-    my $genome = Bio::SeqIO->new(-file => $_[0], -format => "fasta"); #Makes a SeqIO-object from the genome
+    my $genome = Bio::SeqIO->new(-file => $genome_path, -format => "fasta"); #Makes a SeqIO-object from the genome
     my $gene;
 
     while (my $seq = $genome->next_seq){
-	#Start and stop positions from %gbkhash
-	my $start = $_[1]{$_[2]}[0] - $_[3];
-	my $stop = $_[1]{$_[2]}[1] + $_[4];
+        #Start and stop positions from %gbkhash
+        my $start = $orthoHash->{$ID}[0] - $ext_start;
+        my $stop = $orthoHash->{$ID}[1] + $ext_stop;
 
-	#If gene is on complementary strand, take the reverse complement of the seq
-	if($_[1]{$_[2]}[2] == 0){
-	    $gene = $seq->subseq($start, $stop);
-	}
-	else{
-	    my $gene_obj = $seq->trunc($start, $stop);
-	    my $reversed = $gene_obj->revcom;
-	    $gene = $reversed->seq;
-	}
+        #If gene is on complementary strand, take the reverse complement of the seq
+        if($orthoHash->{$ID}[2] == 0){
+            $gene = $seq->subseq($start, $stop);
+        }
+        else{
+            my $gene_obj = $seq->trunc($start, $stop);
+            my $reversed = $gene_obj->revcom;
+            $gene = $reversed->seq;
+        }
     }
-    return $gene;
+    return $gene; 
 }
+
 
 #Subroutine for making a hash of genbank annotation file	
 sub make_gbk_hash{	
