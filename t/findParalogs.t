@@ -6,7 +6,7 @@ use Test::More;
 
 use findParalogs qw( findParalogs );
 
-my $test_path = "/home/simon/UNF/fylogeniPipeline/fyl_ex/aa_Landpl_aligned_noTerminator.fasta";
+my $test_path = "t/test_data/paralog_data/test1.fasta";
 open my $IN, '<', $test_path or die "Can't find test file: $?, $!";
 
 my $alignment;
@@ -24,6 +24,6 @@ for(@paralogs){
 	}
 }
 
-ok($par, "Paralog array contains Camel");
+ok($par, "Test data contains the paralog Camel");
 
 done_testing();

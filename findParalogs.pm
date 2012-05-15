@@ -38,7 +38,7 @@ sub findParalogs {
 	my @paralogs;
 	for(@leaves){
 		my $id = $_->id;
-		my $specie = (split(/\|/, $id))[0];
+		my $specie = (split(/\|/, $id))[1];
 		$species{$specie}++;
 	}
 	for(keys %species){
@@ -62,7 +62,7 @@ sub checkIfParalog{
 	my @parCandidates;
 	for(@leaves){
                 my $id = $_->id;
-                my $parCandidate = (split(/\|/, $id))[0];
+                my $parCandidate = (split(/\|/, $id))[1];
 		if($parCandidate eq $species){
 			push(@parCandidates, $_);
 		}
