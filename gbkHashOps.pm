@@ -10,9 +10,9 @@ use Exporter;
 use base qw( Exporter );
 our @EXPORT_OK = qw(make_gbk_hash get_gene);
 
-#Subroutine for making a hash of genbank annotation file	
+#Subroutine for making a hash of genbank annotation files	
 sub make_gbk_hash{	
-	my $genbankDir = $_[0]; #downloadable from ftp://ftp.ncbi.nih.gov/genomes/Bacteria/Bartonella_bacilliformis_KC583_uid58533/
+	my $genbankDir = $_[0]; #One example gbk file is downloadable from ftp://ftp.ncbi.nih.gov/genomes/Bacteria/Bartonella_bacilliformis_KC583_uid58533/
 	my @files = read_dir($genbankDir);
 	my $all_lines;
 	my %gbkhash;
