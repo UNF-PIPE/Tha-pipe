@@ -34,19 +34,19 @@ sub make_gbk_hash{
 		my @array2= split(/\/translation/,$all_lines);
 		foreach(@array2){
 			if ($_ =~ m/CDS\s+(\d+)\.\.(\d+).\s+/){
-				print "$1\t";
+				#print "$1\t";
 				$start = $1;
 				$stop = $2;
 				$complement = 0;	
 			}
 			elsif ($_ =~ m/CDS\s+complement\((\d+)\.\.(\d+)\)\s+/) {
-				print "$1 $2\t";
+				#print "$1 $2\t";
 				$start = $1;
 				$stop = $2;
 				$complement = 1;
 			}
 			if ($_ =~ m/\/protein_id=\"(.*)\"\s+\/db_xref=\"GI:(.*)\"\s+\/db_xref=\"GeneID:(.*)\"/) {
-				print "$1\n";
+				#print "$1\n";
 				$ACID = $1;			
 				$GI = $2;
 				$geneID = $3;
@@ -56,7 +56,7 @@ sub make_gbk_hash{
 		}
 	}
 	return %gbkhash
-} #endbracket of subroutine make_gbk_hash
+}#endbracket of subroutine make_gbk_hash
 
 sub get_gene{
     my ($genome_path,$orthoHash,$ID,$ext_start,$ext_stop) = @_;
