@@ -18,19 +18,21 @@ my $gene = get_gene($test_genome_path,\%gbk_hash,'YP_988349.1',0,0);
 
 #print %gene;
 
+#my $tmp = $gbk_hash{'YP_190472.1'}[5];
+#print "$tmp\n";
+#print "gbk_hash{'YP_190472.1'}";
 
 ok( exists $gbk_hash{'YP_988349.1'}, "Test data contains group YP_988349.1");
 ok( ref($gbk_hash{'YP_988349.1'}) eq 'ARRAY', 'Group YP_988349.1 is an array ref' ); 
 ok( $gbk_hash{'YP_988349.1'}[0]  == 10700,   'Group YP_988349.1 has a first entry of 10700');
 
 
-
-
 ok(exists $gbk_hash{'YP_190472.1'}, "Test data contains group YP_190472.1");
 ok( ref($gbk_hash{'YP_190472.1'}) eq 'ARRAY', 'Group YP_190472.1 is an array ref' );
 ok($gbk_hash{'YP_190472.1'}[2] == 1, 'Group YP_190472.1 has a third entry of 1 (i.e. it is complement)');
 
-
+ok(exists $gbk_hash{'YP_190472.1'}[5], "there is an element in the sixth position");
+ok( $gbk_hash{'YP_190472.1'}[5] eq 'NC_006677', 'genome ID found and stored in hash, and can be retrieved') ;
 
 
 done_testing();

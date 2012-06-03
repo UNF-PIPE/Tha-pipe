@@ -23,12 +23,22 @@ sub make_gbk_hash{
 	my $complement; #values true or false
 	my $GI; # GI number
 	my $geneID; #GeneID
+	my $ge;
 
 	foreach my $file (@files){
 		print $file."\n";
 		open GBFILE, $genbankDir.$file or die $!;		
 		my @array = <GBFILE>;
 		chomp(@array);
+		my $toprow = shift(@array);
+		
+		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
+			$ge = "$1";
+		}	
+		else{$ge = "unknown";}
+
+		my @toprow_split = split(/\t/,$toprow);
+		my $genomeID = $toprow_split[2];
 		$all_lines = join("", @array);
 		#print $all_lines;
 		my @array2= split(/\/translation/,$all_lines);
@@ -52,7 +62,7 @@ sub make_gbk_hash{
 				$geneID = $3;
 			}
 			#Store in hash with AccessionID as key
-			$gbkhash{$ACID}=[$start, $stop, $complement, $GI, $geneID];
+			$gbkhash{$ACID}=[$start, $stop, $complement, $GI, $geneID, $ge];
 		}
 	}
 	return %gbkhash
