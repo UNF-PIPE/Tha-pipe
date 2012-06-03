@@ -56,7 +56,7 @@ sub make_gbk_hash{
 		}
 	}
 	return %gbkhash
-} #endbracket of subroutine make_gbk_hash
+}#endbracket of subroutine make_gbk_hash
 
 sub get_gene{
     my ($genome_path,$orthoHash,$ID,$ext_start,$ext_stop) = @_;

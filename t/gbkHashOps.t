@@ -12,7 +12,9 @@ my $test_genome_path = "/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta";
 
 my %gbk_hash = make_gbk_hash($test_gbk_dir);
 
-my %gene = get_gene($test_genome_path, \%gbk_hash, 'YP_988349.1',0,0);
+#print "Jesper";
+
+my $gene = get_gene($test_genome_path,\%gbk_hash,'YP_988349.1',0,0);
 
 #print %gene;
 
