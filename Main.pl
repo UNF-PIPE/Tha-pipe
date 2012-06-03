@@ -14,10 +14,10 @@ use Bio::Tree::TreeI;
 use Parallel::ForkManager;
 
 use OrthoMCLParser qw( parse_orthomcl_file );
-use findParalogs qw( findParalogs );
+use findParalogs qw( findParalogs makeTree );
 use gbkHashOps qw( make_gbk_hash get_gene );
-use mkHash qw(mkHash);
 use multipleAlign qw(multipleAlign);
+use findAltStart qw( findAltStart findGaps mkHash);
 
 #Get the parameters for ParserOrthoMCLgroups
 my $speciesPerLine;
@@ -26,51 +26,24 @@ my $orthomcl_groups_file;
 GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file);
 
 #Test. The "wrap around" code goes here
-my %orthoHash = parse_orthomcl_file(
-    $orthomcl_groups_file, $speciesPerLine, $proteinsPerSpecies
-);
-
+my %orthoHash = parse_orthomcl_file($orthomcl_groups_file, $speciesPerLine, $proteinsPerSpecies);
 my %prot = mkHash("/home/data/NCBI-proteoms/");
 my %genome = mkHash("/home/data/NCBI-genomes/");
+my %annotation = make_gbk_hash("/home/data/NCBI-annotation/"); 
 
 my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`;
 my $pm = new Parallel::ForkManager($cores++);
 while (my ($key,$value) = each %orthoHash) {
 	my $pid = $pm->start and next;
 
-	my $alignSequence = multipleAlign(\@{$value}, \%prot); 
-	#my $alignSequence = multipleAlign(\@{$value}, \%prot, \%INSERT NEW SEQUENCE HASH HERE <-----); 
-	if(my @gap_ids = findGaps($alignSequence,11)){
-		#print $gap_ids[0] . "\n";
-		#print $alignSequence . "\n";
-	}
+	my $alignedSequences = multipleAlign(\@{$value}, \%prot); 
+    my @gapSeqs = findGaps($alignedSequences, 13);
+    my %extSeqs = findAltStart(\@gapSeqs, 13, \%annotation, \%genome);
+	$alignedSequences = multipleAlign(\@{$value}, \%prot, \%extSeqs); 
 
 	$pm->finish; # Terminates the child process
-	#makeTree($alignSequence);
+	my $tree = makeTree($alignedSequences);
+    my $treeOut = $tree->as_text('newick');
+    print $treeOut . "\n";
 }
 $pm->wait_all_children;
-
-#&multAlign("/home/data/NCBI-proteoms/", \%orthoHash);
-#print $orthoHash{1244}[1][0] . "\n";
-
-#my %gbkhash = &make_gbk_hash("/home/data/NCBI-annotation/NC_008783.gbk");
-#print &get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", \%gbkhash, $ARGV[0]);
-
-sub findGaps {
-	my $limit = $_[1];
-	my $io = IO::String->new($_[0]);
-	my $alignment = Bio::SeqIO->new(-fh => $io, -format => 'fasta');
-	my @gap_ids;
-	
-	while(my $sequence = $alignment->next_seq()){
-		my $seq_string = $sequence->seq;
-		if ($seq_string =~ m/^-{$limit}/) {
-			#print ">" . $sequence->id . "\n";
-			#print $seq_string . "\n\n";
-			$sequence->id =~ m/^gi\|(.*)\|/;
-			my $id = $1;
-			push(@gap_ids, $id);
-		}
-	}
-	return @gap_ids;
-}

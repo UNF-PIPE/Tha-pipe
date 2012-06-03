@@ -26,7 +26,7 @@ sub make_gbk_hash{
 	my $ge;
 
 	foreach my $file (@files){
-		print $file."\n";
+		#print $file."\n";
 		open GBFILE, $genbankDir.$file or die $!;		
 		my @array = <GBFILE>;
 		chomp(@array);
