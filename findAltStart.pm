@@ -3,14 +3,15 @@ use strict;
 use warnings;
 use Bio::SeqIO;
 use IO::String;
+use File::Slurp;
 
 use Exporter;
 use base qw( Exporter );
-our @EXPORT_OK = qw( findAltStart findGaps );
+our @EXPORT_OK = qw( findAltStart findGaps mkHash);
 
 #Extends the sequences privided to the nearest ATG
 sub findAltStart {
-	my ($gapSeqs, $noOfGaps, $gbk) = @_;
+	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
 	my $taxID;
 	my %extSeqs;
 	#testvars
@@ -25,8 +26,8 @@ sub findAltStart {
 	my $check = 1;
 	#end testvars
 	for my $ProtID (@{$gapSeqs}){
-		$workingSeq = get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", $gbk,$ProtID,4*$noOfGaps,0);
-		$originalSeq = get_gene("/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta", $gbk,$ProtID,0,0);
+		$workingSeq = get_gene($genomeHash, $gbk,$ProtID,4*$noOfGaps,0);
+		$originalSeq = get_gene($genomeHash, $gbk,$ProtID,0,0);
 		while ($check == 1){
 			$workingSeq =~ m/(ATG\D+)/;
 			$workingSeq = $1;
@@ -82,19 +83,22 @@ sub findGaps {
 }
 
 sub get_gene{
-    my ($genome_path,$gbk,$ID,$ext_start,$ext_stop) = @_; 
+    my ($genomeHash,$gbkHash,$ID,$ext_start,$ext_stop) = @_; 
     #The soubroutine will retrieve a subseq (e.g. a gene) from a genome
     #Arguments: 1 = path to genome, 2 = %gbkhash, 3 = protein_id, 4 = extension of startposition backwards (optional), 5 = extension of stop position (optional)
-    my $genome = Bio::SeqIO->new(-file => $genome_path, -format => "fasta"); #Makes a SeqIO-object from the genome
+    my $specieID = $gbkHash->{$ID}[5];
+	my $genome_string = ">$specieID\n" . $genomeHash->{$specieID};
+    my $io = IO::String->new($genome_string);
+	my $genome = Bio::SeqIO->new(-fh => $io, -format => 'fasta');
     my $gene;
 
     while (my $seq = $genome->next_seq){
         #Start and stop positions from %gbkhash
-        my $start = $gbk->{$ID}[0] - $ext_start;
-        my $stop = $gbk->{$ID}[1] + $ext_stop;
+        my $start = $gbkHash->{$ID}[0] - $ext_start;
+        my $stop = $gbkHash->{$ID}[1] + $ext_stop;
 
         #If gene is on complementary strand, take the reverse complement of the seq
-        if($gbk->{$ID}[2] == 0){ 
+        if($gbkHash->{$ID}[2] == 0){ 
             $gene = $seq->subseq($start, $stop);
         }   
         else{
@@ -104,6 +108,23 @@ sub get_gene{
         }   
     }   
     return $gene;
+}
+
+sub mkHash {
+      my %hash;                         #Predefine hash 
+      my $dir = $_[0];                  #Define directory
+      my @files = read_dir($dir);       #Contains all files in the directory 
+      for my $file ( @files ) {         #Loop trough all files 
+            my $filePath = "$dir$file"; #Current path to file
+            my $hash = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta'); #Insert file into SeqIO object
+            while (my $accession1 = $hash->next_seq) { # Go through the SeqIO objects
+                 my $header = $accession1->id;
+                 my $seq = $accession1->seq;
+                 my @split = split(/\|/,$header);
+                 $hash {$split[3]} = $seq; 
+            }   
+      }   
+      return %hash;
 }
 
 1;

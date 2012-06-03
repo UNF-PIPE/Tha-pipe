@@ -6,22 +6,25 @@ use Bio::SeqIO;
 use IO::String;
 use Test::More;
 
-use findAltStart qw( findAltStart findGaps );
+use findAltStart qw( findAltStart findGaps mkHash);
 
-my $test_data_path = "t/test_data/findAltStart_data/test2_aln.fasta";
+my $test_data_path = "t/test_data/findAltStart_data/";
 my %gbkTestHash = (
 	"YP_003037636.1" => ["3590035", "3590829", "0" ], 
-	"YP_989117.1" => ["848590", "849420", "0"], 
+	"YP_989117.1" => ["848590", "849420", "0", "", "","CP000524.1"], 
 	"YP_191040.1" => ["647552", "648352", "1"],
 	"YP_003225146.1" => ["8889", "9719", "0"],
 );
 my $YP_9891171seq = "MVDYIEYNETPLKFNGKIRIFDDYAFAEMRKVGQIAAECLDALTDIIKPGITTQEIDDFIFIFGAERGALPADLNYRGYSHSCCTSINHVVCHGIPNKKSLQEGDIVNVDVTFILNGWHGDSSRMYPVGKVKRAAERLLEITHECLMRGIEAVKPGATTGDIGAAIQRYAESERCSVVRDFCGHGIGQLFHDAPNILHYGNPGEGEELKQGMIFTIEPMINLGKPQVKILSDGWTAVTRDRSLSAQYEHTIGVTDQGCEIFTQSPKNIFYIPNSCA";
 
-open my $IN, '<', $test_data_path or die "Can't find test file: $?, $!";
-my $aln = join("", <$IN>);
+#Opens the alignment file and concatenates it into one string.
+open my $aln_file, '<', $test_data_path . "test2_aln.fasta" or die "Can't find test file: $?, $!";
+my $aln = join("", <$aln_file>);
 
+#Run the subroutines
+my %genomeHash = mkHash($test_data_path . "genomes/");
 my @gapSeqs = findGaps($aln, 13);
-my %extSeqs = findAltStart(\@gapSeqs, 13, \%gbkTestHash);
+my %extSeqs = findAltStart(\@gapSeqs, 13, \%gbkTestHash, \%genomeHash);
 
 #print join(" ", @gapSeqs);
 #print $extSeqs{"YP_989117.1"} . "\n";
