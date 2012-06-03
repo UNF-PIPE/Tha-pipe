@@ -26,8 +26,8 @@ sub findAltStart {
 	my $check = 1;
 	#end testvars
 	for my $ProtID (@{$gapSeqs}){
-		$workingSeq = get_gene($genomeHash, $gbk,$ProtID,4*$noOfGaps,0);
-		$originalSeq = get_gene($genomeHash, $gbk,$ProtID,0,0);
+		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0);
+		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0);
 		while ($check == 1){
 			$workingSeq =~ m/(ATG\D+)/;
 			$workingSeq = $1;
