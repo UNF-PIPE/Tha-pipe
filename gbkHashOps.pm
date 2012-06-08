@@ -30,15 +30,20 @@ sub make_gbk_hash{
 		open GBFILE, $genbankDir.$file or die $!;		
 		my @array = <GBFILE>;
 		chomp(@array);
-		my $toprow = shift(@array);
-		
-		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
-			$ge = "$1";
-		}	
-		else{$ge = "unknown";}
+		#my $toprow = shift(@array);
+	  my @toprows = @array[0..10];	
+#		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
+#			$ge = "$1";
+#		}
+    foreach (@toprows) {
+      if($_ =~ m/^VERSION\s*(\S*)\s/) {
+        $ge = "$1";
+        print $ge."\n";
+      }	
+    }
 
-		my @toprow_split = split(/\t/,$toprow);
-		my $genomeID = $toprow_split[2];
+		#my @toprow_split = split(/\t/,$toprow);
+		#my $genomeID = $toprow_split[2];
 		$all_lines = join("", @array);
 		#print $all_lines;
 		my @array2= split(/\/translation/,$all_lines);
