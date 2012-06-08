@@ -14,54 +14,95 @@ sub findAltStart {
 	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
 	my $taxID;
 	my %extSeqs;
-	#testvars
+	my %logSeqs;
+	
 	my $len1;
 	my $len2;
 	my $originalSeq;
 	my $lengthDiffStart;
 	my $lengthDiffStop;
 	my $lengthDiffStartStop;
-	my %logSeqs;
 	my $workingSeq;
 	my $check = 1;
-	#end testvars
+	my $counter = 0;
+	my @all;
 	for my $ProtID (@{$gapSeqs}){
-		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0);
-		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0);
+		$counter = 0;
+		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene extended with the number of gaps
+##		print "first workingSeq \n\n";
+##		print $workingSeq;
+##		print "\n\n";
+		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0); #The non-extended gene
 		while ($check == 1){
+			$counter++;
+			print $counter . "\n\n";
 			$workingSeq =~ m/(ATG\D+)/;
 			$workingSeq = $1;
 			$lengthDiffStart = length($workingSeq) - length($originalSeq);
 			if ($lengthDiffStart == 0) { #The extended sequence is the same as the original sequence
-				$extSeqs{$ProtID} = $workingSeq;
+				$extSeqs{$ProtID} = translateToProt($workingSeq);
 				$check = 0;
 			}
 			if ($lengthDiffStart % 3 == 0) { #The new ATG is in frame with the old one
-				$1 =~ m/(T[AG][AG]\D+)/;
+				@all = $1 =~ m/(T[AG][AG]\D+)$/g;
 				$len2 = length($1);
 				if ($len2 != 0) { #The stop codon is not the last one in the sequence
 					$lengthDiffStartStop = length($workingSeq) - $len2; #Length difference between new start and in-between stop
 					if ($lengthDiffStartStop % 3 == 0) { #The stop codon is in frame with the new start
 						#Keep looking for a closer, better ATG
 						$workingSeq = substr $workingSeq, -$len2; #Begin at the position of this stop codon
+						#$workingSeq =
 						$check = 1;
+					}
+					else {
+						print $ProtID . "\n\n";
+						for ( @all) {
+							print $_ . "\n";
+						} 
+						print "slut på detta varv \n\n";	
 					}
 				}
 				else { #If it is the last stop codon, return the extended sequence
-					$extSeqs{$ProtID} = $workingSeq;
+					$extSeqs{$ProtID} = translateToProt($workingSeq);
 					$check = 0;
 				}
 			}
 			else {
-				#log the sequence
+				#log the sequence if the found ATG is not in frame with the original one 
 				$logSeqs{$ProtID} = $workingSeq;
 				#Keep looking for a closer, better ATG
+				$workingSeq =~ m/(T[AG][AG]\D+)/;
+				$len2 = length($1);
 				$workingSeq = substr $workingSeq, -$len2;
 				$check = 1; 
 			}
 		}
 	}
+##	print "original seq \n\n";
+##	print $originalSeq;
+##	print "\n\n";
+##	print "preliminary extended seq \n\n";
+##	print $workingSeq;
+##	print "\n\n";
+##	print "logSeqs \n\n";
+##	print %logSeqs;
+##	print "\n\n";
+	print "extSeqs \n\n";
+	print %extSeqs;
+	print "\n\n";
 	return %extSeqs;
+}
+
+sub translateToProt {
+	my $sequence = $_[0];
+	my $DNA = Bio::PrimarySeq->new ( -seq => $sequence ,
+					 #-id  => 'YP_989117.1',
+					 #-accession_number => 'X78121',
+					 -alphabet => 'dna',
+					 -is_circular => 0 );
+	my $protein = $DNA->translate;
+	return $protein->seq;
+
 }
 
 #Returns the ids of sequences with more than the specified number of gaps
