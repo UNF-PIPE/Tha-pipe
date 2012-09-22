@@ -31,19 +31,19 @@ my %prot = mkHash("/home/data/NCBI-proteoms/");
 my %genome = mkHash("/home/data/NCBI-genomes/");
 my %annotation = make_gbk_hash("/home/data/NCBI-annotation/"); 
 
-my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`;
-my $pm = new Parallel::ForkManager($cores++);
+#my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`;
+#my $pm = new Parallel::ForkManager($cores++);
 while (my ($key,$value) = each %orthoHash) {
-	my $pid = $pm->start and next;
+	#my $pid = $pm->start and next;
 
 	my $alignedSequences = multipleAlign(\@{$value}, \%prot); 
     my @gapSeqs = findGaps($alignedSequences, 13);
     my %extSeqs = findAltStart(\@gapSeqs, 13, \%annotation, \%genome);
 	$alignedSequences = multipleAlign(\@{$value}, \%prot, \%extSeqs); 
 
-	$pm->finish; # Terminates the child process
+#	$pm->finish; # Terminates the child process
 	my $tree = makeTree($alignedSequences);
     my $treeOut = $tree->as_text('newick');
     print $treeOut . "\n";
 }
-$pm->wait_all_children;
+#$pm->wait_all_children;

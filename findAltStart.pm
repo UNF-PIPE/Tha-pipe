@@ -9,8 +9,9 @@ use Exporter;
 use base qw( Exporter );
 our @EXPORT_OK = qw( findAltStart findGaps mkHash);
 
-#Extends the sequences privided to the nearest ATG
+#Extends the sequences provided to the nearest ATG
 sub findAltStart {
+
 	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
 	my $taxID;
 	my %extSeqs;
@@ -25,71 +26,82 @@ sub findAltStart {
 	my $workingSeq;
 	my $check = 1;
 	my $counter = 0;
-	my @all;
+	my $origLength;
 	for my $ProtID (@{$gapSeqs}){
+
 		$counter = 0;
-		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene extended with the number of gaps
-##		print "first workingSeq \n\n";
-##		print $workingSeq;
-##		print "\n\n";
+		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene 
+			#extended with the specified number of gaps
 		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0); #The non-extended gene
+		unless ((my $sub = substr $workingSeq, 4*$noOfGaps) eq $originalSeq) { #unless get_gene 
+				#returns two completely different sequences (parts without extension)
+			print "\n\n get_gene mismatch \n\n";
+#			print "o: $originalSeq \n";
+#			print "w_sub: $sub \n";
+			next;
+		}
+		$origLength = length($originalSeq);
 		while ($check == 1){
 			$counter++;
-			print $counter . "\n\n";
-			$workingSeq =~ m/(ATG\D+)/;
+			$workingSeq =~ m/([AGT]TG\D+)/;
 			$workingSeq = $1;
-			$lengthDiffStart = length($workingSeq) - length($originalSeq);
-			if ($lengthDiffStart == 0) { #The extended sequence is the same as the original sequence
-				$extSeqs{$ProtID} = translateToProt($workingSeq);
+			$lengthDiffStart = length($workingSeq) - $origLength;
+			if ($lengthDiffStart == 0) { #The extended sequence is the same as the
+					# original sequence
+				$extSeqs{$ProtID} = translateToProt($originalSeq);
+
 				$check = 0;
 			}
-			if ($lengthDiffStart % 3 == 0) { #The new ATG is in frame with the old one
-				@all = $1 =~ m/(T[AG][AG]\D+)$/g;
+			if ($lengthDiffStart < 0) {
+				print "\n Too short workingSeq: lengthDiffStart = $lengthDiffStart \n originalSeq: \n $originalSeq \n\n workingSeq: \n $workingSeq \n";
+			}
+			if ($lengthDiffStart % 3 == 0) { #The new ATG is in 
+					#frame with the old one
+				
+				$1 =~ m/(T[AG][AG]\D+)$/g;
 				$len2 = length($1);
 				if ($len2 != 0) { #The stop codon is not the last one in the sequence
-					$lengthDiffStartStop = length($workingSeq) - $len2; #Length difference between new start and in-between stop
-					if ($lengthDiffStartStop % 3 == 0) { #The stop codon is in frame with the new start
-						#Keep looking for a closer, better ATG
-						$workingSeq = substr $workingSeq, -$len2; #Begin at the position of this stop codon
-						#$workingSeq =
+					
+					$lengthDiffStartStop = length($workingSeq) - $len2; #Length difference 
+						#between new start and in-between stop
+					if (($lengthDiffStartStop % 3 == 0) && ($lengthDiffStartStop > 0)) { #The 
+							#stop codon is in frame with the new start (and downstream of it)
+						
+						#Keep looking for a closer, better start codon	
+						$workingSeq = substr $workingSeq, (length($workingSeq)-$len2);
+
 						$check = 1;
 					}
-					else {
-						print $ProtID . "\n\n";
-						for ( @all) {
-							print $_ . "\n";
-						} 
-						print "slut på detta varv \n\n";	
+					else { #If no downstream stop codon if found that is in frame with
+							# the new start
+#						print "\n About to translate... lengthDiffStart = $lengthDiffStart \n";
+						#Return the translated extended sequence
+						$extSeqs{$ProtID} = translateToProt($workingSeq);
+
+						$check = 0;	
 					}
 				}
-				else { #If it is the last stop codon, return the extended sequence
+				else { #If it is the last stop codon
+#					print "\n About to translate... lengthDiffStart = $lengthDiffStart \n";
+					#Return the translated extended sequence
 					$extSeqs{$ProtID} = translateToProt($workingSeq);
+
 					$check = 0;
 				}
 			}
-			else {
-				#log the sequence if the found ATG is not in frame with the original one 
-				$logSeqs{$ProtID} = $workingSeq;
-				#Keep looking for a closer, better ATG
-				$workingSeq =~ m/(T[AG][AG]\D+)/;
-				$len2 = length($1);
-				$workingSeq = substr $workingSeq, -$len2;
+			else { #If the found start codon is not in fram with the original one
+
+				#log the sequence 
+#				$logSeqs{$ProtID} = $workingSeq;
+
+				#Keep looking for a closer, better start codon
+
+				$workingSeq = substr $workingSeq, 1;
+
 				$check = 1; 
 			}
 		}
 	}
-##	print "original seq \n\n";
-##	print $originalSeq;
-##	print "\n\n";
-##	print "preliminary extended seq \n\n";
-##	print $workingSeq;
-##	print "\n\n";
-##	print "logSeqs \n\n";
-##	print %logSeqs;
-##	print "\n\n";
-	print "extSeqs \n\n";
-	print %extSeqs;
-	print "\n\n";
 	return %extSeqs;
 }
 
