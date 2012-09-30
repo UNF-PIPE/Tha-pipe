@@ -5,18 +5,12 @@ use warnings;
 
 use Test::More;
 
-use gbkHashOps qw(make_gbk_hash get_gene);
+use HashRoutines qw(make_gbk_hash mkHash);
 
 my $test_gbk_dir = "t/test_data/gbk_data/";
 my $test_genome_path = "/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta";
 
 my %gbk_hash = make_gbk_hash($test_gbk_dir);
-
-#print "Jesper";
-
-my $gene = get_gene($test_genome_path,\%gbk_hash,'YP_988349.1',0,0);
-
-#print %gene;
 
 #my $tmp = $gbk_hash{'YP_190472.1'}[5];
 #print "$tmp\n";

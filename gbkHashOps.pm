@@ -8,70 +8,7 @@ use Getopt::Long;
 
 use Exporter;
 use base qw( Exporter );
-our @EXPORT_OK = qw(make_gbk_hash get_gene);
-
-#Subroutine for making a hash of genbank annotation files	
-sub make_gbk_hash{	
-	my $genbankDir = $_[0]; #One example gbk file is downloadable from ftp://ftp.ncbi.nih.gov/genomes/Bacteria/Bartonella_bacilliformis_KC583_uid58533/
-	my @files = read_dir($genbankDir);
-	my $all_lines;
-	my %gbkhash;
-
-	my $ACID; #Accesion ID
-	my $start; #start location for ACID;
-	my $stop; #stop location for ACID;
-	my $complement; #values true or false
-	my $GI; # GI number
-	my $geneID; #GeneID
-	my $ge;
-
-	foreach my $file (@files){
-		#print $file."\n";
-		open GBFILE, $genbankDir.$file or die $!;		
-		my @array = <GBFILE>;
-		chomp(@array);
-		#my $toprow = shift(@array);
-	  my @toprows = @array[0..10];	
-#		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
-#			$ge = "$1";
-#		}
-    foreach (@toprows) {
-      if($_ =~ m/^VERSION\s*(\S*)\s/) {
-        $ge = "$1";
-        print $ge."\n";
-      }	
-    }
-
-		#my @toprow_split = split(/\t/,$toprow);
-		#my $genomeID = $toprow_split[2];
-		$all_lines = join("", @array);
-		#print $all_lines;
-		my @array2= split(/\/translation/,$all_lines);
-		foreach(@array2){
-			if ($_ =~ m/CDS\s+(\d+)\.\.(\d+).\s+/){
-				#print "$1\t";
-				$start = $1;
-				$stop = $2;
-				$complement = 0;	
-			}
-			elsif ($_ =~ m/CDS\s+complement\((\d+)\.\.(\d+)\)\s+/) {
-				#print "$1 $2\t";
-				$start = $1;
-				$stop = $2;
-				$complement = 1;
-			}
-			if ($_ =~ m/\/protein_id=\"(.*)\"\s+\/db_xref=\"GI:(.*)\"\s+\/db_xref=\"GeneID:(.*)\"/) {
-				#print "$1\n";
-				$ACID = $1;			
-				$GI = $2;
-				$geneID = $3;
-			}
-			#Store in hash with AccessionID as key
-			$gbkhash{$ACID}=[$start, $stop, $complement, $GI, $geneID, $ge];
-		}
-	}
-	return %gbkhash
-}#endbracket of subroutine make_gbk_hash
+our @EXPORT_OK = qw(get_gene);
 
 sub get_gene{
     my ($genome_path,$orthoHash,$ID,$ext_start,$ext_stop) = @_;

@@ -13,9 +13,8 @@ use Bio::Tree::DistanceFactory;
 use Bio::Tree::TreeI;
 use Parallel::ForkManager;
 
-use OrthoMCLParser qw( parse_orthomcl_file );
 use findParalogs qw( findParalogs makeTree );
-use gbkHashOps qw( make_gbk_hash get_gene );
+use HashRoutines qw( make_gbk_hash get_gene parse_orthomcl_file );
 use multipleAlign qw(multipleAlign);
 use findAltStart qw( findAltStart findGaps mkHash);
 
