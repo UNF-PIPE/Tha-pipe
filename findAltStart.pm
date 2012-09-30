@@ -33,6 +33,7 @@ sub findAltStart {
 		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene 
 			#extended with the specified number of gaps
 		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0); #The non-extended gene
+    
 		unless ((my $sub = substr $workingSeq, 4*$noOfGaps) eq $originalSeq) { #unless get_gene 
 				#returns two completely different sequences (parts without extension)
 			print "\n\n get_gene mismatch \n\n";
@@ -49,6 +50,7 @@ sub findAltStart {
 			if ($lengthDiffStart == 0) { #The extended sequence is the same as the
 					# original sequence
 				$extSeqs{$ProtID} = translateToProt($originalSeq);
+        #print $extSeqs{$ProtID} . "\n";
 
 				$check = 0;
 			}
@@ -113,7 +115,8 @@ sub translateToProt {
 					 -alphabet => 'dna',
 					 -is_circular => 0 );
 	my $protein = $DNA->translate;
-	return $protein->seq;
+  #print substr $protein->seq,0,-1 . "\n";
+	return substr $protein->seq,0,-1;
 
 }
 
