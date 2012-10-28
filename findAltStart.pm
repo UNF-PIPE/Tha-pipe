@@ -12,33 +12,31 @@ our @EXPORT_OK = qw( findAltStart findGaps);
 #Extends the sequences provided to the nearest ATG
 sub findAltStart {
 	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
-	my $taxID;
 	my %extSeqs;
-	my %logSeqs;
 	
 	my $originalSeq;
 	my $lengthDiffStart;
-	my $lengthDiffStop;
 	my $lengthDiffStartStop;
 	my $workingSeq;
-	my $check = 1;
 	my $origLength;
 	my $candidateSeq;
-	my $checkForStop;
 	my @arr;
+	my $subO;
 	for my $ProtID (@{$gapSeqs}){
-		$checkForStop = 0;
 		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene 
 			#extended with the specified number of gaps
 		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0); #The non-extended gene
+		$subO = substr $originalSeq, 0, 3;
+		unless (($subO eq "ATG") || ($subO eq "GTG") || ($subO eq "TTG")) {next;} 
    		$candidateSeq = $originalSeq; 
 		unless ((my $sub = substr $workingSeq, 4*$noOfGaps) eq $originalSeq) { #unless get_gene 
 				#returns two completely different sequences (parts without extension)
 			print "\n\n get_gene mismatch \n\n";
+			print "The extended sequence: \n\n $workingSeq \n\n The unextended sequence: \n\n $originalSeq \n\n";
 			next;
 		}
 		$origLength = length($originalSeq);
-		while ($check == 1){
+		while (1){
 			$workingSeq =~ m/([AGT]TG\D+)/;
 			$workingSeq = $1;
 			$lengthDiffStart = length($workingSeq) - $origLength;
@@ -81,8 +79,9 @@ sub findAltStart {
 	return %extSeqs;
 }
 
-#Help routine to findAltStart
-sub findInternalStop { #Used to find a stop codon internal to the extended part of a sequence in the findAltStart sub.
+#Help routine to findAltStart. Used to find a stop codon internal to the extended part of 
+#a sequence in the findAltStart sub.
+sub findInternalStop { 
 	my $wSeq = $_[0];
 	my $cSeq = $_[1];
 	my @output = ($wSeq, $cSeq, 0);
@@ -101,9 +100,8 @@ sub findInternalStop { #Used to find a stop codon internal to the extended part 
 			@output = ($wSeq, $cSeq, 1);
 			return @output;
 		}
-		else { #If no downstream stop codon if found that is in frame with
-				# the new start
-				#Return the translated extended sequence $extSeqs{$ProtID} = translateToProt($workingSeq);
+		else { #If no downstream stop codon if found that is in frame with the new start
+				#Return the translated extended sequence
 				$cSeq = $wSeq;						
 				$wSeq = substr $wSeq, 1;						
 				@output = ($wSeq, $cSeq, 2);
@@ -112,7 +110,6 @@ sub findInternalStop { #Used to find a stop codon internal to the extended part 
 	}
 	else { #If it is the last stop codon
 			#Return the translated extended sequence
-			#$extSeqs{$ProtID} = translateToProt($wSeq);
 			@output = ($wSeq, $cSeq, 3);
 			return @output;
 	}
