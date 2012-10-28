@@ -21,14 +21,19 @@ sub get_gene{
 
     while (my $seq = $genome->next_seq){
         #Start and stop positions from %gbkhash
-        my $start = $gbkHash->{$ID}[0] - $ext_start;
-        my $stop = $gbkHash->{$ID}[1] + $ext_stop;
+        my ($start, $stop);
 
         #If gene is on complementary strand, take the reverse complement of the seq
         if($gbkHash->{$ID}[2] == 0){ 
+            $start = $gbkHash->{$ID}[0] - $ext_start;
+            $stop = $gbkHash->{$ID}[1] + $ext_stop;
+            
             $gene = $seq->subseq($start, $stop);
         }   
         else{
+            $start = $gbkHash->{$ID}[0] - $ext_stop;
+            $stop = $gbkHash->{$ID}[1] + $ext_start;
+            
             my $gene_obj = $seq->trunc($start, $stop);
             my $reversed = $gene_obj->revcom;
             $gene = $reversed->seq;
