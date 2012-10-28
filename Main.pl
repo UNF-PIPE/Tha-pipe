@@ -14,9 +14,10 @@ use Bio::Tree::TreeI;
 use Parallel::ForkManager;
 
 use findParalogs qw( findParalogs makeTree );
-use HashRoutines qw( make_gbk_hash get_gene parse_orthomcl_file );
+use HashRoutines qw( mkHash make_gbk_hash parse_orthomcl_file );
+use MapRoutines qw( get_gene );
 use multipleAlign qw(multipleAlign);
-use findAltStart qw( findAltStart findGaps mkHash);
+use findAltStart qw( findAltStart findGaps );
 
 #Get the parameters for ParserOrthoMCLgroups
 my $speciesPerLine;
@@ -34,15 +35,14 @@ my %annotation = make_gbk_hash("/home/data/NCBI-annotation/");
 #my $pm = new Parallel::ForkManager($cores++);
 while (my ($key,$value) = each %orthoHash) {
 	#my $pid = $pm->start and next;
-
 	my $alignedSequences = multipleAlign(\@{$value}, \%prot); 
-    my @gapSeqs = findGaps($alignedSequences, 13);
-    my %extSeqs = findAltStart(\@gapSeqs, 13, \%annotation, \%genome);
+	my @gapSeqs = findGaps($alignedSequences, 13);
+    	my %extSeqs = findAltStart(\@gapSeqs, 13, \%annotation, \%genome);
 	$alignedSequences = multipleAlign(\@{$value}, \%prot, \%extSeqs); 
 
-#	$pm->finish; # Terminates the child process
+	#$pm->finish; # Terminates the child process
 	my $tree = makeTree($alignedSequences);
-    my $treeOut = $tree->as_text('newick');
-    print $treeOut . "\n";
+    	my $treeOut = $tree->as_text('newick');
+    	print $treeOut . "\n";
 }
 #$pm->wait_all_children;
