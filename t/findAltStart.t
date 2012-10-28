@@ -6,7 +6,9 @@ use Bio::SeqIO;
 use IO::String;
 use Test::More;
 
-use findAltStart qw( findAltStart findGaps mkHash);
+use findAltStart qw( findAltStart findGaps );
+use HashRoutines qw(make_gbk_hash mkHash);
+use MapRoutines qw(get_gene);
 
 my $test_data_path = "t/test_data/findAltStart_data/";
 my %gbkTestHash = (
@@ -16,19 +18,26 @@ my %gbkTestHash = (
 	"YP_003225146.1" => ["8889", "9719", "0"],
 );
 my $YP_9891171seq = "MVDYIEYNETPLKFNGKIRIFDDYAFAEMRKVGQIAAECLDALTDIIKPGITTQEIDDFIFIFGAERGALPADLNYRGYSHSCCTSINHVVCHGIPNKKSLQEGDIVNVDVTFILNGWHGDSSRMYPVGKVKRAAERLLEITHECLMRGIEAVKPGATTGDIGAAIQRYAESERCSVVRDFCGHGIGQLFHDAPNILHYGNPGEGEELKQGMIFTIEPMINLGKPQVKILSDGWTAVTRDRSLSAQYEHTIGVTDQGCEIFTQSPKNIFYIPNSCA";
+my $YP_003037633seq = "MATNAKPVYKRILLKLSGEALQGTEGFGIDASILDRMAQEIKELVELGIQVGVVIGGGNLFRGAGLAKAGMNRVVGDHMGMLATVMNGLAMRDALHRAYVNARLMSAIPLNGVCDSYSWAEAISLLRNNRVVILSAGTGNPFFTTDSAACLRGIEIEADVVLKATKVDGVFTADPAKDPTATMYEQLTYSEVLEKELKVMDLAAFTLARDHKLPIRVFNMNKPGALRRVVMGEKEGTLITE";
 
 #Opens the alignment file and concatenates it into one string.
 open my $aln_file, '<', $test_data_path . "test2_aln.fasta" or die "Can't find test file: $?, $!";
 my $aln = join("", <$aln_file>);
 
 #Run the subroutines
-my %genomeHash = mkHash($test_data_path . "genomes/");
+#my %genomeHash = mkHash($test_data_path . "genomes/");
+my %genomeHash = mkHash("/home/data/NCBI-genomes/");
 my @gapSeqs = findGaps($aln, 13);
 my %extSeqs = findAltStart(\@gapSeqs, 13, \%gbkTestHash, \%genomeHash);
+
+#Prel
+my %gbk_hash = make_gbk_hash("/home/data/NCBI-annotation/");
+#print get_gene(%genomeHash, %gbk_hash, "YP_003037633.1",0,0 );
 
 #print join(" ", @gapSeqs);
 #print $extSeqs{"YP_989117.1"} . "\n";
 #print $aln;
+#Prot to use for further testing YP_003037633.1
 
 #Translate the retrieved DNA seq back to protein
 my $extendedSeq = Bio::PrimarySeq->new ( -seq => $extSeqs{"YP_989117.1"} ,

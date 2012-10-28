@@ -26,7 +26,7 @@ ok( ref($gbk_hash{'YP_190472.1'}) eq 'ARRAY', 'Group YP_190472.1 is an array ref
 ok($gbk_hash{'YP_190472.1'}[2] == 1, 'Group YP_190472.1 has a third entry of 1 (i.e. it is complement)');
 
 ok(exists $gbk_hash{'YP_190472.1'}[5], "there is an element in the sixth position");
-ok( $gbk_hash{'YP_190472.1'}[5] eq 'NC_006677', 'genome ID found and stored in hash, and can be retrieved') ;
+ok( $gbk_hash{'YP_190472.1'}[5] eq 'NC_006677.1', 'genome ID found and stored in hash, and can be retrieved') ;
 
 
 done_testing();
