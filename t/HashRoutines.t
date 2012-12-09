@@ -8,7 +8,7 @@ use Test::More;
 use HashRoutines qw(make_gbk_hash mkHash);
 
 my $test_gbk_dir = "t/test_data/gbk_data/";
-my $test_genome_path = "/home/data/NCBI-genomes/Bartonella_bacilliformis.fasta";
+my $test_genome_path = "t/test_data/genaom_data/NCBI-genomes/Bartonella_bacilliformis.fasta";
 
 my %gbk_hash = make_gbk_hash($test_gbk_dir);
 
