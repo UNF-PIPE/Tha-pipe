@@ -6,113 +6,104 @@ use IO::String;
 use File::Slurp;
 use MapRoutines qw(get_gene translateToProt);
 use Exporter;
-use base qw( Exporter );
-our @EXPORT_OK = qw( findAltStart findGaps);
+use base qw(Exporter);
+use Bio::Tree::Tree;
+our @EXPORT_OK = qw(findAltStart findGaps);
 
-#Extends the sequences provided to the nearest ATG
 sub findAltStart {
+	my %out_sequences;
 	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
-	my %extSeqs;
-	
-	my $originalSeq;
-	my $lengthDiffStart;
-	my $lengthDiffStartStop;
-	my $workingSeq;
-	my $origLength;
-	my $candidateSeq;
-	my @arr;
-	my $subO;
-	for my $ProtID (@{$gapSeqs}){
-		$workingSeq = get_gene($genomeHash, $gbkHash,$ProtID,4*$noOfGaps,0); #The gene 
-			#extended with the specified number of gaps
-		$originalSeq = get_gene($genomeHash, $gbkHash,$ProtID,0,0); #The non-extended gene
-		$subO = substr $originalSeq, 0, 3;
-		unless (($subO eq "ATG") || ($subO eq "GTG") || ($subO eq "TTG")) {next;} 
-   		$candidateSeq = $originalSeq; 
-		unless ((my $sub = substr $workingSeq, 4*$noOfGaps) eq $originalSeq) { #unless get_gene 
-				#returns two completely different sequences (parts without extension)
-			print "\n\n get_gene mismatch \n\n";
-			print "The extended sequence: \n\n $workingSeq \n\n The unextended sequence: \n\n $originalSeq \n\n";
-			next;
+	my ($original_gene, $extended_gene, $extension);
+	my @codon_arrays;
+	my $suitable_start_pos;
+		
+	for my $ProtID (@{$gapSeqs}) {
+		#Fetch gene and extension
+		$original_gene = get_gene($genomeHash,$gbkHash,$ProtID,0,0);
+		my $translated_orig = translateToProt($original_gene);
+		if ($translated_orig =~ m/\*\D+/) {
+			die "Error: Original gene contains internal stop codon, igonered";
+		} 
+		$extended_gene = get_gene($genomeHash,$gbkHash,$ProtID,3*$noOfGaps,0);
+		$extension = substr($extended_gene,0,3*$noOfGaps);
+		
+		#Build start and stop codon arrays
+		@codon_arrays = buildCodonArrays($extension);
+		
+		if (@codon_arrays) {	
+			#Compare codon arrays to find a suitable start codon
+			$suitable_start_pos = compareCodonArrays(\@codon_arrays);
+		} else {
+			$suitable_start_pos = -1;
 		}
-		$origLength = length($originalSeq);
-		while (1){
-			$workingSeq =~ m/([AGT]TG\D+)/;
-			$workingSeq = $1;
-			$lengthDiffStart = length($workingSeq) - $origLength;
-			if ($lengthDiffStart == 0) { #The extended sequence is the same as the original sequence
-				$extSeqs{$ProtID} = translateToProt($candidateSeq);				
-				last;
-			}
-			if ($lengthDiffStart < 0) {
-				print "\n Too short workingSeq: lengthDiffStart = $lengthDiffStart \n originalSeq: \n $originalSeq \n\n workingSeq: \n $workingSeq \n";
-			}
-			if ($lengthDiffStart % 3 == 0) { #The new ATG is in 
-					#frame with the old one
-				@arr = findInternalStop($workingSeq, $candidateSeq);
-				#If an in frame stop codon was found
-				if ($arr[2] == 1) {
-					$workingSeq = $arr[0];
-				}
-				#If no in frame stop codon was found
-				elsif ($arr[2] == 2) {
-					$workingSeq = $arr[0];
-					$candidateSeq = $arr[1];
-					last;
-				}
-				#If the only stop corresponds to the last stop in the gene
-				elsif ($arr[2] == 3) {
-					$workingSeq = $arr[0];
-					$extSeqs{$ProtID} = translateToProt($arr[0]);
-					last
-				}
-				else {
-					print "\n err \n";
-				}
-			}
-			else { #If the found start codon is not in fram with the original one
-				#Keep looking for a closer, better start codon
-				$workingSeq = substr $workingSeq, 1;
+
+		#Modify extension if necessary. Translate and add to output hash
+		if ($suitable_start_pos == -1) {
+			$out_sequences{$ProtID} = $translated_orig;
+		} else {
+			my $translated_ext = translateToProt(substr($extended_gene, $suitable_start_pos));
+			if ($translated_ext =~ m/\*\D+/) {
+				die "Error: Extended protein contains internal stop codon, igonered";
+			} else {
+				$out_sequences{$ProtID} = $translated_ext;
 			}
 		}
 	}
-	return %extSeqs;
+	return %out_sequences;
 }
 
-#Help routine to findAltStart. Used to find a stop codon internal to the extended part of 
-#a sequence in the findAltStart sub.
-sub findInternalStop { 
-	my $wSeq = $_[0];
-	my $cSeq = $_[1];
-	my @output = ($wSeq, $cSeq, 0);
-	my $len;
-	my $lengthDiffStartStop;
-
-	$wSeq =~ m/(T[AG][AG]\D+)$/g;
-	$len = length($wSeq);
-	if ($len != 0) { #The stop codon is not the last one in the sequence				
-		$lengthDiffStartStop = length($wSeq) - $len; #Length difference 
-						#between new start and in-between stop
-		if (($lengthDiffStartStop % 3 == 0) && ($lengthDiffStartStop > 0)) { #The 
-			#stop codon is in frame with the new start (and downstream of it)
-			#Keep looking for a closer, better start codon	
-			$wSeq = substr $wSeq, (length($wSeq)-$len);
-			@output = ($wSeq, $cSeq, 1);
-			return @output;
+sub buildCodonArrays {
+	my $extension = $_[0];
+	my $position = 0;
+	my $end = length($extension) - 1;
+	my @start_codons;
+	my @stop_codons;
+	
+	while ($position <= $end-3) {
+		if (inFrame($position, $end+1)) {
+			if ((substr($extension, $position, 3)) =~ m/([ATG]TG)/) {
+				push(@start_codons, $position);}
+			elsif ((substr($extension, $position, 3)) =~ m/(T[AG][AG])/) {
+				push(@stop_codons, $position);}
 		}
-		else { #If no downstream stop codon if found that is in frame with the new start
-				#Return the translated extended sequence
-				$cSeq = $wSeq;						
-				$wSeq = substr $wSeq, 1;						
-				@output = ($wSeq, $cSeq, 2);
-				return @output;
-		}		
+		$position += 1;
 	}
-	else { #If it is the last stop codon
-			#Return the translated extended sequence
-			@output = ($wSeq, $cSeq, 3);
-			return @output;
+	return (\@start_codons,\@stop_codons);
+}	
+
+#Checks if a codon in an extension is in frame with the original gene
+sub inFrame {
+	my $codon_start_position = $_[0];
+	my $beginning_of_gene = $_[1]; #Needs to be end of extension +1
+
+	return (($beginning_of_gene - $codon_start_position) % 3  == 0);
+}
+
+#Finds a suitable start codon from arrays of discovered start and stop codons. Returns -1 if none was found.
+sub compareCodonArrays {
+	my ($codon_array_ref) = shift;
+	my @start_codons;
+	my @stop_codons;
+	my @closer_starts = (-1);
+	if (defined $codon_array_ref->[0]) {
+		@start_codons = @{$codon_array_ref->[0]};
 	}
+	if (defined $codon_array_ref->[1]) {
+		@stop_codons = @{$codon_array_ref->[1]};
+	}
+
+	if ($#start_codons + 1 != 0) {
+		if (@stop_codons == 0) {
+			#Pick first start codon from 5' end of extension
+			return $start_codons[0];
+		}
+		else { 
+			#Pick first start codon closer to gene then the closest stop codon
+			push(@closer_starts, grep {$_ > $stop_codons[-1]} @start_codons);
+			return $closer_starts[-1];
+		}
+	}
+	else {return -1};
 }
 
 #Returns the ids of sequences with more than the specified number of gaps

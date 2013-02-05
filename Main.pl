@@ -27,11 +27,12 @@ GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSp
 
 #Test. The "wrap around" code goes here
 my %orthoHash = parse_orthomcl_file($orthomcl_groups_file, $speciesPerLine, $proteinsPerSpecies);
-my %prot = mkHash("/home/data/NCBI-proteoms/");
-my %genome = mkHash("/home/data/NCBI-genomes/");
-my %annotation = make_gbk_hash("/home/data/NCBI-annotation/"); 
+my %prot = mkHash("t/test_data/proteome_data/NCBI-proteoms/");
+my %genome = mkHash("t/test_data/genome_data/NCBI-genomes/");
+my %annotation = make_gbk_hash("t/test_data/genome_data/NCBI-annotation/"); 
 
-my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`;
+my $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`; #on Linux
+#my $cores = `sysctl -n hw.ncpu`; #on Mac
 my $pm = new Parallel::ForkManager($cores++);
 while (my ($key,$value) = each %orthoHash) {
 	my $pid = $pm->start and next;
