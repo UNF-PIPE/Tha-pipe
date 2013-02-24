@@ -37,6 +37,6 @@ ok(join("", @gapSeqs) =~ "YP_989117.1", "The seq YP_989117.1 contains more than 
 ok(!(join("", @gapSeqs) =~ "YP_003225146.1"), "The seq YP_003225146.1 contains less than 13 gaps");
 ok($eS =~ $YP_9891171seq, "The seq retrieved from the genome for YP_989117.1 is correct");
 #note("\n\n$eS\n\n"."$YP_9891171seq\n\n");
-ok($eS =~ $extendedProtein, "The retrieved protein was extended correctly");
+ok($eS eq $extendedProtein, "The retrieved protein was extended correctly");
 
 done_testing();
