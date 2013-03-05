@@ -1,0 +1,103 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=24;
+	taxlabels
+	'AY563264|Selaginella'
+	'AF020843|Ginkgo'
+	'AAS86816|Ginko'
+	'AY563267|Gnetum'
+	'AY563266|Sequoia'
+	'46277272|Antir'
+	'46277288|Camel'
+	'40643993|Garde'
+	'46277282|Rhodo'
+	'AY563269|Trochodendron'
+	'Z19120|Arabidopsis'
+	'40644546|Maytenus'
+	'AY566619|Antir'
+	'40643995|Antir'
+	'40644046|Garde'
+	'46277286|Camel'
+	'40641903|Alangium'
+	'46277276|Antir'
+	'AF043426|Peperomia'
+	'AF020841|Magnolia'
+	'AY563268|Dioscorea'
+	'46277260|Akebia'
+	'AF041852|Chloranthus'
+	'AF043427|Nymphaea'
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] ((((('AY563264|Selaginella':0.07043,('AF020843|Ginkgo'[&!color=#-16773121]:0.03174,'AAS86816|Ginko'[&!color=#-16773121]:0.02118):0.0064):0.0024,('AY563267|Gnetum':0.04768,'AY563266|Sequoia':0.04873):0.00788):0.01151,(('46277272|Antir'[&!color=#-60928]:0.05338,'46277288|Camel'[&!color=#-16711912]:0.03071):0.00611,('40643993|Garde':0.0414,'46277282|Rhodo':0.03874):0.00343):0.00913):0.00263,'AY563269|Trochodendron':0.0193):1.9E-4,(('Z19120|Arabidopsis':0.03664,'40644546|Maytenus':0.0309):0.00789,((((('AY566619|Antir'[&!color=#-65536]:0.02653,'40643995|Antir'[&!color=#-65536]:0.01994):0.00219,'40644046|Garde':0.02951):4.0E-4,'46277286|Camel'[&!color=#-16711912]:0.02051):0.00125,'40641903|Alangium':0.01239):0.00292,'46277276|Antir'[&!color=#-57856]:0.01549):0.00558):0.01333,(('AF043426|Peperomia':0.02626,'AF020841|Magnolia':0.0279):5.6E-4,('AY563268|Dioscorea':0.02084,(('46277260|Akebia':0.01524,'AF041852|Chloranthus':0.00915):0.00227,'AF043427|Nymphaea':0.01227):0.0012):0.00163):0.00301);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="User Selection";
+	set appearance.backgroundColour=#-1;
+	set appearance.branchColorAttribute="User Selection";
+	set appearance.branchLineWidth=3.0;
+	set appearance.foregroundColour=#-16777216;
+	set appearance.selectionColour=#-2144520576;
+	set branchLabels.colorAttribute="User Selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="sansserif";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set nodeBars.barWidth=4.0;
+	set nodeLabels.colorAttribute="User Selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName="sansserif";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleAxis.significantDigits=4;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set scaleBar.significantDigits=4;
+	set tipLabels.colorAttribute="User Selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="Abyssinica SIL";
+	set tipLabels.fontSize=16;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

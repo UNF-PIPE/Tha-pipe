@@ -6,24 +6,34 @@ use Test::More;
 
 use findParalogs qw( findParalogs );
 
-my $test_path = "t/test_data/paralog_data/test1.fasta";
+#Read alignment file
+my $test_path = "t/test_data/paralog_data/paralogTest.fasta";
 open my $IN, '<', $test_path or die "Can't find test file: $?, $!";
+my $alignment = join("", <$IN>);
 
-my $alignment;
-while(<$IN>){
-	$alignment .= $_;
-}
-
+#Find the paralogs
 my @paralogs = findParalogs($alignment);
-my $par = 0;
+
+#Perform test
+my $CamelPar = 0;
+my $GinkgoOrth = 1;
+my $AntirPar = 0;
 print "Found the following paralogs:\n";
 for(@paralogs){
 	print "$_\n";
 	if($_ eq "Camel"){
-		$par=1;
+		$CamelPar=1;
 	}
+        if($_ eq "Ginkgo"){
+                $GinkgoOrth = 0;
+        }
+        if($_ eq "Antir"){
+                $AntirPar = 1;
+        }
 }
 
-ok($par, "Test data contains the paralog Camel");
+ok($CamelPar, "The two Camel genes are paralogs");
+ok($GinkgoOrth, "The two Ginkgo genes are orthologs");
+ok($AntirPar, "There are paralogs among the many Antir genes");
 
 done_testing();

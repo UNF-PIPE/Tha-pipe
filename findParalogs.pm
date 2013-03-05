@@ -13,7 +13,7 @@ use Bio::Tree::TreeI;
 
 use Exporter;
 use base qw( Exporter );
-our @EXPORT_OK = qw( makeTree findParalogs );
+our @EXPORT_OK = qw( findParalogs );
 
 sub makeTree {
         #Input: A string with a multiple alignment
@@ -42,16 +42,11 @@ sub findParalogs {
 		$species{$specie}++;
 	}
 	for(keys %species){
-		if($species{$_}==2){
+		if($species{$_} > 1){
 			if( checkIfParalog($tree,$_) ){
 				push(@paralogs,$_);
 			}
 		}	
-		elsif($species{$_}>2){
-			if( checkIfParalogsComplicated($tree, $_) ){
-				push(@paralogs, $_);
-			}
-		}
 	}
 	return @paralogs; 	
 }
@@ -67,32 +62,17 @@ sub checkIfParalog{
 			push(@parCandidates, $_);
 		}
         }
+        my $LCA = $tree->get_lca(-nodes => \@parCandidates);
 
-	if($parCandidates[0]->ancestor eq $parCandidates[1]->ancestor){
-		return 0;
-	}
-	return 1; 
+        for my $child ( $LCA->get_all_Descendents ) {
+                if($child->is_Leaf){
+                        my $id = $child->id;
+                        $id = (split(/\|/, $id))[1];
+                        if($id ne $species){
+                                return 1;
+                        }
+                }
+        }
+        return 0;
 }
-
-
-#
-#sub checkIfParalogsComplicated{
-#	my ($tree, $species) = @_;
-#	my @leaves = $tree->get_leaf_nodes;
-#	my @parCandidates;
-#	for(@leaves){
-#                my $id = $_->id;
-#                my $parCandidate = (split(/\|/, $id))[1];
-#		if($parCandidate eq $species){
-#			push(@parCandidates, $_);
-#		}
-#        }
-#	
-#	for my $i (0 .. (length(@parCandidates)-1){
-#		for my $j (($i+1) .. length($parCandidates)){
-#			print $i.$j."\n";
-#		}
-#	}	
-#
-#}
 1;
