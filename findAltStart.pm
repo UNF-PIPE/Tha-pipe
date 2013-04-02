@@ -84,7 +84,7 @@ sub compareCodonArrays {
 	my ($codon_array_ref) = shift;
 	my @start_codons;
 	my @stop_codons;
-	my @closer_starts = (-1);
+	my @closer_starts;
 	if (defined $codon_array_ref->[0]) {
 		@start_codons = @{$codon_array_ref->[0]};
 	}
@@ -100,7 +100,10 @@ sub compareCodonArrays {
 		else { 
 			#Pick first start codon closer to gene then the closest stop codon
 			push(@closer_starts, grep {$_ > $stop_codons[-1]} @start_codons);
-                        return $closer_starts[1];
+                        if (@closer_starts){
+				return $closer_starts[0];}
+			else
+				{return -1};
 		}
 	}
 	else {return -1};
