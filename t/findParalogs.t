@@ -12,7 +12,7 @@ open my $IN, '<', $test_path or die "Can't find test file: $?, $!";
 my $alignment = join("", <$IN>);
 
 #Find the paralogs
-my @paralogs = findParalogs($alignment);
+my @paralogs = findParalogs($alignment, 1);
 
 #Perform test
 my $CamelPar = 0;

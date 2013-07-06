@@ -35,12 +35,11 @@ sub make_gbk_hash{
 #		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
 #			$ge = "$1";
 #		}
-    foreach (@toprows) {
-      if($_ =~ m/^VERSION\s*(\S*)\s/) {
-        $ge = "$1";
-        print $ge."\n";
-      }	
-    }
+          foreach (@toprows) {
+                  if($_ =~ m/^VERSION\s*(\S*)\s/) {
+                          $ge = "$1";
+                  }	
+          }
 
 		#my @toprow_split = split(/\t/,$toprow);
 		#my $genomeID = $toprow_split[2];

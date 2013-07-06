@@ -32,18 +32,19 @@ sub makeTree {
 }
 
 sub findParalogs {
-	my $tree = makeTree($_[0]);
+	my ($alignment, $speciePos) = @_;
+        my $tree = makeTree($alignment);
 	my @leaves = $tree->get_leaf_nodes;
 	my %species;
 	my @paralogs;
 	for(@leaves){
 		my $id = $_->id;
-		my $specie = (split(/\|/, $id))[1];
+		my $specie = (split(/\|/, $id))[$speciePos];
 		$species{$specie}++;
 	}
 	for(keys %species){
 		if($species{$_} > 1){
-			if( checkIfParalog($tree,$_) ){
+			if( checkIfParalog($tree, $_, $speciePos) ){
 				push(@paralogs,$_);
 			}
 		}	
@@ -52,12 +53,12 @@ sub findParalogs {
 }
 
 sub checkIfParalog{
-	my ($tree, $species) = @_;
+	my ($tree, $species, $speciePos) = @_;
 	my @leaves = $tree->get_leaf_nodes;
 	my @parCandidates;
 	for(@leaves){
                 my $id = $_->id;
-                my $parCandidate = (split(/\|/, $id))[1];
+                my $parCandidate = (split(/\|/, $id))[$speciePos];
 		if($parCandidate eq $species){
 			push(@parCandidates, $_);
 		}
@@ -67,7 +68,7 @@ sub checkIfParalog{
         for my $child ( $LCA->get_all_Descendents ) {
                 if($child->is_Leaf){
                         my $id = $child->id;
-                        $id = (split(/\|/, $id))[1];
+                        $id = (split(/\|/, $id))[$speciePos];
                         if($id ne $species){
                                 return 1;
                         }

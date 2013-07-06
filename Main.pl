@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 
 use strict;
 use warnings;
@@ -20,8 +20,10 @@ use multipleAlign qw(multipleAlign);
 use findAltStart qw( findAltStart findGaps );
 
 #Get the parameters for ParserOrthoMCLgroups
-my ($speciesPerLine, $proteinsPerSpecies, $orthomcl_groups_file, $proteoms, $genomes, $annotations, $out);
-GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file, "p|proteoms=s" => \$proteoms, "gs|genomes=s" => \$genomes, "a|annotations=s" => \$annotations, "o|outname=s" => \$out);
+my ($speciesPerLine, $proteinsPerSpecies, $orthomcl_groups_file, $proteoms, $genomes, $annotations, $out, $speciePos);
+#Set default values
+$speciePos = 2;
+GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file, "p|proteoms=s" => \$proteoms, "gs|genomes=s" => \$genomes, "a|annotations=s" => \$annotations, "o|outname=s" => \$out, "h|specieHeader_pos=s" => \$speciePos);
 
 #Parse the orthomcl-file and create a hash with all ortholog groups that meet the criteria. 
 my %orthoHash = parse_orthomcl_file($orthomcl_groups_file, $speciesPerLine, $proteinsPerSpecies);
@@ -51,13 +53,13 @@ while (my ($key,$value) = each %orthoHash) {
 #	$alignedSequences = multipleAlign(\@{$value}, \%prot, \%extSeqs); 
         
         # Check for paralogs
-        my @Paralogs = findParalogs($alignedSequences);
+        my @Paralogs = findParalogs($alignedSequences, $speciePos);
         my $outName;
         if(@Paralogs){
                 #$outName = "/home/simon/Research/phylogeny_pipeline/results/130325/$key" . "_par.fasta";
                 $outName = $out . $key . "_par.fasta";
-                print "PARALOG!";
-                print join("\n", @Paralogs);
+                print "PARALOG!\t$outName\n";
+                print join("\n", @Paralogs) . "\n\n";
         }
         else{
                 $outName = $out . $key . ".fasta";
