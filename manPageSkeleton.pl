@@ -13,7 +13,7 @@ Tha pipah
 
 =head1 SYNOPSIS
 
-Main.pl [-min int] [-max int] [-g file] [-h int] [-p directory] [-gs directory] [-a directory] [-o directory] 
+Main.pl [-min int] [-max int] [-g file] [-h int] [-p directory] [-gs directory] [-a directory] [-o directory] [-gap int]
 
 =head1 DESCRIPTION
 
@@ -49,11 +49,18 @@ Annotation file directory (.gbk), One file for each species.
 
 Existing output folder for multiple alignments.
 
-=head2 -h, -specieHeader
+=head2 -h, -specieHeader_pos
 
-Position of species name in the fasta header.
+Position of the specie identifier in the fasta headers. For instance, in the example below the 
 
-h|specieHeader_pos
+                
+>gi|58038491|ref|NC_006677.1| Gluconobacter oxydans
+                      ^
+                        
+=head2 -gap, -gapLength
+
+Text
+
 
 =head1 FILES
 

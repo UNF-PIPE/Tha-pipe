@@ -75,7 +75,7 @@ sub make_gbk_hash{
 
 sub mkHash {
 	my %hash; 				#Predefine hash	
-	my $dir = $_[0]; 			#Define directory
+	my ($dir,$speciesPos) = @_; 			#Get arguments
 	my @files = read_dir($dir); 	#Contains all files in the directory 
 	for my $file ( @files ) { 		#Loop trough all files 
         	my $filePath = "$dir$file"; #Current path to file
@@ -84,13 +84,11 @@ sub mkHash {
                		my $header = $accession1->id;
                		my $seq = $accession1->seq;
 			            my @split = split(/\|/,$header);
-               		$hash {$split[3]} = $seq; 
+               		$hash {$split[$speciesPos]} = $seq; 
        		}
 	}
 	return %hash;
 }
-1;
-
 
 sub parse_orthomcl_file {
     # File name is first argument, remove that from @_
@@ -148,6 +146,6 @@ sub parse_groups {
 
     return %orthoHash
 }
-
+1;
 
 
