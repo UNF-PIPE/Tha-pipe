@@ -10,6 +10,8 @@ use base qw(Exporter);
 use Bio::Tree::Tree;
 our @EXPORT_OK = qw(findAltStart findGaps);
 
+#Searches for alternative start positions for genes with more than a certain number of alignment gaps (parameter).
+#The gene is then extended to the position of that start codon (if a suitable such codon was found).
 sub findAltStart {
 	my %out_sequences;
 	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
@@ -52,6 +54,7 @@ sub findAltStart {
 	return %out_sequences;
 }
 
+#Discovers start and stop codons and stores their positions in arrays
 sub buildCodonArrays {
 	my $extension = $_[0];
 	my $position = 0;

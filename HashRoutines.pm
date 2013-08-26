@@ -26,41 +26,30 @@ sub make_gbk_hash{
 	my $ge;
 
 	foreach my $file (@files){
-		#print $file."\n";
 		open GBFILE, $genbankDir.$file or die $!;		
 		my @array = <GBFILE>;
 		chomp(@array);
-		#my $toprow = shift(@array);
-	  my @toprows = @array[0..10];	
-#		if($toprow =~ m/^LOCUS\s*(\S*)\s/) {
-#			$ge = "$1";
-#		}
-          foreach (@toprows) {
-                  if($_ =~ m/^VERSION\s*(\S*)\s/) {
-                          $ge = "$1";
-                  }	
-          }
+		my @toprows = @array[0..10];	
+		foreach (@toprows) {
+			if($_ =~ m/^VERSION\s*(\S*)\s/) {
+				$ge = "$1";
+			}	
+		}
 
-		#my @toprow_split = split(/\t/,$toprow);
-		#my $genomeID = $toprow_split[2];
 		$all_lines = join("", @array);
-		#print $all_lines;
 		my @array2= split(/\/translation/,$all_lines);
 		foreach(@array2){
 			if ($_ =~ m/CDS\s+(\d+)\.\.(\d+).\s+/){
-				#print "$1\t";
 				$start = $1;
 				$stop = $2;
 				$complement = 0;	
 			}
 			elsif ($_ =~ m/CDS\s+complement\((\d+)\.\.(\d+)\)\s+/) {
-				#print "$1 $2\t";
 				$start = $1;
 				$stop = $2;
 				$complement = 1;
 			}
 			if ($_ =~ m/\/protein_id=\"(.*)\"\s+\/db_xref=\"GI:(.*)\"\s+\/db_xref=\"GeneID:(.*)\"/) {
-				#print "$1\n";
 				$ACID = $1;			
 				$GI = $2;
 				$geneID = $3;
@@ -72,38 +61,38 @@ sub make_gbk_hash{
 	return %gbkhash
 }#endbracket of subroutine make_gbk_hash
 
-
+#Returns a hash of the sequence files in a directory, with species ID as key and sequences as values 
 sub mkHash {
 	my %hash; 				#Predefine hash	
-	my ($dir,$speciesPos) = @_; 			#Get arguments
+	my ($dir,$speciesPos) = @_;		#Get arguments
 	my @files = read_dir($dir); 	#Contains all files in the directory 
 	for my $file ( @files ) { 		#Loop trough all files 
-        	my $filePath = "$dir$file"; #Current path to file
-        	my $hash = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta'); #Insert file into SeqIO object
-        	while (my $accession1 = $hash->next_seq) { # Go through the SeqIO objects
-               		my $header = $accession1->id;
-               		my $seq = $accession1->seq;
-			            my @split = split(/\|/,$header);
-               		$hash {$split[$speciesPos]} = $seq; 
-       		}
+		my $filePath = "$dir$file"; #Current path to file
+		my $hash = Bio::SeqIO->new(-file => "<$filePath", -format => 'fasta'); #Insert file into SeqIO object
+		while (my $accession1 = $hash->next_seq) { # Go through the SeqIO objects
+			my $header = $accession1->id;
+			my $seq = $accession1->seq;
+			my @split = split(/\|/,$header);
+			$hash {$split[$speciesPos]} = $seq; 
+		}
 	}
 	return %hash;
 }
 
 sub parse_orthomcl_file {
-    # File name is first argument, remove that from @_
-    my $file = shift;
+	# File name is first argument, remove that from @_
+	my $file = shift;
 
-    # Open filehandle to the groups file
-    open my $IN, '<', $file or die "Can't find orthomcl file: $?, $!";
+	# Open filehandle to the groups file
+	open my $IN, '<', $file or die "Can't find orthomcl file: $?, $!";
 
-    # Read the file into an array
-    chomp(my @groups = <$IN>);
+	# Read the file into an array
+	chomp(my @groups = <$IN>);
 
-    # takes as input the lines of a OrthoMCL groups output file in an array
-    # with one group/line per element, each as space-separated strings returns
-    # those groups passing filters. @_ contains the rest of the parameters.
-    return parse_groups( \@groups, @_ );
+	# takes as input the lines of a OrthoMCL groups output file in an array
+	# with one group/line per element, each as space-separated strings returns
+	# those groups passing filters. @_ contains the rest of the parameters.
+	return parse_groups( \@groups, @_ );
 }
 
 sub parse_groups {
@@ -147,5 +136,3 @@ sub parse_groups {
     return %orthoHash
 }
 1;
-
-

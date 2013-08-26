@@ -23,11 +23,14 @@ use findAltStart qw( findAltStart findGaps );
 my ($speciesPerLine, $proteinsPerSpecies, $orthomcl_groups_file, $proteoms, $genomes, $annotations, $out, $speciePos_genome, $speciePos_proteome, $gapLength, $cores);
 
 #Set default values
+$proteoms = "t/test_data/proteome_data/NCBI-proteoms/";
+$genomes = "t/test_data/genome_data/NCBI-genomes/";
+$annotation = "t/test_data/genome_data/NCBI-annotation/";
 $speciePos_genome = 3; #The position in the genome fasta headers that contain the specie identifier
 $speciePos_proteome = 3; #The position in the proteome fasta headers that contain the specie identifier
 $gapLength = 13; #Sequences startin g with more than this number of gaps will be sent to findAltStart
 $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`; #on Linux
-#my $cores = `sysctl -n hw.ncpu`; #on Mac
+#$cores = `sysctl -n hw.ncpu`; #on Mac
 
 GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file, "p|proteoms=s" => \$proteoms, "gs|genomes=s" => \$genomes, "a|annotations=s" => \$annotations, "o|outname=s" => \$out, "hg|speciePos_genome=s" => \$speciePos_genome, "hp|speciePos_proteome=s" => \$speciePos_proteome,"gap|gapLength=s" => \$gapLength, "c|cores=s" => \$cores);
 
@@ -38,9 +41,6 @@ my %orthoHash = parse_orthomcl_file($orthomcl_groups_file, $speciesPerLine, $pro
 my %prot = mkHash($proteoms,$speciePos_proteome);
 my %genome = mkHash($genomes,$speciePos_genome);
 my %annotation = make_gbk_hash($annotations);
-#my %prot = mkHash("t/test_data/proteome_data/NCBI-proteoms/");
-#my %genome = mkHash("t/test_data/genome_data/NCBI-genomes/");
-#my %annotation = make_gbk_hash("t/test_data/genome_data/NCBI-annotation/"); 
 
 #Get the number of processor cores and create a forkmanager object for multithreading usage.
 my $pm = new Parallel::ForkManager($cores++);
