@@ -18,6 +18,7 @@ sub findAltStart {
 	my ($original_gene, $extended_gene, $extension);
 	my @codon_arrays;
 	my $suitable_start_pos;
+        my @extended; #Store id of extended sequences
 		
 	for my $ProtID (@{$gapSeqs}) {
 		#Fetch gene and extension
@@ -43,7 +44,14 @@ sub findAltStart {
 		if ($suitable_start_pos == -1) {
 			$out_sequences{$ProtID} = $translated_orig;
 		} else {
-			my $translated_ext = translateToProt(substr($extended_gene, $suitable_start_pos));
+                        my $geneToUse = substr($extended_gene, $suitable_start_pos);
+                        if(length($geneToUse) != length($original_gene)){ #Check if any extension has occured
+                                push(@extended, $ProtID);
+                        }
+                        
+                        #my $codon = substr $geneToUse, 0, 3;
+                        #print "Translating this codon: $codon\n";
+			my $translated_ext = translateToProt($geneToUse);
 			if ($translated_ext =~ m/\*\D+/) {
 				die "Error: Extended protein contains internal stop codon, igonered";
 			} else {
@@ -51,7 +59,7 @@ sub findAltStart {
 			}
 		}
 	}
-	return %out_sequences;
+	return (\%out_sequences, \@extended);
 }
 
 #Discovers start and stop codons and stores their positions in arrays

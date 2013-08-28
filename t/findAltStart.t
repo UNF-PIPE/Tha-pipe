@@ -26,7 +26,7 @@ open my $aln_file, '<', $test_data_path . "test2_aln.fasta" or die "Can't find t
 my $aln = join("", <$aln_file>);
 
 #Run the subroutines
-my %genomeHash = mkHash("t/test_data/genome_data/NCBI-genomes/");
+my %genomeHash = mkHash("t/test_data/genome_data/NCBI-genomes/", 3);
 my @gapSeqs = findGaps($aln, 13);
 my %extSeqs = findAltStart(\@gapSeqs, 13, \%gbkTestHash, \%genomeHash);
 

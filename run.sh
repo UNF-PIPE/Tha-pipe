@@ -1,1 +1,1 @@
-./Main.pl -min 4 -max 20 -g groups.txt -p ./t/test_data/proteome_data/NCBI-proteoms/ -gs t/test_data/genome_data/NCBI-genomes/ -a t/test_data/genome_data/NCBI-annotation/ -o /home/simon/projects/pipan/results/2013-07-06_paralog_bugFix/test_res/
+./Main.pl -min 4 -max 20 -g groups.txt -p ./t/test_data/proteome_data/NCBI-proteoms/ -gs t/test_data/genome_data/NCBI-genomes/ -a t/test_data/genome_data/NCBI-annotation/ -o /home/simon/projects/pipan/results/2013-08-28/ -gap 13
