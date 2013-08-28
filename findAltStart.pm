@@ -14,7 +14,7 @@ our @EXPORT_OK = qw(findAltStart findGaps);
 #The gene is then extended to the position of that start codon (if a suitable such codon was found).
 sub findAltStart {
 	my %out_sequences;
-	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash) = @_;
+	my ($gapSeqs, $noOfGaps, $gbkHash, $genomeHash, $altStart) = @_;
 	my ($original_gene, $extended_gene, $extension);
 	my @codon_arrays;
 	my $suitable_start_pos;
@@ -45,18 +45,23 @@ sub findAltStart {
 			$out_sequences{$ProtID} = $translated_orig;
 		} else {
                         my $geneToUse = substr($extended_gene, $suitable_start_pos);
-                        if(length($geneToUse) != length($original_gene)){ #Check if any extension has occured
-                                push(@extended, $ProtID);
-                        }
                         
-                        #my $codon = substr $geneToUse, 0, 3;
-                        #print "Translating this codon: $codon\n";
-			my $translated_ext = translateToProt($geneToUse);
-			if ($translated_ext =~ m/\*\D+/) {
-				die "Error: Extended protein contains internal stop codon, igonered";
-			} else {
-				$out_sequences{$ProtID} = $translated_ext;
-			}
+                        my $codon = substr $geneToUse, 0, 3; #Picks the start codon
+                        if (($altStart) || ($codon eq 'ATG')){
+                                
+                                #The alternative start codons TTG and GTG will always be translated to methionine.
+                                my $afterStart = substr $geneToUse, 3;
+                                my $translated_ext = 'M' . translateToProt($afterStart);
+                                
+                                if ($translated_ext =~ m/\*\D+/) {
+                                        die "Error: Extended protein contains internal stop codon, igonered";
+                                } else {
+                                        $out_sequences{$ProtID} = $translated_ext;
+                                        push(@extended, $ProtID);
+                                }
+                        } else {
+                                $out_sequences{$ProtID} = $translated_orig;
+                        }
 		}
 	}
 	return (\%out_sequences, \@extended);

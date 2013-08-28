@@ -21,7 +21,7 @@ use multipleAlign qw(multipleAlign);
 use findAltStart qw( findAltStart findGaps );
 
 #Declare parameters
-my ($speciesPerLine, $proteinsPerSpecies, $orthomcl_groups_file, $proteoms, $genomes, $annotations, $out, $speciePos_genome, $speciePos_proteome, $gapLength, $cores, $logfile);
+my ($speciesPerLine, $proteinsPerSpecies, $orthomcl_groups_file, $proteoms, $genomes, $annotations, $out, $speciePos_genome, $speciePos_proteome, $gapLength, $cores, $logfile, $altStart);
 
 #Set default values
 $proteoms = "t/test_data/proteome_data/NCBI-proteoms/";
@@ -34,8 +34,9 @@ $cores = `cat /proc/cpuinfo | grep 'processor'| wc -l`; #on Linux
 #$cores = `sysctl -n hw.ncpu`; #on Mac
 my $date = strftime "%F", localtime;
 $logfile = $date . ".log";
+$altStart = 1;
 
-GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file, "p|proteoms=s" => \$proteoms, "gs|genomes=s" => \$genomes, "a|annotations=s" => \$annotations, "o|outname=s" => \$out, "hg|speciePos_genome=s" => \$speciePos_genome, "hp|speciePos_proteome=s" => \$speciePos_proteome,"gap|gapLength=s" => \$gapLength, "c|cores=s" => \$cores, "log|logfile=s" => \$logfile);
+GetOptions ("min|minSpeciesPerLine=s" => \$speciesPerLine, 'max|maxProteinsPerSpecies=s' => \$proteinsPerSpecies, "g|groupsfile=s" => \$orthomcl_groups_file, "p|proteoms=s" => \$proteoms, "gs|genomes=s" => \$genomes, "a|annotations=s" => \$annotations, "o|outname=s" => \$out, "hg|speciePos_genome=s" => \$speciePos_genome, "hp|speciePos_proteome=s" => \$speciePos_proteome,"gap|gapLength=s" => \$gapLength, "c|cores=s" => \$cores, "log|logfile=s" => \$logfile,"as|altStart=s" => \$altStart);
 
 #Parse the orthomcl-file and create a hash with all ortholog groups that meet the criteria. 
 my %orthoHash = parse_orthomcl_file($orthomcl_groups_file, $speciesPerLine, $proteinsPerSpecies);
@@ -64,7 +65,7 @@ while (my ($key,$value) = each %orthoHash) {
         
         #Look for alternative start codons. &findAltStart returns the aligned sequences (of which some may have been extended) as a hash. 
         #The id:s of those that actually were extended are returned in an array.
-        my ($foundSeqs, $extSeqs) = findAltStart(\@gapSeqs, $gapLength, \%annotation, \%genome);
+        my ($foundSeqs, $extSeqs) = findAltStart(\@gapSeqs, $gapLength, \%annotation, \%genome, $altStart);
         if(@{$extSeqs}){
                my $extInfo = "Sequences that were extended: " . join(" ", @{$extSeqs});
                push(@groupLog, $extInfo);
